@@ -11,6 +11,3 @@ module.exports =
 
   scss:
     sourcemap: true
-
-  jade:
-    pretty: true

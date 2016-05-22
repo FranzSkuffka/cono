@@ -3,7 +3,6 @@
   "description": "",
   "dependencies": {
     "css-pipeline": "0.3.x",
-    "jade": "1.x",
     "js-pipeline": "0.2.x",
     "jstransformer-marked": "1.x",
     "marked": "0.3.x",

@@ -1,13 +1,11 @@
 (function() {
   var app;
 
-  console.log('hey maya');
-
   app = angular.module("cono", ["firebase"]);
 
   app.controller("conoController", function($scope, $firebaseArray) {
     var ref;
-    ref = new Firebase("dazzling-inferno-1538.firebaseio.com");
+    ref = new Firebase("project-3091671327564189981.firebaseio.com/");
     $scope.talks = $firebaseArray(ref);
     return $scope.addTalk = function() {
       return $scope.talks.$add({

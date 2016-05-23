@@ -3,17 +3,31 @@
 
   app = angular.module("cono", ["firebase"]);
 
-  app.controller("conoController", function($scope, $firebaseArray) {
-    var ref;
-    ref = new Firebase("project-3091671327564189981.firebaseio.com/");
-    $scope.talks = $firebaseArray(ref);
-    return $scope.addTalk = function() {
-      return $scope.talks.$add({
-        name: $scope.newTalkName,
-        speaker: $scope.newTalkSpeaker,
-        time: $scope.newTalkTime
-      }, $scope.newTalkName = '', $scope.newTalkSpeaker = '', $scope.newTalkTime = '');
+  app.controller("dashboardController", function($scope, $firebaseArray) {
+
+    var ref = new Firebase("project-3091671327564189981.firebaseio.com/");
+
+    $scope.conferences = $firebaseArray(ref.child('conferences'));
+    $scope.user = { // TODO: implement Auth
+      ID: 'someUserId'
+    }
+
+    $scope.addConference = function() {
+      return $scope.conferences.$add({
+        name: 'New Conference',
+        description: 'This is a great conference',
+        end: new Date(),
+        address: {
+          city: 'Wherever',
+          houseNumber: '10a',
+          street: 'next turn left',
+          zip: 12345,
+          organizerID: $scope.user.ID
+        }
+      });
     };
+
+    return $scope;
   });
 
 }).call(this);

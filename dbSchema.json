@@ -1,0 +1,66 @@
+{
+  "conferences" : {
+    "conference1" : {
+      "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ",
+      "end" : "timestamp",
+      "location" : {
+        "city" : "Mosbach",
+        "housenumber" : 6,
+        "street" : "Oberer Mühlenweg",
+        "zip" : 74821
+      },
+      "name" : "Hackathon",
+      "organizerID" : "organizer1",
+      "published" : true,
+      "start" : "timestamp"
+    }
+  },
+  "organizers" : {
+    "organizer1" : {
+      "conferences" : {
+        "conference1" : true
+      },
+      "email" : "hans.muster@irgendwas.de",
+      "firstname" : "Hans",
+      "lastname" : "Muster",
+      "password" : "*********"
+    }
+  },
+  "talks" : {
+    "talk1" : {
+      "conferenceID" : "conference1",
+      "description" : "Blaaaa",
+      "end" : "timestamp",
+      "name" : "phpframework",
+      "room" : "D210",
+      "speakerdescription" : "xxxx",
+      "speakername" : "Petra",
+      "speakerphoto" : "image?",
+      "start" : "timestamp",
+      "trackID" : "track1"
+    }
+  },
+  "tracks" : {
+    "track1" : {
+      "conferenceID" : "conference1",
+      "name" : "webdesign",
+      "talks" : {
+        "talk1" : true
+      }
+    }
+  },
+  "vistors" : {
+    "visitor1" : {
+      "conferences" : {
+        "conference1" : true
+      },
+      "email" : "alica@web.de",
+      "firstname" : "Alica",
+      "lastname" : "Widmann",
+      "password" : "*****",
+      "talks" : {
+        "talk1" : true
+      }
+    }
+  }
+}

@@ -14,15 +14,21 @@
 
     $scope.addConference = function() {
       return $scope.conferences.$add({
-        name: 'New Conference',
-        description: 'This is a great conference',
+        name: 'Beyond Tellerrand',
+        description: 'Super crazy awesome front end conference',
         end: new Date(),
-        address: {
-          city: 'Wherever',
-          houseNumber: '10a',
-          street: 'next turn left',
-          zip: 12345,
+        location: {
+          city: 'Berlin',
+          houseNumber: '12',
+          street: 'Admiralspalast',
+          zip: 10625,
           organizerID: $scope.user.ID
+        },
+        start: "This is a timestamp",
+        end: "This is also a timestamp",
+        corporateidentity: {
+          color: "blue",
+          logo: "logo.png"
         }
       });
     };

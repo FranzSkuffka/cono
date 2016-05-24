@@ -26,6 +26,9 @@
         }
       });
     };
+    $scope.removeConference = function(conference) {
+      return $scope.conferences.$remove(conference);
+    }
 
     return $scope;
   });

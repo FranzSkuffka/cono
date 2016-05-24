@@ -1,0 +1,38 @@
+<!-- dashboard -->
+<div class="container">
+  <div class="section">
+  <h5>My Conferences</h5>
+
+    <div class="row">
+
+        <!-- TODO: Implent layout; http://codepen.io/TrueNorth/pen/MwVoYp-->
+
+        <!-- add conference card -->
+        <div ng-click='addConference()' class="col s12 m6 l3 card green darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Create conference</span>
+            <p>Clicking this will create a new conference.</p>
+          </div>
+        </div>
+
+        <!-- single conference card -->
+        <div ng-repeat="conference in conferences" class="col s12 m6 l3 card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">{{conference.name}}</span>
+            <p>{{conference.description}}</p>
+            <p>Wo: {{conference.location.city}}</p>
+            <p>Von {{conference.start}} bis {{conference.end}}</p>
+
+          </div>
+          <div class="card-action">
+            <a ng-click='removeConference(conference)' href="#">Remove</a>
+          </div>
+        </div>
+
+    </div>
+
+  </div>
+<!-- end of controller-->
+
+</div>
+<!-- dashboard end -->

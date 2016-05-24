@@ -41,33 +41,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.test', {
+      url: '/test',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/test.html'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.cono_start', {
+      url: '/cono_start',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/cono_start.html',
+          controller: 'ConoCtrl'
         }
       }
-    })
+    });
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/cono_start');
 });

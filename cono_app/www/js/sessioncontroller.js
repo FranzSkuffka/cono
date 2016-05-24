@@ -6,7 +6,7 @@
             $scope.logout = function () {
                 // get User, if null, not logged in: var user = ref.getAuth()
                 ref.unauth();
-                $state.go('index');
+                $state.go('login');
             };
 
             // Perform the login action when the user submits the login form

@@ -1,7 +1,22 @@
 (function() {
   var app;
 
-  app = angular.module("cono", ["firebase"]);
+  app = angular.module("cono", ["firebase", "ui.router"])
+
+  app.config(function($stateProvider, $urlRouterProvider) {
+
+
+    $urlRouterProvider.otherwise('/dashboard');
+
+    $stateProvider
+      // DASHBOARD
+      .state('home', {
+          url: '/',
+          templateUrl: 'templates/dashboard.html',
+          controller: 'dashboardController'
+      })
+
+  });
 
   app.controller("dashboardController", function($scope, $firebaseArray) {
 

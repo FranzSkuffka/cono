@@ -1,57 +1,56 @@
 (function() {
-  var app;
-
-  app = angular.module("cono", ["firebase", "ui.router"])
+  window.app = angular.module("cono", ["firebase", "ui.router"])
+  window.fbRef = new Firebase("cono-app.firebaseio.com")
 
   app.config(function($stateProvider, $urlRouterProvider) {
 
 
-    $urlRouterProvider.otherwise('/dashboard');
+
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
+
       // DASHBOARD
-      .state('home', {
+      .state('dashboard', {
           url: '/',
           templateUrl: 'templates/dashboard.html',
           controller: 'dashboardController'
       })
 
+      // CREATE + EDIT + DELETE
+      .state('edit', {
+          url: '/edit',
+          templateUrl: 'templates/edit.html',
+          controller: 'editConferenceController'
+      })
+
+      // LOGIN & REGISTRATION
+      .state('login', {
+          url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'authController'
+      })
+
+      // SETTINGS
+      .state('settings', {
+          url: '/settings',
+          templateUrl: 'templates/settings.html',
+          controller: 'settingsController'
+      })
+
+      // TALK
+      .state('talk', {
+          url: '/talk',
+          templateUrl: 'templates/talk.html',
+          controller: 'talkController'
+      })
+
+      // TRACK
+      .state('track', {
+          url: '/track',
+          templateUrl: 'templates/track.html',
+          controller: 'trackController'
+      })
+
   });
-
-  app.controller("dashboardController", function($scope, $firebaseArray) {
-
-    var ref = new Firebase("project-3091671327564189981.firebaseio.com/");
-
-    $scope.conferences = $firebaseArray(ref.child('conferences'));
-    $scope.user = { // TODO: implement Auth
-      ID: 'someUserId'
-    }
-
-    $scope.addConference = function() {
-      return $scope.conferences.$add({
-        name: 'Beyond Tellerrand',
-        description: 'Super crazy awesome front end conference',
-        end: new Date(),
-        location: {
-          city: 'Berlin',
-          houseNumber: '12',
-          street: 'Admiralspalast',
-          zip: 10625,
-          organizerID: $scope.user.ID
-        },
-        start: "This is a timestamp",
-        end: "This is also a timestamp",
-        corporateidentity: {
-          color: "blue",
-          logo: "logo.png"
-        }
-      });
-    };
-    $scope.removeConference = function(conference) {
-      return $scope.conferences.$remove(conference);
-    }
-
-    return $scope;
-  });
-
 }).call(this);

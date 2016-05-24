@@ -12,7 +12,11 @@
       "name" : "Hackathon",
       "organizerID" : "organizer1",
       "published" : true,
-      "start" : "timestamp"
+      "start" : "timestamp",
+      "corporateidentity" : {
+        "color" : "blue",
+        "logo" : "logo.png"
+      }
     }
   },
   "organizers" : {

@@ -11,11 +11,11 @@
         </label>
         <label>
             Beginn:
-            <input type="text" name="start" ng-model="newConference.start">
+            <input type="date" name="start" ng-model="newConference.start">
         </label>
         <label>
             Ende:
-            <input type="text" name="end" ng-model="newConference.end">
+            <input type="date" name="end" ng-model="newConference.end">
         </label>
         <label>
             Straße:
@@ -35,7 +35,7 @@
         </label>
         <label>
             Layoutfarbe:
-            <input type="text" name="color" ng-model="newConference.corporateidentity.color">
+            <input type="color" name="color" ng-model="newConference.corporateidentity.color">
         </label>
         <label>
             Logo:
@@ -43,4 +43,9 @@
         </label>
         <input class="waves-effect waves-light btn-large" type="submit" value="Konferenz speichern">
     </form>
+    <a ng-click='removeConference(conference)' href="#/dashboard">
+        <button class="waves-effect waves-light btn-large red">
+            Konferenz löschen
+        </button>
+    </a>
 </div>

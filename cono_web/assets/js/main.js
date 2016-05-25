@@ -1,6 +1,6 @@
 (function() {
-  window.app = angular.module("cono", ["firebase", "ui.router"])
-  window.fbRef = new Firebase("cono-app.firebaseio.com")
+  window.app = angular.module("cono", ["firebase", "ui.router"]);
+  window.fbRef = new Firebase("cono-app.firebaseio.com");
 
   app.config(function($stateProvider, $urlRouterProvider) {
 

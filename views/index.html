@@ -36,7 +36,11 @@
     <header ng-controller="userController">
       <div class="row">
         <div class="col s3">
-            <p>Angemeldet als: {{authData.password.email}}</p>
+            <p >
+            <span ng-if="userData">
+              Angemeldet als: {{userData.name}}
+            </span>
+            </p>
         </div>
         <div class="col s6">
           <img class='logo' src="img/cono_logo.svg" alt="cono Logo"/>
@@ -61,7 +65,12 @@
     <!-- end of app -->
 
     <script src='js/main.js'></script>
+
     <script src='js/routes.js'></script>
+
+    <script src='js/directives/passwordValidator.js'></script>
+
+    <script src='js/controllers/registration.js'></script>
     <script src='js/controllers/auth.js'></script>
     <script src='js/controllers/user.js'></script>
     <script src='js/controllers/dashboard.js'></script>

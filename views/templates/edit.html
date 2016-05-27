@@ -3,43 +3,43 @@
     <form name="editConferenceForm" ng-submit="addConference()">
         <label>
             Konferenzname:
-            <input type="text" name="conferenceName" ng-model="newConference.name" required>
+            <input type="text" name="conferenceName" ng-model="conference.name" required>
         </label>
         <label>
             Beschreibung:
-            <input type="text" name="description" ng-model="newConference.description">
+            <input type="text" name="description" ng-model="conference.description">
         </label>
         <label>
             Beginn:
-            <input type="date" name="start" ng-model="newConference.start">
+            <input type="date" name="start" ng-model="conference.start">
         </label>
         <label>
             Ende:
-            <input type="date" name="end" ng-model="newConference.end">
+            <input type="date" name="end" ng-model="conference.end">
         </label>
         <label>
             Straße:
-            <input type="text" name="street" ng-model="newConference.location.street">
+            <input type="text" name="street" ng-model="conference.location.street">
         </label>
         <label>
             Hausnummer:
-            <input type="text" name="housenumber" ng-model="newConference.location.housenumber">
+            <input type="text" name="housenumber" ng-model="conference.location.housenumber">
         </label>
         <label>
             Postleitzahl:
-            <input type="text" name="zip" ng-model="newConference.location.zip">
+            <input type="text" name="zip" ng-model="conference.location.zip">
         </label>
         <label>
             Stadt:
-            <input type="text" name="city" ng-model="newConference.location.city">
+            <input type="text" name="city" ng-model="conference.location.city">
         </label>
         <label>
             Layoutfarbe:
-            <input type="color" name="color" ng-model="newConference.corporateidentity.color">
+            <input type="color" name="color" ng-model="conference.corporateidentity.color">
         </label>
         <label>
             Logo:
-            <input type="text" name="logo" ng-model="newConference.corporateidentity.logo">
+            <input type="text" name="logo" ng-model="conference.corporateidentity.logo">
         </label>
         <input class="waves-effect waves-light btn-large" type="submit" value="Konferenz speichern">
     </form>

@@ -7,8 +7,9 @@ app.controller("dashboardController", function($scope, $firebaseArray, $location
   };
 
   $scope.changeView = function(conference){
-    var conferencePath = '/edit/' + conference.name;
+    var conferencePath = '/edit/' + conference.name + '/' + conference.$id;
     $location.path(conferencePath);
+    console.log(conference.$id);
   }
 
   return $scope;

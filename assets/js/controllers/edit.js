@@ -1,10 +1,14 @@
 (function() {
-    app.controller("editConferenceController", function($scope, $firebaseArray, $location) {
+    app.controller("editConferenceController", function($scope, $firebaseArray, $location, $stateParams) {
 
         $scope.conferences = $firebaseArray(fbRef.child('conferences'));
         $scope.user = { // TODO: implement Auth
             ID: 'someUserId'
         };
+
+
+
+        console.log($stateParams);
 
         var newConference = function(){
             return {
@@ -25,36 +29,43 @@
             }
         };
 
-        $scope.go = function(){
-            $location.path("/dashboard");
-        };
-
-        $scope.newConference = newConference();
+        if($stateParams.id){
+            fbRef.child("conferences/").child($stateParams.id).on('value', function(snapshot) {
+                if(snapshot.val() != null){
+                    $scope.conference = snapshot.val();
+                }else{
+                    $scope.conference = newConference();
+                }
+                console.log(snapshot.val());
+            });
+        }else{
+            $scope.conference = newConference();
+        }
 
         $scope.addConference = function() {
             $scope.conferences.$add({
-                name: $scope.newConference.name,
-                description: $scope.newConference.description,
-                start: $scope.newConference.start,
-                end: $scope.newConference.end,
+                name: $scope.conference.name,
+                description: $scope.conference.description,
+                start: $scope.conference.start,
+                end: $scope.conference.end,
                 location: {
-                    street: $scope.newConference.location.street,
-                    housenumber: $scope.newConference.location.housenumber,
-                    zip: $scope.newConference.location.zip,
-                    city: $scope.newConference.location.city
+                    street: $scope.conference.location.street,
+                    housenumber: $scope.conference.location.housenumber,
+                    zip: $scope.conference.location.zip,
+                    city: $scope.conference.location.city
                 },
                 organizerID: $scope.user.ID,
                 corporateidentity: {
-                    color: $scope.newConference.corporateidentity.color,
-                    logo: $scope.newConference.corporateidentity.logo
+                    color: $scope.conference.corporateidentity.color,
+                    logo: $scope.conference.corporateidentity.logo
                 }
             });
-            $scope.newConference = newConference();
-            $scope.go();
-
+            $location.path("/dashboard");
         };
-        $scope.removeConference = function(conference) {
-            return $scope.conferences.$remove(conference);
+
+        $scope.removeConference = function() {
+            fbRef.child("conferences/").child($stateParams.id).remove();
+            $location.path("/dashboard");
         };
 
 

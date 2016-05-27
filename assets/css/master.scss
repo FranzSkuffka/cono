@@ -1,6 +1,59 @@
+body {
+  background-color: #eeeeee;
+}
+
+p, h1, h2, h3, ul, li {
+  margin: 0;
+  padding: 0;
+  font-family: Raleway;
+  color: #5b6770;
+}
+
 /*Start header*/
-header .row .col.s3 ul{
-  text-align: right;
+
+header {
+  margin: 0 20px;
+  padding: 25px 30px;
+  background-color: #fff;
+}
+
+header .row {
+  margin-bottom: 0;
+}
+
+header .row .col.s3 .userDate {
+  font-size: 16px;
+}
+
+header .row .col.s3 ul.setting{
+  float: right;
+  border: 1px solid #077a7a;
+  padding: 10px;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+  color: #077a7a !important;
+}
+
+header .row .col.s3 ul li i.fa, header .row .col.s3 ul li span{
+  color: #077a7a;
+  float: left;
+}
+
+header .row .col.s3 ul li i.fa{
+  margin: 0 10px 0 0;
+}
+
+header .row .col.s3 ul li i.material-icons{
+  margin: 3px 0 0 0;
+  color: #077a7a;
+}
+
+header .row .col.s3 span {
+  font-family: Raleway;
+  font-size: 16px;
+  margin: 5px 0 0 0;
+  
 }
 
 header .row .col.s6{
@@ -12,6 +65,80 @@ header .row .col.s6{
 }
 /*End header*/
 
+/*Start Content*/
+
+.headline {
+  background-color: #646464;
+  margin: 0 20px;
+  padding: 25px 0 15px 0;
+  text-align: center;
+}
+
+.headline h1 {
+  font-size: 36px;
+  color: #fff;
+  margin: 0;
+}
+
+#content{
+  margin: 0 20px;
+  padding: 0 30px;
+  background-color: #fff;
+}
+
+#content .row .col {
+  box-shadow: none !important;
+}
+
+#content .row .col .conf, #content .row .col #newConf {
+  border: 1px solid #006261;
+  padding: 40px 20px 20px 20px;
+}
+
+#content .row .col p, #content .row .col span{
+  color: #077979;
+  font-family: Raleway;
+}
+
+.card .card-content {
+  padding: 0 !important;
+}
+
+#content .status {
+  position: relative;
+  top: 36px;
+  left: 114px;
+  width: 68px;
+}
+
+#content .row .col #newConf .conf {
+  text-align: center !important;
+}
+
+/*End Content*/
+
+/*Start footer*/
+
+footer {
+  background-color: #5b6770;
+  height: 110px;
+  padding: 25px 30px;
+}
+
+footer ul {
+  float: right;
+}
+
+footer ul li {
+  float: left;
+  margin: 0 0 0 10px;
+}
+
+footer ul li a {
+  color: #fff;
+}
+
+/*End footer*/
 
 /*Start registration*/
 .ng-invalid-complexity{

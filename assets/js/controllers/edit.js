@@ -6,6 +6,12 @@
             ID: 'someUserId'
         };
 
+        var timeStampToDate = function(timeStamp) {
+
+        };
+        var dateToTimeStamp = function(date) {
+
+        };
 
 
         console.log($stateParams);
@@ -29,7 +35,7 @@
             }
         };
 
-        if($stateParams.id){
+        if($stateParams.id && $stateParams.slug){
             fbRef.child("conferences/").child($stateParams.id).on('value', function(snapshot) {
                 if(snapshot.val() != null){
                     $scope.conference = snapshot.val();
@@ -42,7 +48,9 @@
             $scope.conference = newConference();
         }
 
-        $scope.addConference = function() {
+        $scope.saveConference = function() {
+            // 
+
             $scope.conferences.$add({
                 name: $scope.conference.name,
                 description: $scope.conference.description,

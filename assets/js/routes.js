@@ -29,11 +29,18 @@
           resolve: requireAuth
       })
 
-      // LOGIN & REGISTRATION
+      // LOGIN
       .state('login', {
           url: '/login',
           templateUrl: 'templates/login.html',
           controller: 'authController'
+      })
+
+      // REGISTRATION
+      .state('register', {
+          url: '/register',
+          templateUrl: 'templates/register.html',
+          controller: 'registrationController'
       })
 
       // SETTINGS

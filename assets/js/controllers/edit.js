@@ -68,7 +68,22 @@
             $location.path("/dashboard");
         };
 
-
+        $scope.backDashboard = function(conference){
+          var backDashboardPath = '/';
+          $location.path(backDashboardPath);
+        }
+        
+        $scope.goTalk = function(conference){
+          //hier richtigen pfad eingeben
+          var goTalkPath = '/';
+          $location.path(goTalkPath);
+        }
+        
+        $scope.goTrack = function(conference){
+          //hier richtigen pfad eingeben
+          var goTrackPath = '/';
+          $location.path(goTrackPath);
+        }
 
         return $scope;
     });

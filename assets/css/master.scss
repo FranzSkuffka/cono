@@ -9,6 +9,10 @@ p, h1, h2, h3, ul, li {
   color: #5b6770;
 }
 
+.clear {
+  clear: both;
+}
+
 /*Start header*/
 
 header {
@@ -17,25 +21,34 @@ header {
   background-color: #fff;
 }
 
+header .logo {
+  margin: 20px 0 0 0;
+}
+
 header .row {
   margin-bottom: 0;
 }
 
-header .row .col.s3 .userDate {
+header .row #userInfo {
   font-size: 16px;
 }
 
-header .row .col.s3 ul.setting{
-  float: right;
+header .row #userInfo p span.userName {
+  font-weight: bold;
+}
+
+header .row #userInfo ul.setting{
   border: 1px solid #077a7a;
   padding: 10px;
+  margin: 20px 0 0 0;
+  float: left;
 }
 
 .dropdown-content li>a, .dropdown-content li>span{
   color: #077a7a !important;
 }
 
-header .row .col.s3 ul li i.fa, header .row .col.s3 ul li span{
+header .row .col ul li i.fa, header .row .col ul li span{
   color: #077a7a;
   float: left;
 }
@@ -63,6 +76,39 @@ header .row .col.s6{
 .logo{
   height: 50px;
 }
+
+header #conf-setting p, header #conf-setting img {
+  float: left;
+}
+
+header #conf-setting p {
+  margin: 15px 0;
+}
+
+header #conf-setting img {
+  width: 50px;
+  margin: 0 0 0 20px;
+}
+
+header #conf-setting .dashback {
+    border: 1px solid #077a7a;
+    padding: 10px;
+    margin: 15px 0 0 0;
+    color: #077a7a;
+    width: 210px;
+    float: left;
+    cursor: pointer;
+}
+
+header #conf-setting .dashback i {
+    margin: 0 10px 0 0;
+    float: left;
+}
+
+header #conf-setting .dashback span {
+    float: left;
+}
+
 /*End header*/
 
 /*Start Content*/
@@ -90,7 +136,8 @@ header .row .col.s6{
   box-shadow: none !important;
 }
 
-#content .row .col .conf, #content .row .col #newConf {
+#content .row #conf .conf,
+#content .row #newConf .conf {
   border: 1px solid #006261;
   padding: 40px 20px 20px 20px;
 }
@@ -106,14 +153,179 @@ header .row .col.s6{
 
 #content .status {
   position: relative;
-  top: 36px;
-  left: 114px;
+  margin: 0 auto;
   width: 68px;
+  z-index: 1000;
 }
 
-#content .row .col #newConf .conf {
-  text-align: center !important;
+#content .row #conf .conf {
+  position: relative;
+  top: -40px;
+  z-index: 500;
+  background-color: #b6ced1;
 }
+
+#content .row #newConf .conf {
+  text-align: center;
+  position: relative;
+  top: 33px;
+  padding: 20px;
+}
+
+#content .row #newConf .conf .icons {
+  text-align: center;
+  margin: 25px 0 0 0;
+}
+
+#content .row .conf .icons {
+  text-align: right;
+  margin: 25px 0 0 0;
+  cursor: pointer;
+}
+
+#content .row .conf span.icon {
+  color: #fff;
+  background-color: #077a7a;
+  border: 1px solid #006261;
+  padding: 20px 10px 10px 10px;
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+#contentEdit{
+  margin: 0 20px;
+  padding: 0 95px 0 0;
+  background-color: #fff;
+}
+
+#contentEdit .row {
+  padding: 45px 0 0 0;
+}
+
+#contentEdit .row #confNav {
+  padding: 0 70px 0 0;
+}
+
+#contentEdit .row #confNav ul li {
+  color: #077a7a;
+  padding: 0 0 0 20px;
+}
+
+#contentEdit .row #confNav ul li.active {
+  background-color: #eeeeee;
+}
+
+#contentEdit .row #confNav ul span {
+  padding: 15px 0 15px 0;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+}
+
+#contentEdit .row .headerConf {
+  background-color: #b6ced1;
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #646464;
+}
+
+#contentEdit .row .headerConf span {
+  float: left;
+  font-family: Raleway;
+  color: #077a7a;
+  font-weight: bold;
+  margin: 15px 0 0 15px;
+}
+
+#contentEdit .row .headerConf a {
+  float: right;
+  background-color: #a8353a;
+  padding: 10px;
+  color: #fff;
+}
+
+#contentEdit .row form {
+  padding: 25px 15px 45px 15px;
+  background-color: #eeeeee;
+  float: left;
+  width: 100%;
+}
+
+#contentEdit .row form label {
+  float: left;
+  font-family: Raleway;
+  color: #5b6770;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 15px 0 0 0;
+}
+
+#contentEdit .row form p{
+  font-family: Raleway;
+  color: #5b6770;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#contentEdit .row form input{
+  border: 1px solid #b6ced1;
+  padding: 0 0 0 15px;
+}
+
+#contentEdit .row form input.wide{
+  float: right;
+  width: 75%;
+}
+
+#contentEdit .row form .formLeft {
+  float: left;
+  width: 48%;
+}
+
+#contentEdit .row form .formLeft label{
+  float: left;
+}
+
+#contentEdit .row form .formLeft input{
+  float: right;
+  width: 48%;
+}
+
+#contentEdit .row form .formLeft input[type="color"]{
+  padding: 0;
+  width: 52%;
+  margin: 10px 0 0 0;
+}
+
+#contentEdit .row form .formLeft p{
+    float: right;
+    width: 52%;
+}
+
+#contentEdit .row form .formRight {
+  float: right;
+  width: 48%;
+}
+
+#contentEdit .row form .formRight label{
+  float: left;
+}
+
+#contentEdit .row form .formRight input{
+  float: right;
+  width: 65%;
+}
+
+#contentEdit .row form .formRight input.specialInput{
+  float: right;
+  width: 96%;
+}
+
+#contentEdit .row form input[type="submit"]{
+  float: right;
+  padding: 0 15px;
+}
+
 
 /*End Content*/
 

@@ -5,6 +5,7 @@ app.controller("settingsController", ['$scope', '$state', 'Auth', function($scop
   $scope.user.email = '';
   $scope.user.pwd = '';
   $scope.user.pwdRepeat = '';
+  auth = Auth.$getAuth();
 
   $scope.changePwd = function () {
       console.log("Change Pwd Function called");
@@ -14,7 +15,7 @@ app.controller("settingsController", ['$scope', '$state', 'Auth', function($scop
         if ($scope.user.pwd == $scope.user.pwdRepeat) {
           console.log('all passwords are equal');
           fbRef.changePassword({
-            email: $scope.user.email,
+            email: auth.password.email,
             oldPassword: $scope.user.oldPwd,
             newPassword: $scope.user.pwd
           }, function(error) {

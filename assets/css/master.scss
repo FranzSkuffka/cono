@@ -109,6 +109,10 @@ header #conf-setting .dashback span {
     float: left;
 }
 
+header#logo {
+  text-align: center;
+}
+
 /*End header*/
 
 /*Start Content*/
@@ -324,10 +328,53 @@ header #conf-setting .dashback span {
 #contentEdit .row form input[type="submit"]{
   float: right;
   padding: 0 15px;
+  background-color: #077a7a;
+  color: #fff;
+  border: 1px solid #006261;
 }
 
-
 /*End Content*/
+
+/*Start Content login, registration*/
+
+#content .row .regLog .card-panel,
+#content .row .regLog form {
+  width: 50%;
+  margin: 0 auto 40px auto;
+}
+
+#content .row .regLog form label {
+  float: left;
+  width: 100%;
+}
+
+#content .row .regLog form label span {
+  float: left;
+  font-family: Raleway;
+  color: #5b6770;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 15px 0 0 0;
+}
+
+#content .row .regLog form label input{
+  float: right;
+  width: 60%;
+  border: 1px solid #b6ced1;
+  padding: 0 0 0 15px;
+}
+
+#content .row .regLog form label.item.button button,
+#content .row .regLog form label a{
+  float: right;
+  padding: 0 15px;
+  background-color: #077a7a;
+  color: #fff;
+  border: 1px solid #006261;
+  margin: 0 0 0 20px;
+}
+
+/*End Content login, registration*/
 
 /*Start footer*/
 

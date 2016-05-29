@@ -1,30 +1,30 @@
 <!-- dashboard -->
 <header ng-controller="userController">
-      <div class="row">
-        <div id="userInfo" class="col s3">
-            <p>
-            <span ng-if="userData">
-              Angemeldet als:<br /><span class="userName">{{userData.name}}</span>
-            </span>
-            </p>
-            <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
-              <li><a href="#!">Passwort ändern</a></li>
-              <li class="divider"></li>
-              <li><a href="#!" ng-click='logout()'>Logout</a></li>
-            </ul>
-            <ul class="setting">
-              <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><span>Einstellungen</span><i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-        </div>
-        <div class="col s6">
-          <img class='logo' src="img/logo.png" alt="cono Logo"/>
-        </div>
-        <div class="col s3">
-          <!-- -->
-        </div>
-      </div>
-    </header>
+  <div class="row">
+    <div id="userInfo" class="col s3">
+        <p>
+        <span ng-if="userData">
+          Angemeldet als:<br /><span class="userName">{{userData.name}}</span>
+        </span>
+        </p>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">Passwort ändern</a></li>
+          <li class="divider"></li>
+          <li><a href="#!" ng-click='logout()'>Logout</a></li>
+        </ul>
+        <ul class="setting">
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><span>Einstellungen</span><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+    <div class="col s6">
+      <img class='logo' src="img/logo.png" alt="cono Logo"/>
+    </div>
+    <div class="col s3">
+      <!-- -->
+    </div>
+  </div>
+</header>
 <div class="headline">
   <h1>Ihre Konferenzen</h1>
 </div>

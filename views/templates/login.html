@@ -1,29 +1,35 @@
-<!-- dashboard -->
-<div class="row container">
-  <div class="section col s12 m6">
-  <h5>Log in</h5>
-
-  <form>
-      <label class="item item-input">
-        <span class="input-label">E-Mail</span>
-        <input type="text" ng-model="user.email">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" ng-model="user.pwd">
-      </label>
-      <label class="item">
-        <button class="btn" ng-click="login()">Log in</button>
-      </label>
-      <a class="btn-flat" href='#/register'>Register</button>
-
-      <div class="section">
-      </div>
-  </form>
+<!-- login -->
+<header id="logo">
+  <div class="row">
+    <div id="userInfo" class="col s12">
+      <img class='logo' src="img/logo.png" alt="cono Logo"/>
+    </div>
   </div>
-
-  </form>
-
-
+</header>
+<div class="headline">
+  <h1>Login</h1>
+</div>
+<div id="content" class="row reglog">
+  <div class="col s12">
+      <div class="section">
+          <div class="row">
+            <div class="regLog">
+                <form>
+                    <label class="item item-input">
+                      <span class="input-label">E-Mail</span>
+                      <input type="text" ng-model="user.email">
+                    </label>
+                    <label class="item item-input">
+                      <span class="input-label">Password</span>
+                      <input type="password" ng-model="user.pwd">
+                    </label>
+                    <label class="item button">
+                      <a class="btn button" href='#/register'>Register</a>
+                      <button class="btn" ng-click="login()">Log in</button>
+                    </label>
+                </form>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

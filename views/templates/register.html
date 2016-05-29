@@ -1,44 +1,47 @@
-<!-- dashboard -->
-<div class="row container">
-  <div class="section col s12 m6">
-  <h5>Register</h5>
-  <div class="section">
-  <div class="card-panel ">Pick a password with at least 8 characters and two different character types.</div>
-
-  <form>
-      <label class="item item-input">
-        <span class="input-label">E-Mail</span>
-        <input type="text" ng-model="newUser.email">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Name</span>
-        <input type="text" ng-model="newUser.name">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" complex-password ng-model="newUser.pwd">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Repeat password</span>
-        <input type="password" ng-model="newUser.pwdRepeat">
-      </label>
-
-      <div ng-if='message' class="card-panel white-text red darken-1">{{message}}</div>
-
-      <label class="item">
-        <button class="btn blue" ng-click='register()'>Register</button>
-      </label>
-
-
-
+<!-- login -->
+<header id="logo">
+  <div class="row">
+    <div id="userInfo" class="col s12">
+      <img class='logo' src="img/logo.png" alt="cono Logo"/>
+    </div>
+  </div>
+</header>
+<div class="headline">
+  <h1>Register</h1>
+</div>
+<div id="content" class="row reglog">
+  <div class="col s12">
       <div class="section">
+          <div class="row">
+            <div class="regLog">
+                <div class="card-panel ">Pick a password with at least 8 characters and two different character types.</div>
+
+                <form>
+                    <label class="item item-input">
+                      <span class="input-label">E-Mail</span>
+                      <input type="text" ng-model="newUser.email">
+                    </label>
+                    <label class="item item-input">
+                      <span class="input-label">Name</span>
+                      <input type="text" ng-model="newUser.name">
+                    </label>
+                    <label class="item item-input">
+                      <span class="input-label">Password</span>
+                      <input type="password" complex-password ng-model="newUser.pwd">
+                    </label>
+                    <label class="item item-input">
+                      <span class="input-label">Repeat password</span>
+                      <input type="password" ng-model="newUser.pwdRepeat">
+                    </label>
+
+                    <div ng-if='message' class="card-panel white-text red darken-1">{{message}}</div>
+
+                    <label class="item button">
+                      <button class="btn" ng-click='register()'>Register</button>
+                    </label>
+                </form>
+            </div>
+           </div>
       </div>
-  </form>
-  </div>
-  </div>
-
-  </form>
-
-
   </div>
 </div>

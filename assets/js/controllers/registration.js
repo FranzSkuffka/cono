@@ -35,5 +35,25 @@ app.controller("registrationController", ['$scope', '$state', 'Auth', function($
         $scope.message = 'Please fill all details and a valid password';
   };
 
+  $scope.resetPassword = function () {
+      console.log("Trying to reset password");
+      if ($scope.user.email) {
+              console.log('all data is supplied');
+
+
+              console.log(fbRef, Auth);
+              Auth.$resetPassword({
+                  email: $scope.user.email
+              }).then(function (userData) {
+                  console.log("Password reset successfully!");
+                  $scope.message = "Sent! check your inbox!";
+              }).catch(function (error) {
+                  alert();
+                  $scope.message = "Error: " + error;
+              });
+      } else
+        $scope.message = 'Please type your email address';
+  };
+
 }]);
 }).call(this);

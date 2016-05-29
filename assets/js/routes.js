@@ -52,6 +52,13 @@
           controller: 'registrationController'
       })
 
+      // REGISTRATION
+      .state('forgotPassword', {
+          url: '/forgotPassword',
+          templateUrl: 'templates/forgotPassword.html',
+          controller: 'registrationController'
+      })
+
       // SETTINGS
       .state('settings', {
           url: '/settings',

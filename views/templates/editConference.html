@@ -1,0 +1,93 @@
+<!-- add conference form -->
+<header ng-controller="userController">
+  <div class="row">
+    <div id="userInfo" class="col s3">
+        <p>
+        <span ng-if="userData">
+          Angemeldet als:<br /><span class="userName">{{userData.name}}</span>
+        </span>
+        </p>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">Passwort ändern</a></li>
+          <li class="divider"></li>
+          <li><a href="#!" ng-click='logout()'>Logout</a></li>
+        </ul>
+        <ul class="setting">
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><span>Einstellungen</span><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+    <div class="col s6">
+      <img class='logo' src="img/logo.png" alt="cono Logo"/>
+    </div>
+    <!-- TO DO: ABFRAGE ICON STATUS -->
+    <div id="conf-setting" class="col s3" ng-click="backDashboard(conference)">
+      <p>Status der Konferenz:</p><img src="img/published.png" alt="published"/>
+      <div class="clear"><!-- --></div>
+      <div class="dashback"><i class="fa fa-reply fa-2x" aria-hidden="true"></i> <span>Konferenzübersicht</span></div>
+    </div>
+  </div>
+</header>
+<div class="headline">
+  <h1>Konferenz</h1>
+</div>
+<div id="contentEdit" class="row" ng-controller="editConferenceController">
+  <div class="row">
+        <div id="confNav" class="col s3">
+          <ul>
+            <li class="active"><span>Konferenz</span></li>
+            <li class="divider"></li>
+            <li><span ng-click="goTalk(conference)">Talks</span></li>
+            <li class="divider"></li>
+            <li><span ng-click="goTrack(conference)">Tracks</span></li>
+          </ul>
+        </div>
+        <div class="col s9">
+          <div class="headerConf">
+            <span>Konferenz bearbeiten</span>
+            <a ng-click='removeConference(conference)' href="#/dashboard">
+              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+            </a>
+          </div>
+          <form name="editConferenceForm" ng-submit="addConference()">
+              <label>Konferenzname:</label>
+              <input type="text" name="conferenceName" ng-model="conference.name" class="wide" required>
+              <div class="clear"><!-- --></div>
+              <label>Beschreibung:</label>
+              <input type="text" name="description" ng-model="conference.description" class="wide">
+              <div class="clear"><!-- --></div>
+              <div class="formLeft">
+                <p>Beginn</p>
+                <div class="clear"><!-- --></div>
+                <label>Zeitraum von/bis:</label>
+                <input type="date" name="start" ng-model="conference.start">
+                <div class="clear"><!-- --></div>
+                <label>Straße:</label>
+                <input type="text" name="street" ng-model="conference.location.street">
+                <div class="clear"><!-- --></div>
+                <label>Stadt:</label>
+                <input type="text" name="city" ng-model="conference.location.city" >
+                <div class="clear"><!-- --></div>
+                <label>Layoutfarbe:</label>
+                 <input type="color" name="color" ng-model="conference.corporateidentity.color">
+              </div>
+              <div class="formRight">
+                <p>Ende</p>
+                <div class="clear"><!-- --></div>
+                <input type="date" name="end" ng-model="conference.end" class="specialInput">
+                <div class="clear"><!-- --></div>
+                <label>Hausnummer:</label>
+                <input type="text" name="housenumber" ng-model="conference.location.housenumber">
+                <div class="clear"><!-- --></div>
+                <label>Postleitzahl:</label>
+                <input type="text" name="zip" ng-model="conference.location.zip">
+                <div class="clear"><!-- --></div>
+                <label>Logo:</label>
+                <input type="text" name="logo" ng-model="conference.corporateidentity.logo">
+              </div>
+              <div class="clear"><!-- --></div>
+              <input class="waves-effect waves-light btn-large" type="submit" value="Speichern">
+          </form>
+        </div>
+  </div>
+</div>

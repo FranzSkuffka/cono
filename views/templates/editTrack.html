@@ -1,0 +1,48 @@
+<!-- Vorbereitung für Tracks -->
+<div class="headline">
+  <h1>Track</h1>
+</div>
+<div id="contentEdit" class="row" ng-controller="editTrackController">
+  <div class="row">
+        <div id="confNav" class="col s3">
+          <ul>
+            <li><span>Konferenz</span></li>
+            <li class="divider"></li>
+            <li><span ng-click="goTalk(conference)">Talks</span></li>
+            <li class="divider"></li>
+            <li class="active"><span ng-click="goTrack(conference)">Tracks</span></li>
+          </ul>
+        </div>
+        <div class="col s9">
+          <div class="headerConf">
+            <span>Track bearbeiten</span>
+            <a ng-click='removeConference(conference)' href="#/dashboard">
+              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+            </a>
+          </div>
+          <form name="editTrackForm" ng-submit="addTrack()">
+              <label>Trackname:</label>
+              <input type="text" name="trackName" ng-model="track.name" class="wide" required>
+              <div class="clear"><!-- --></div>
+              <div class="formLeft">
+                <p>Beginn</p>
+                <div class="clear"><!-- --></div>
+                <label>Zeitraum von/bis:</label>
+                <input type="date" name="trackStart" ng-model="track.trackStart">
+                <div class="clear"><!-- --></div>
+              </div>
+              <div class="formRight">
+                <p>Ende</p>
+                <div class="clear"><!-- --></div>
+                <input type="date" name="trackEnd" ng-model="track.trackEnd" class="specialInput">
+                <div class="clear"><!-- --></div>
+              </div>
+              <div class="clear"><!-- --></div>
+              <label>Ort:</label>
+              <input type="text" name="talkLocation" ng-model="talk.location" class="wide" required>
+              <div class="clear"><!-- --></div>
+              <input class="waves-effect waves-light btn-large" type="submit" value="Speichern">
+          </form>
+        </div>
+  </div>
+</div>

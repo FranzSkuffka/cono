@@ -31,7 +31,7 @@
 <div class="headline">
   <h1>Konferenz</h1>
 </div>
-<div id="contentEdit" class="row" ng-controller="editConferenceController">
+<div id="contentEdit" class="row">
   <div class="row">
         <div id="confNav" class="col s3">
           <ul>
@@ -45,11 +45,11 @@
         <div class="col s9">
           <div class="headerConf">
             <span>Konferenz bearbeiten</span>
-            <a ng-click='removeConference(conference)' href="#/dashboard">
+            <a ng-if='conferenceRef' ng-click='removeConference(conference)' href="#/dashboard">
               <i class="fa fa-times fa-2x" aria-hidden="true"></i>
             </a>
           </div>
-          <form name="editConferenceForm" ng-submit="addConference()">
+          <form name="editConferenceForm" ng-submit="save()">
               <label>Konferenzname:</label>
               <input type="text" name="conferenceName" ng-model="conference.name" class="wide" required>
               <div class="clear"><!-- --></div>

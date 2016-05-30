@@ -23,8 +23,8 @@
 
       // CREATE + EDIT + DELETE
         .state('new', {
-            url: '/edit',
-            templateUrl: 'templates/edit.html',
+            url: '/edit/',
+            templateUrl: 'templates/editConference.html',
             controller: 'editConferenceController',
             resolve: requireAuth
         })

@@ -1,15 +1,15 @@
 (function() {
-    app.controller("editConferenceController", function($scope, $firebaseArray, $location, $stateParams) {
+    app.controller("editConferenceController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {
 
-        $scope.conferences = $firebaseArray(fbRef.child('conferences'));
+        conferencesRef = fbRef.child('conferences');
         $scope.user = { // TODO: implement Auth
             ID: 'someUserId'
         };
 
 
 
-        console.log($stateParams);
 
+        // new conference template
         var newConference = function(){
             return {
                 description: "",
@@ -23,68 +23,69 @@
                 },
                 organizerID: "",
                 corporateidentity: {
-                    color: "",
+                    color: "black",
                     logo: ""
                 }
             }
         };
 
+        // if there is an ID given through the path, try to load from ID
+        // otherwise or if it fails, load the new conference templte
+        var conferenceRef = null;
         if($stateParams.id){
-            fbRef.child("conferences/").child($stateParams.id).on('value', function(snapshot) {
+            var conferenceRef = fbRef.child("conferences/").child($stateParams.id)
+            conferenceRef.once('value', function(snapshot) {
                 if(snapshot.val() != null){
-                    $scope.conference = snapshot.val();
+                    $scope.conference = formatDates(snapshot.val());
+                    $scope.conferenceRef = true;
+                    // save db entry id for saving
+                    try{ // lil hack i'm lazy right now
+                         // and this whole thing is a hack anyways
+                      $scope.$digest()
+                    }
+                    catch (e) {};
                 }else{
                     $scope.conference = newConference();
+                    conferenceRef = false;
                 }
-                console.log(snapshot.val());
             });
         }else{
             $scope.conference = newConference();
+            conferenceRef = false;
         }
 
-        $scope.addConference = function() {
-            $scope.conferences.$add({
-                name: $scope.conference.name,
-                description: $scope.conference.description,
-                start: $scope.conference.start,
-                end: $scope.conference.end,
-                location: {
-                    street: $scope.conference.location.street,
-                    housenumber: $scope.conference.location.housenumber,
-                    zip: $scope.conference.location.zip,
-                    city: $scope.conference.location.city
-                },
-                organizerID: $scope.user.ID,
-                corporateidentity: {
-                    color: $scope.conference.corporateidentity.color,
-                    logo: $scope.conference.corporateidentity.logo
-                }
-            });
-            $location.path("/dashboard");
+        formatDates = function (conference) {
+          conference.start = new Date(conference.start);
+          conference.end = new Date(conference.end);
+          return conference;
+        }
+
+        // Save conference
+        // decide if update or delete
+
+        $scope.save = function () {
+
+          // if the conferenceRef is not false, update it!
+          if(conferenceRef) {
+            conferenceRef.update(formatDates($scope.conference));
+          }
+          else
+            conferencesRef.push(formatDates($scope.conference));
+
+          $state.go('dashboard');
+
         };
 
         $scope.removeConference = function() {
-            fbRef.child("conferences/").child($stateParams.id).remove();
-            $location.path("/dashboard");
+            conferenceRef.remove();
+            $state.go("dashboard");
         };
 
-        $scope.backDashboard = function(conference){
-          var backDashboardPath = '/';
-          $location.path(backDashboardPath);
-        }
-        
-        $scope.goTalk = function(conference){
-          //hier richtigen pfad eingeben
-          var goTalkPath = '/';
-          $location.path(goTalkPath);
-        }
-        
-        $scope.goTrack = function(conference){
-          //hier richtigen pfad eingeben
-          var goTrackPath = '/';
-          $location.path(goTrackPath);
-        }
 
         return $scope;
-    });
+    }]);
+}).call(this);
+(function() {
+    app.controller("editTalkController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {}]);
+    app.controller("editTrackController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {}]);
 }).call(this);

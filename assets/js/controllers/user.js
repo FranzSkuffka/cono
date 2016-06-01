@@ -3,7 +3,7 @@
 
     $rootScope.$on('$stateChangeStart', 
     function(event, toState, toParams, fromState, fromParams){
-        if (toState.name == 'edit')
+        if (toState.name == 'edit' || 'new')
           $scope.canGoHome = true;
         else
           $scope.canGoHome = false;

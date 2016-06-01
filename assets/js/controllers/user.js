@@ -14,10 +14,12 @@
     Auth.$onAuth(function(authData) {
 
       // put user data in scope
-      if(authData != null)
+      if(authData != null){
         fbRef.child("organizers/").child(authData.uid).on('value', function(snapshot) {
           $scope.userData = snapshot.val();
+          $scope.$digest();
         });
+      }
       else
         $scope.userData = false;
 

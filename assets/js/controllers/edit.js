@@ -36,7 +36,10 @@
             var conferenceRef = fbRef.child("conferences/").child($stateParams.id)
             conferenceRef.once('value', function(snapshot) {
                 if(snapshot.val() != null){
-                    $scope.conference = formatDates(snapshot.val());
+                    var conference = snapshot.val();
+                    conference.start = new Date(conference.start);
+                    conference.end = new Date(conference.end);
+                    $scope.conference = conference;
                     $scope.conferenceRef = true;
                     // save db entry id for saving
                     try{ // lil hack i'm lazy right now

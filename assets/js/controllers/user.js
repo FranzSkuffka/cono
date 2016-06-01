@@ -1,5 +1,11 @@
 (function() {
-  app.controller("userController", ['$scope', '$state', 'Auth', function($scope, $state, Auth) {
+  app.controller("userController", ['$scope', '$scope', '$state', 'Auth', function($scope, $rootScope, $state, Auth) {
+
+    $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams){
+        $scope.state = toState.name;
+        // do something
+    })
 
     // on login
     Auth.$onAuth(function(authData) {

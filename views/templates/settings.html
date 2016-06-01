@@ -1,41 +1,35 @@
-<!-- dashboard -->
-<div class="row container">
-  <div class="section col s12 m6">
-  <h5>Settings</h5>
-  <div class="section">
-  <h6>Change Password</h5>
-  <div class="card-panel ">Pick a password with at least 8 characters and two different character types.</div>
+<div class="headline">
+    <h1>Settings</h1>
+</div>
+<div id="content" class="row reglog">
+    <div class="col s12">
+        <div class="section">
+            <div class="row">
+                <form>
+                    <h2>Change Password</h2>
+                    <div class="card-panel ">
+                        <p>Pick a password with at least 8 characters and two different character types.</p>
+                    </div>
+                    <label class="item item-input">
+                        <span class="input-label">Old password</span>
+                        <input type="password" complex-password ng-model="user.oldPwd">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">New password</span>
+                        <input type="password" complex-password ng-model="user.pwd">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Repeat new password</span>
+                        <input type="password" ng-model="user.pwdRepeat">
+                    </label>
 
-  <form>
-      <label class="item item-input">
-        <span class="input-label">Old password</span>
-        <input type="password" complex-password ng-model="user.oldPwd">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">New password</span>
-        <input type="password" complex-password ng-model="user.pwd">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Repeat new password</span>
-        <input type="password" ng-model="user.pwdRepeat">
-      </label>
+                    <div ng-if='message' class="card-panel white-text red darken-1">{{message}}</div>
 
-      <div ng-if='message' class="card-panel white-text red darken-1">{{message}}</div>
-
-      <label class="item">
-        <button class="btn orange" ng-click='changePwd()'>Change password</button>
-      </label>
-
-
-
-      <div class="section">
-      </div>
-  </form>
-  </div>
-  </div>
-
-  </form>
-
-
-  </div>
+                    <label class="item">
+                        <button class="btn orange" ng-click='changePwd()'>Change password</button>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

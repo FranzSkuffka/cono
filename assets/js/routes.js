@@ -35,6 +35,16 @@
           url: '/edit/:slug/:id',
           templateUrl: 'templates/editConference.html',
           controller: 'editConferenceController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          },
           resolve: requireAuth
       })
 
@@ -42,21 +52,51 @@
       .state('login', {
           url: '/login',
           templateUrl: 'templates/login.html',
-          controller: 'authController'
+          controller: 'authController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          }
       })
 
       // REGISTRATION
       .state('register', {
           url: '/register',
           templateUrl: 'templates/register.html',
-          controller: 'registrationController'
+          controller: 'registrationController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          }
       })
 
       // REGISTRATION
       .state('forgotPassword', {
           url: '/forgotPassword',
           templateUrl: 'templates/forgotPassword.html',
-          controller: 'registrationController'
+          controller: 'registrationController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          }
       })
 
       // SETTINGS
@@ -64,6 +104,16 @@
           url: '/settings',
           templateUrl: 'templates/settings.html',
           controller: 'settingsController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          },
           resolve: requireAuth
       })
 
@@ -72,6 +122,16 @@
           url: '/talk',
           templateUrl: 'templates/talk.html',
           controller: 'talkController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          },
           resolve: requireAuth
       })
 
@@ -80,6 +140,16 @@
           url: '/track',
           templateUrl: 'templates/track.html',
           controller: 'trackController',
+          views: {
+              header: {
+                  templateUrl: 'templates/headers/nav-logo.html',
+                  controller: function($scope) {}
+              },
+              content: {
+                  templateUrl: 'templates/dashboard/application/applications-title.html',
+                  controller: function($scope) {}
+              }
+          },
           resolve: requireAuth
       })
 

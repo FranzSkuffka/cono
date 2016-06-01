@@ -4,6 +4,4 @@
   app.factory("Auth", ["$firebaseAuth", function($firebaseAuth) {
     return $firebaseAuth(fbRef);
   }]);
-  
-  $(".dropdown-button").dropdown();
 }).call(this);

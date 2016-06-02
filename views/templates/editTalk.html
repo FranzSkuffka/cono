@@ -22,15 +22,15 @@
 
 
                 <label>Datum</label>
-                <input type="date" name="talkStart" ng-model="talk.end">
+                <input type="text" datetime='yyyy-MM-dd' name="talkStart" ng-model="talk.date" required>
 
 
                 <label>Start-Uhrzeit</label>
-                <input type="time" name="talkStart" ng-model="talk.start">
+                <input type="text" datetime='HH:mm' name="talkStart" ng-model="talk.start" required>
 
 
                 <label>End-Uhrzeit</label>
-                <input type="time" name="talkEnd" ng-model="talk.end">
+                <input type="text" datetime='HH:mm' name="talkEnd" ng-model="talk.end" required>
 
 
                 <label>Ort:</label>

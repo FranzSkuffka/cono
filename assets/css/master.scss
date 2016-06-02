@@ -1,5 +1,6 @@
-body {
-  background-color: #eeeeee;
+#AppContent {
+  /* background-color: #eeeeee; */
+  min-height: 100vh;
 }
 
 p, h1, h2, h3, ul, li {
@@ -196,144 +197,8 @@ header#logo {
   margin: 0 0 0 10px;
 }
 
-#contentEdit{
-  margin: 0 20px;
-  padding: 0 95px 0 0;
-  background-color: #fff;
-}
-
-#contentEdit .row {
-  padding: 45px 0 0 0;
-}
-
-#contentEdit .row #confNav {
-  padding: 0 70px 0 0;
-}
-
-#contentEdit .row #confNav ul li {
-  color: #077a7a;
-  padding: 0 0 0 20px;
-}
-
-#contentEdit .row #confNav ul li.active {
-  background-color: #eeeeee;
-}
-
-#contentEdit .row #confNav ul span {
-  padding: 15px 0 15px 0;
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-}
-
-#contentEdit .row .headerConf {
-  background-color: #b6ced1;
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #646464;
-}
-
-#contentEdit .row .headerConf span {
-  float: left;
-  font-family: Raleway;
-  color: #077a7a;
-  font-weight: bold;
-  margin: 15px 0 0 15px;
-}
-
-#contentEdit .row .headerConf a {
-  float: right;
-  background-color: #a8353a;
-  padding: 10px;
-  color: #fff;
-}
-
-#contentEdit .row form {
-  padding: 25px 15px 45px 15px;
-  background-color: #eeeeee;
-  float: left;
-  width: 100%;
-}
-
-#contentEdit .row form label {
-  float: left;
-  font-family: Raleway;
-  color: #5b6770;
-  font-weight: bold;
-  font-size: 15px;
-  margin: 15px 0 0 0;
-}
-
-#contentEdit .row form p{
-  font-family: Raleway;
-  color: #5b6770;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-#contentEdit .row form input{
-  border: 1px solid #b6ced1;
-  padding: 0 0 0 15px;
-}
-
-#contentEdit .row form input.wide{
-  float: right;
-  width: 75%;
-}
-
-#contentEdit .row form .formLeft {
-  float: left;
-  width: 48%;
-}
-
-#contentEdit .row form .formLeft label{
-  float: left;
-}
-
-#contentEdit .row form .formLeft input{
-  float: right;
-  width: 48%;
-}
-
-#contentEdit .row form .formLeft input[type="color"]{
-  padding: 0;
-  width: 52%;
-  margin: 10px 0 0 0;
-}
-
-#contentEdit .row form .formLeft p{
-    float: right;
-    width: 52%;
-}
-
-#contentEdit .row form .formRight {
-  float: right;
-  width: 48%;
-}
-
-#contentEdit .row form .formRight label{
-  float: left;
-}
-
-#contentEdit .row form .formRight input{
-  float: right;
-  width: 65%;
-}
-
-#contentEdit .row form .formRight input.specialInput{
-  float: right;
-  width: 96%;
-}
-
-#contentEdit .row form input[type="submit"]{
-  float: right;
-  padding: 0 15px;
-  background-color: #077a7a;
-  color: #fff;
-  border: 1px solid #006261;
-}
-
 /*End Content*/
+
 
 /*Start Content login, registration*/
 

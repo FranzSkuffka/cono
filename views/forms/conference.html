@@ -1,0 +1,48 @@
+<!-- EDIT CONFERENCE FORM-->
+<!-- GENERAL -->
+<form name="conferenceForm" ng-submit="save()">
+    <label>Konferenzname:</label>
+    <input type="text" name="conferenceName" ng-model="conference.name" class="wide" required>
+
+    <div class="clear"></div>
+    <label>Beschreibung:</label>
+    <input type="text" name="description" ng-model="conference.description" class="wide">
+    <div class="clear"></div>
+
+    <!-- TIME -->
+    <div class="formLeft">
+      <p>Beginn</p>
+      <div class="clear"></div>
+      <label>Zeitraum von/bis:</label>
+      <input type="date" name="start" ng-model="conference.start">
+      <div class="clear"></div>
+      <label>Straße:</label>
+      <input type="text" name="street" ng-model="conference.location.street">
+      <div class="clear"></div>
+      <label>Stadt:</label>
+      <input type="text" name="city" ng-model="conference.location.city" >
+      <div class="clear"></div>
+      <label>Layoutfarbe:</label>
+       <input type="color" name="color" ng-model="conference.corporateidentity.color">
+    </div>
+    <div class="formRight">
+      <p>Ende</p>
+      <div class="clear"></div>
+      <input type="date" name="end" ng-model="conference.end" class="specialInput">
+      <div class="clear"></div>
+      <label>Hausnummer:</label>
+      <input type="text" name="housenumber" ng-model="conference.location.housenumber">
+      <div class="clear"></div>
+      <label>Postleitzahl:</label>
+      <input type="text" name="zip" ng-model="conference.location.zip">
+      <div class="clear"></div>
+      <label>Logo:</label>
+      <input type="text" name="logo" ng-model="conference.corporateidentity.logo">
+    </div>
+    <div class="clear"></div>
+
+    <!-- SUBMIT -->
+    <input class="waves-effect waves-light btn-large" type="submit" value="Speichern">
+    <a class='btn green white-text' >Veröffentlichlichen</a>
+  </form>
+</div>

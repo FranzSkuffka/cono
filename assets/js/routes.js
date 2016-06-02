@@ -46,8 +46,8 @@
 
       .state('editTalk', {
           url: '/edit/talk/:talkId',
-          templateUrl: 'templates/editConference.html',
-          controller: 'editConferenceController',
+          templateUrl: 'templates/editTalk.html',
+          controller: 'editTalkController',
           resolve: requireAuth
       })
 

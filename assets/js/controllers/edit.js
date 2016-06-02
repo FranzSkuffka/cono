@@ -132,10 +132,19 @@
                     $scope.conference = newConference();
                     conferenceRef = false;
                 }
+                /////////////////////////////////////////
+                // BIND UI TABS
+
+                $('.tabs').tabs()
+
             });
         }else{
             $scope.conference = newConference();
             conferenceRef = false;
+            /////////////////////////////////////////
+            // BIND UI TABS
+
+            $('.tabs').tabs()
         }
 
         // SAVE CONFERENCE
@@ -179,21 +188,56 @@
 
 
 // EDIT TALKS
-(function() {
-    app.controller("editTalkController" // CAN THIS BE SPLIT UP? SO MANY INJECTIONS
-                   , ['$scope'
-                   , '$rootScope'
-                   , '$firebaseArray'
-                   , '$stateParams'
-                   , 'Auth'
-                   , '$state'
-                   , function($scope
-                              , $rootScope
-                              , $firebaseArray
-                              , $stateParams
-                              , Auth
-                              , $state) {
-    }]);
+ (function() {
+    app.controller(
 
-    app.controller("editTrackController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {}]);
+      "editTalkController"
+
+       // DEPENDENCY INJECTION CALLS
+       // Our controller needs the following things to work...
+       , ['$scope'
+       , '$rootScope'
+       , '$firebaseArray'
+       , '$stateParams'
+       , 'Auth'
+       , '$state'
+
+       , function(
+       // DEPENDENCY INJECTION RECEPTION
+       // And keeps their names as they are.
+                    $scope
+                  , $rootScope
+                  , $firebaseArray
+                  , $stateParams
+                  , Auth
+                  , $state) {
+
+        // LOAD TALK FROM DATABASE
+        if($stateParams.id){
+            var talkRef = fbRef.child("talks/").child($stateParams.id)
+            console.log($stateParams);
+            talkRef.once('value', function(snapshot) {
+                if(snapshot.val() != null){
+                    console.log(snapshot.val());
+                    var talk = snapshot.val();
+                    talk.start = new Date(talk.start);
+                    talk.end = new Date(talk.end);
+                    $scope.talk = talk;
+                    $scope.talkRef = true;
+                    // save db entry id for saving
+                    try{ // lil hack i'm lazy right now
+                         // and this whole thing is a hack anyways
+                      $scope.$digest()
+                    }
+                    catch (e) {};
+                }else{
+                    $scope.talk = newConference();
+                    talkRef = false;
+                }
+            });
+        }else{
+            // $state.go('dashboard');
+        }
+
+    }]);
 }).call(this);

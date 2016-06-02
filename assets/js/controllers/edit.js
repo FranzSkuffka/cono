@@ -1,15 +1,32 @@
 (function() {
-    app.controller("editConferenceController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {
+    app.controller(
 
-        conferencesRef = fbRef.child('conferences');
-        $scope.user = { // TODO: implement Auth
-            ID: 'someUserId'
-        };
+      "editConferenceController"
 
+       // DEPENDENCY INJECTION CALLS
+       // Our controller needs the following things to work...
+       , ['$scope'
+       , '$rootScope'
+       , '$firebaseArray'
+       , '$stateParams'
+       , 'Auth'
+       , '$state'
 
+       , function(
+       // DEPENDENCY INJECTION RECEPTION
+       // And keeps their names as they are.
+                    $scope
+                  , $rootScope
+                  , $firebaseArray
+                  , $stateParams
+                  , Auth
+                  , $state) {
 
+        /////////////////////////////////////////
+        // TEMPLATES FOR NEW ENTRIES
 
         // new conference template
+        // used on load error
         var newConference = function(){
             return {
                 description: "",
@@ -21,14 +38,78 @@
                     zip: "",
                     city: ""
                 },
-                organizerID: "",
+
                 corporateidentity: {
                     color: "black",
                     logo: ""
-                }
+                },
+
+                // Insert creator ID
+                organizerId: fbRef.getAuth().uid
+
             }
         };
 
+        // new talk template
+        // used in addTalk()
+        var newTalk = function(){
+            return {
+                name: "New Talk",
+                description: "Mysteriöses Gerede",
+                conferenceId: $stateParams.id
+            }
+        };
+
+        // new track template
+        // used in addTrack()
+        var newTrack = function(){
+            return {
+                name: "New Track",
+                conferenceId: $stateParams.id,
+                description: "This appears to be a very mysterious place",
+                talks: ['-some-id']
+            }
+        };
+
+        ///////////////////////////////////////////
+
+        ///////////////////////////////////////////
+        // DATABASE BINDINGS
+        //
+
+        // set up references
+        conferencesRef = fbRef.child('conferences');
+
+
+        /////////
+        // BIND TALKS
+        $scope.talks = $firebaseArray(fbRef.child('talks'))
+
+        // bind material ui
+        $scope.$watch('talks', function (data) {
+          $('.TalkList').collapsible()
+        });
+
+        // create add talk method
+        $scope.addTalk = function () {
+          $scope.talks.$add(newTalk());
+        }
+
+
+        /////////
+        // BIND TRACKS
+        $scope.tracks = $firebaseArray(fbRef.child('tracks'))
+
+        $scope.$watch('tracks', function (data) {
+          $('.TrackList').collapsible()
+        });
+
+        // create add track method
+        $scope.addTrack = function () {
+          $scope.tracks.$add(newTrack());
+        }
+
+        // LOAD CONFERENCE FROM DATABASE
         // if there is an ID given through the path, try to load from ID
         // otherwise or if it fails, load the new conference templte
         var conferenceRef = null;
@@ -57,13 +138,7 @@
             conferenceRef = false;
         }
 
-        formatDates = function (conference) {
-          conference.start = new Date(conference.start);
-          conference.end = new Date(conference.end);
-          return conference;
-        }
-
-        // Save conference
+        // SAVE CONFERENCE
         // decide if update or delete
 
         $scope.save = function () {
@@ -84,11 +159,41 @@
             $state.go("dashboard");
         };
 
+        //////////////////////////////////////////
 
         return $scope;
     }]);
 }).call(this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// EDIT TALKS
 (function() {
-    app.controller("editTalkController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {}]);
+    app.controller("editTalkController" // CAN THIS BE SPLIT UP? SO MANY INJECTIONS
+                   , ['$scope'
+                   , '$rootScope'
+                   , '$firebaseArray'
+                   , '$stateParams'
+                   , 'Auth'
+                   , '$state'
+                   , function($scope
+                              , $rootScope
+                              , $firebaseArray
+                              , $stateParams
+                              , Auth
+                              , $state) {
+    }]);
+
     app.controller("editTrackController", ['$scope', '$firebaseArray', '$stateParams', 'Auth', '$state', function($scope, $firebaseArray, $stateParams, Auth, $state) {}]);
 }).call(this);

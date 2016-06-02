@@ -1,5 +1,5 @@
 (function() {
-  app.controller("userController", ['$scope', '$scope', '$state', 'Auth', function($scope, $rootScope, $state, Auth) {
+  app.controller("userController", ['$scope', '$rootScope', '$state', 'Auth', function($scope, $rootScope, $state, Auth) {
 
     $rootScope.$on('$stateChangeStart', 
     function(event, toState, toParams, fromState, fromParams){
@@ -16,8 +16,9 @@
       // put user data in scope
       if(authData != null){
         fbRef.child("organizers/").child(authData.uid).on('value', function(snapshot) {
-          $scope.userData = snapshot.val();
-          $scope.$digest();
+          $rootScope.userData = snapshot.val();
+          $rootScope.$digest();
+          setTimeout(function(){ $('.dropdown-button').dropdown()}, 100);
         });
       }
       else

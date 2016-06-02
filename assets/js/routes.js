@@ -21,7 +21,13 @@
           resolve: requireAuth
       })
 
-      // CREATE + EDIT + DELETE
+
+//
+//    EDIT VIEWS
+//    /#/edit/
+//
+
+      // CREATE CONFERENCE
         .state('new', {
             url: '/edit/',
             templateUrl: 'templates/editConference.html',
@@ -29,8 +35,7 @@
             resolve: requireAuth
         })
 
-
-      // CREATE + EDIT + DELETE
+      // UPDATE OR DELETE CONFERENCE
       .state('edit', {
           url: '/edit/:slug/:id',
           templateUrl: 'templates/editConference.html',
@@ -38,6 +43,31 @@
           resolve: requireAuth
       })
 
+
+      .state('editTalk', {
+          url: '/edit/talk/:talkId',
+          templateUrl: 'templates/editConference.html',
+          controller: 'editConferenceController',
+          resolve: requireAuth
+      })
+
+
+
+      // TRACK
+      .state('editTrack', {
+          url: '/edit/track/:trackId',
+          templateUrl: 'templates/editTrack.html',
+          controller: 'editTrackController',
+          resolve: requireAuth
+      })
+
+
+
+
+// 
+// AUTHENTICATION
+// /#/login
+// 
       // LOGIN
       .state('login', {
           url: '/login',
@@ -45,6 +75,10 @@
           controller: 'authController'
       })
 
+// 
+// ACCOUNT MANAGMENT
+// /#/register
+//
       // REGISTRATION
       .state('register', {
           url: '/register',
@@ -66,22 +100,6 @@
           controller: 'settingsController',
           resolve: requireAuth
       })
-
-      // TALK
-      .state('talk', {
-          url: '/talk',
-          templateUrl: 'templates/talk.html',
-          controller: 'talkController',
-          resolve: requireAuth
-      })
-
-      // TRACK
-      .state('track', {
-          url: '/track',
-          templateUrl: 'templates/track.html',
-          controller: 'trackController',
-          resolve: requireAuth
-      })
-
   });
+
 }).call(this);

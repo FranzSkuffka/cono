@@ -1,64 +1,129 @@
-<!-- add conference form -->
+<!-- CONFERENCE, TALKS & TRACKS -->
+
+<!-- HEADER -->
 <div class="headline">
   <h1>Konferenz</h1>
 </div>
-<div id="contentEdit" class="row">
+
+<!-- WRAPPER-->
+<div class='section container'>
   <div class="row">
-        <div id="confNav" class="col s3">
-          <ul>
-            <li class="active"><span>Konferenz</span></li>
-            <li class="divider"></li>
-            <li><span ng-click="goTalk(conference)">Talks</span></li>
-            <li class="divider"></li>
-            <li><span ng-click="goTrack(conference)">Tracks</span></li>
-          </ul>
-        </div>
+
+        <!-- TITLE BAR -->
         <div class="col s9">
           <div class="headerConf">
             <span>Konferenz bearbeiten</span>
-            <a ng-if='conferenceRef' ng-click='removeConference(conference)' href="#/dashboard">
-              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-            </a>
           </div>
+
+
+        <!-- EDIT CONFERENCE FORM-->
+          <!-- GENERAL -->
           <form name="editConferenceForm" ng-submit="save()">
               <label>Konferenzname:</label>
               <input type="text" name="conferenceName" ng-model="conference.name" class="wide" required>
-              <div class="clear"><!-- --></div>
+
+              <div class="clear"></div>
               <label>Beschreibung:</label>
               <input type="text" name="description" ng-model="conference.description" class="wide">
-              <div class="clear"><!-- --></div>
+              <div class="clear"></div>
+
+              <!-- TIME -->
               <div class="formLeft">
                 <p>Beginn</p>
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Zeitraum von/bis:</label>
                 <input type="date" name="start" ng-model="conference.start">
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Straße:</label>
                 <input type="text" name="street" ng-model="conference.location.street">
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Stadt:</label>
                 <input type="text" name="city" ng-model="conference.location.city" >
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Layoutfarbe:</label>
                  <input type="color" name="color" ng-model="conference.corporateidentity.color">
               </div>
               <div class="formRight">
                 <p>Ende</p>
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <input type="date" name="end" ng-model="conference.end" class="specialInput">
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Hausnummer:</label>
                 <input type="text" name="housenumber" ng-model="conference.location.housenumber">
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Postleitzahl:</label>
                 <input type="text" name="zip" ng-model="conference.location.zip">
-                <div class="clear"><!-- --></div>
+                <div class="clear"></div>
                 <label>Logo:</label>
                 <input type="text" name="logo" ng-model="conference.corporateidentity.logo">
               </div>
-              <div class="clear"><!-- --></div>
+              <div class="clear"></div>
+
+              <!-- SUBMIT -->
               <input class="waves-effect waves-light btn-large" type="submit" value="Speichern">
+              <a class='btn green white-text' >Veröffentlichlichen</a>
           </form>
         </div>
+
+
   </div>
+
 </div>
+
+    <div  class="section container">
+      <!-- TALKS-->
+      <h4> Talks </h4>
+      <div  class="row">
+        <ul class="collapsible TalkList" data-collapsible="accordion">
+          <li >
+            <div ng-click='addTalk()' class="collapsible-header green white-text"><i class="material-icons">add</i>Talk hinzufügen</div>
+          </li>
+          <li ng-repeat='talk in talks'>
+            <div class="collapsible-header"><i class="material-icons">lightbulb_outline</i>{{talk.name}}</div>
+            <div class="collapsible-body">
+              <p>{{talk.description}}</p>
+              <p>{{talk}}</p>
+              <p>
+              <a class='btn' href='/#/edit/talk/{{talk.$id}}/'> Edit</a>
+              <a class='btn-flat' ng-click='(talks.$remove(talk))'> Remove </a>
+              </p>
+
+            </div
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+      <!-- TRACKS-->
+    <div  class="section container">
+      <h4> Tracks </h4>
+      <div  class="row">
+        <ul class="collapsible TrackList" data-collapsible="accordion">
+          <li >
+            <div ng-click='addTrack()' class="blue white-text collapsible-header"><i class="material-icons">add_location</i>Track hinzufügen</div>
+          </li>
+          <li ng-repeat='track in tracks'>
+            <div class="collapsible-header"><i class="material-icons">place</i>{{track.name}}</div>
+
+            <div class="collapsible-body">
+              <p>{{track.description}}</p>
+              <p>{{track}}</p>
+              <p>
+              <a class='btn' href='/#/edit/track/{{track.$id}}/'>Edit</a>
+              <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
+              </p>
+
+            </div
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div  class="section container">
+      <h4 class='grey-text'> Danger Zone </h4>
+    <a class='btn red white-text' ng-if='conferenceRef' ng-click='removeConference(conference)' href="#/dashboard">
+      KONFERENZ LÖSCHEN
+    </a>
+    </div>

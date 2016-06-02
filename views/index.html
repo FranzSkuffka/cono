@@ -11,7 +11,8 @@
 
     <!-- LIBRARIES -->
     <!-- jquery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 
     <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -23,37 +24,40 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
     <!-- materialize-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.8/angular-materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- styles -->
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/master.css" />
     
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </head>
   <body >
   <header ng-controller="userController">
     <div class="row">
-      <div id="userInfo" class="col s3">
+      <div ng-if="userData" id="userInfo" class="col s3">
           <p>
-          <span ng-if="userData">
+          <span >
             Angemeldet als:<br /><span class="userName">{{userData.name}}</span>
           </span>
           </p>
           <!-- Dropdown Structure -->
-          <ul ng-if='userData' id="dropdown1" class="dropdown-content">
+          <ul id="dropdown1" class="dropdown-content">
             <li><a href="#!">Passwort ändern</a></li>
             <li class="divider"></li>
             <li><a href="#!" ng-click='logout()'>Logout</a></li>
           </ul>
           <ul class="setting">
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><span>Einstellungen</span><i class="material-icons right">arrow_drop_down</i></a></li>
+            <li>
+              <a class="dropdown-button" href="#!" data-activates="dropdown1" dropdown data-hover="true">
+                <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+                <span>Einstellungen</span>
+                <i class="material-icons right">arrow_drop_down</i>
+              </a>
+            </li>
           </ul>
       </div>
       <div class="col s6">

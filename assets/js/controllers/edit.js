@@ -131,8 +131,8 @@
             conferenceRef.once('value', function(snapshot) {
                 if(snapshot.val() != null){
                     var conference = snapshot.val();
-                    conference.start = new Date(conference.start);
-                    conference.end = new Date(conference.end);
+                    conference.start = new Date(conference.start * 1000);
+                    conference.end = new Date(conference.end * 1000);
                     $scope.conference = conference;
                     $scope.conferenceRef = true;
                     // BIND CHILDREN

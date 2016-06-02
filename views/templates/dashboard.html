@@ -15,7 +15,7 @@
                             <span class="card-title">{{conference.name}}</span>
                             <p>{{conference.description}}</p>
                             <p>Wo: {{conference.location.city}}</p>
-                            <p>Von {{conference.start | date : "dd/MM/yy"}} bis {{conference.end | date :
+                            <p>Von {{conference.start * 1000 | date : "dd/MM/yy"}} bis {{conference.end * 1000 | date :
                                 "dd/MM/yy"}}</p>
                             <div class="icons">
                                 <span ng-click="changeView(conference)" class="icon"><i class="fa fa-eye fa-2x"

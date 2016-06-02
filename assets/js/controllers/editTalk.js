@@ -43,9 +43,9 @@
                 if(snapshot.val() != null){
                     var talk = snapshot.val();
                     // talk.date = new Date();
-                    talk.date = new Date(talk.start);
-                    talk.start = new Date(talk.start);
-                    talk.end = new Date(talk.end);
+                    talk.date = new Date(talk.start * 1000);
+                    talk.start = new Date(talk.start * 1000);
+                    talk.end = new Date(talk.end * 1000);
                     $scope.talk = talk;
                     // save db entry id for saving
                     try{ // lil hack i'm lazy right now

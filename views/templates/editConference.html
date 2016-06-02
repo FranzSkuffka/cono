@@ -39,7 +39,7 @@
                             <li ng-repeat='talk in talks'>
                                 <div class="collapsible-header">
                                     <i class="material-icons">lightbulb_outline</i>
-                                    <p>{{talk.name}} | am {{talk.start * 1000 | date: dd.MM.yyyy}} von: {{talk.start | date: "HH:mm"}} bis {{talk.end | date: "HH:mm"}}</p>
+                                    <p>{{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}} | <b>{{talk.name}}</b></p>
 
                                 </div>
                                 <div class="collapsible-body">

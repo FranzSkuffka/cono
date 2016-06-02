@@ -287,3 +287,11 @@ footer ul li a {
   border-bottom-color: red !important;
 }
 /*End talk-edit*/
+
+/*Start track-edit*/
+.collapsible-header {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*End track-edit*/

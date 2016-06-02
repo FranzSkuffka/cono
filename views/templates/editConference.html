@@ -54,6 +54,8 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- TRACKS ACCORDION -->
                 <div id="tracks" class="col s12">
                     <div class="row">
                         <ul class="collapsible TrackList" data-collapsible="accordion">
@@ -64,16 +66,23 @@
                                 </div>
                             </li>
                             <li ng-repeat='track in tracks'>
-                                <div class="collapsible-header"><i class="material-icons">place</i>{{track.name}}</div>
+
+                                <!-- TRACKS ACCORDION -->
+                                <div class="collapsible-header"><i class="material-icons">place</i><b>{{track.name}}</b> | {{track.description}}</div>
 
                                 <div class="collapsible-body">
-                                    <p>{{track.description}}</p>
-                                    <p>{{track}}</p>
-                                    <p>{{state}}</p>
-                                    <p>
-                                        <a class='btn' href='#/edit/track/{{track.$id}}/{{state.id}}'>Edit</a>
-                                        <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
-                                    </p>
+                                    <div class=' section container'>
+                                      <div>
+                                        <label>Name</label>
+                                        <input type='text' name='trackName' ng-model='track.name' required>
+                                      </div>
+                                      <div>
+                                        <label>Description</label>
+                                        <input type='text' description='trackDescription' ng-model='track.description' required>
+                                      </div>
+                                      <a class='btn-large red white-text' ng-click='(tracks.$remove(track))'>Remove</a>
+                                    </div>
+
                                 </div>
                             </li>
                         </ul>

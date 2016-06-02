@@ -78,7 +78,7 @@
                 name: "New Track",
                 conferenceId: $stateParams.id,
                 description: "This appears to be a very mysterious place",
-                talks: ['-some-id']
+                talks: []
             }
         };
 

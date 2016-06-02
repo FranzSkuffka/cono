@@ -183,16 +183,19 @@
 
         };
 
+        // DELETE
         $scope.removeConference = function() {
             conferenceRef.remove();
             $state.go("dashboard");
         };
 
+        // PUBLISH
         $scope.publish = function() {
             $scope.conference.published = true;
             conferenceRef.update({published: true});
         };
 
+        // UNPUBLISH
         $scope.unpublish = function() {
             $scope.conference.published = false;
             conferenceRef.update({published: false});

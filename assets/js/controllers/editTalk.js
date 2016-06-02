@@ -25,18 +25,25 @@
                   , Auth
                   , $state) {
 
+        // UTILITY: MERGE DATE AND TIME
+        //
+        var mergeTimestamp = function (date, time) {
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 
+             time.getHours(), time.getMinutes(), time.getSeconds());
+        }
+
         // LOAD TALK FROM DATABASE
         if($stateParams.id){
             // add return link to scope
-            returnPath = '/edit/' + $stateParams.conferenceName + '/' + $stateParams.conferenceId;
+            var returnPath = '/edit/' + $stateParams.conferenceName + '/' + $stateParams.conferenceId;
             $scope.returnPath = '/#' + returnPath
-            console.log($scope.returnPath);
 
             var talkRef = fbRef.child("talks/").child($stateParams.id)
             talkRef.once('value', function(snapshot) {
-                console.log(snapshot.val())
                 if(snapshot.val() != null){
                     var talk = snapshot.val();
+                    // talk.date = new Date();
+                    talk.date = new Date(talk.start);
                     talk.start = new Date(talk.start);
                     talk.end = new Date(talk.end);
                     $scope.talk = talk;
@@ -56,9 +63,17 @@
         }
 
         $scope.save = function () {
-          console.log($scope.talk);
-          $location.path($scope.returnPath);
+          // combine date and times
+          $scope.talk.start = mergeTimestamp($scope.talk.date, $scope.talk.start)
+          $scope.talk.end = mergeTimestamp($scope.talk.date, $scope.talk.end)
+          // delete date property
+          delete $scope.talk.date
+          // delete date property
+          talkRef.update($scope.talk)
+          // go back to conference
+          $location.path(returnPath);
         }
+            var talkRef = fbRef.child("talks/").child($stateParams.id)
 
     }]);
 }).call(this);

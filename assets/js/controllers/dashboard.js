@@ -1,7 +1,7 @@
 (function() {
 app.controller("dashboardController", function($scope, $firebaseArray, $location) {
 
-  $scope.conferences = $firebaseArray(fbRef.child('conferences'));
+  $scope.conferences = $firebaseArray(fbRef.child('conferences').orderByChild('organizerId').equalTo(fbRef.getAuth().uid));
   $scope.user = { // TODO: implement Auth
     ID: 'someUserId'
   };

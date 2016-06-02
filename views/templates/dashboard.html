@@ -1,42 +1,40 @@
 <!-- dashboard -->
 <div class="headline">
-  <h1>Ihre Konferenzen</h1>
+    <h1>Ihre Konferenzen</h1>
 </div>
 <div id="content" class="row">
-  <div class="col s12">
-      <div class="section">
-          <div class="row">
-
-              <!-- TODO: Implent layout; http://codepen.io/TrueNorth/pen/MwVoYp-->
-
-              <!-- single conference card -->
-              <div ng-repeat="conference in conferences" id="conf" class="col s12 m6 l3 card">
-                  <div class="card-content">
-                    <!-- TO DO: ABFRAGE ICON STATUS -->
-                    <div class="status"><img src="img/published.png" alt="published"/></div>
-                    <div class="conf">
-                      <span class="card-title">{{conference.name}}</span>
-                      <p>{{conference.description}}</p>
-                      <p>Wo: {{conference.location.city}}</p>
-                      <p>Von {{conference.start | date : "dd/MM/yy"}} bis {{conference.end | date : "dd/MM/yy"}}</p>
-                      <div class="icons">
-                        <span ng-click="changeView(conference)" class="icon"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span>
-                        <span ng-click="createConference(conference)" class="icon"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span>
-                      </div>
+    <div class="col s12">
+        <div class="section">
+            <div class="row">
+                <!-- single conference card -->
+                <div ng-repeat="conference in conferences" id="conf" class="col s12 m6 l3 card">
+                    <div class="card-content">
+                        <!-- TO DO: ABFRAGE ICON STATUS -->
+                        <div class="status"><img src="img/published.png" alt="published"/></div>
+                        <div class="conf">
+                            <span class="card-title">{{conference.name}}</span>
+                            <p>{{conference.description}}</p>
+                            <p>Wo: {{conference.location.city}}</p>
+                            <p>Von {{conference.start | date : "dd/MM/yy"}} bis {{conference.end | date :
+                                "dd/MM/yy"}}</p>
+                            <div class="icons">
+                                <span ng-click="changeView(conference)" class="icon"><i class="fa fa-eye fa-2x"
+                                                                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-              <div id="newConf" class="col s12 m6 l3 card">
-                <div class="conf">
-                  <span class="card-title">Neue Konferenz anlegen</span>
-                  <div class="icons">
-                    <a href='#/edit/' class="icon"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-                  </div>
                 </div>
-              </div>
-          </div>
-              <!-- end of controller-->
-      </div>
-          <!-- dashboard end -->
-  </div>
+                <div id="newConf" class="col s12 m6 l3 card">
+                    <div class="conf">
+                        <span class="card-title">Neue Konferenz anlegen</span>
+                        <div class="icons">
+                            <a href='#/edit/' class="icon"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of controller-->
+        </div>
+        <!-- dashboard end -->
+    </div>
 </div>

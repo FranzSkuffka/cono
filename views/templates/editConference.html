@@ -32,19 +32,21 @@
                         <ul class="collapsible TalkList" data-collapsible="accordion">
                             <li>
                                 <div ng-click='addTalk()' class="collapsible-header green white-text">
-                                    <i class="material-icons">add</i>Talk hinzufügen
+                                    <i class="material-icons">add</i>
+                                    <p>Talk hinzufügen</p>
                                 </div>
                             </li>
                             <li ng-repeat='talk in talks'>
                                 <div class="collapsible-header">
-                                    <i class="material-icons">lightbulb_outline</i>{{talk.name}}
+                                    <i class="material-icons">lightbulb_outline</i>
+                                    <p>{{talk.name}}</p>
                                 </div>
                                 <div class="collapsible-body">
                                     <p>{{talk.description}}</p>
                                     <p>{{talk}}</p>
                                     <p>
-                                        <a class='btn' href='#/edit/talk/{{talk.$id}}'> Edit</a>
-                                        <a class='btn-flat' ng-click='(talks.$remove(talk))'> Remove </a>
+                                        <a class='btn' href='#/edit/talk/{{talk.$id}}'>Edit</a>
+                                        <a class='btn-flat' ng-click='(talks.$remove(talk))'>Remove</a>
                                     </p>
                                 </div>
                             </li>
@@ -56,7 +58,8 @@
                         <ul class="collapsible TrackList" data-collapsible="accordion">
                             <li>
                                 <div ng-click='addTrack()' class="blue white-text collapsible-header"><i
-                                        class="material-icons">add_location</i>Track hinzufügen
+                                        class="material-icons">add_location</i>
+                                    <p>Track hinzufügen</p>
                                 </div>
                             </li>
                             <li ng-repeat='track in tracks'>

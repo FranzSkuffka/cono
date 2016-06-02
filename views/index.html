@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="cono">
-  <head>
+<head>
     <meta charset="utf8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="description" content="An app that helps you enjoy conferences">
     <meta name="author" content="Cono GmbH">
     <title>Cono</title>
-
 
 
     <!-- LIBRARIES -->
@@ -25,94 +24,102 @@
 
     <!-- materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- styles -->
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/master.css" />
-    
+    <link rel="stylesheet" href="css/master.css"/>
+
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
-  </head>
-  <body >
-  <header ng-controller="userController">
+</head>
+<body>
+<header ng-controller="userController">
     <div class="row">
-      <div ng-if="userData" id="userInfo" class="col s3">
-          <p>
-          <span >
-            Angemeldet als:<br /><span class="userName">{{userData.name}}</span>
-          </span>
-          </p>
-          <!-- Dropdown Structure -->
-          <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Passwort ändern</a></li>
-            <li class="divider"></li>
-            <li><a href="#!" ng-click='logout()'>Logout</a></li>
-          </ul>
-          <ul class="setting">
-            <li>
-              <a class="dropdown-button" href="#!" data-activates="dropdown1" dropdown data-hover="true">
-                <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
-                <span>Einstellungen</span>
-                <i class="material-icons right">arrow_drop_down</i>
-              </a>
-            </li>
-          </ul>
-      </div>
-      <div class="col s6">
-        <img class='logo' src="img/logo.png" alt="cono Logo"/>
-      </div>
-    <!-- TO DO: ABFRAGE ICON STATUS -->
-    <a ng-if='canGoHome' id="conf-setting" class="col s3" href='/#/'>
-      <p>Status der Konferenz:</p><img src="img/published.png" alt="published"/>
-      <div class="clear"><!-- --></div>
-      <div class="dashback"><i class="fa fa-reply fa-2x" aria-hidden="true"></i> <span>Konferenzübersicht</span></div>
-    </a>
-    </div>
-  </header>
+        <!-- TO DO: ABFRAGE ICON STATUS -->
+        <div ng-if="userData" class="col s3">
+            <p>
+              <span>
+                Angemeldet als:<br/><span class="userName">{{userData.name}}</span>
+              </span>
+            </p>
+            <a ng-if='canGoHome' id="conf-setting" href='/#/'>
+                <div class="dashback">
+                    <i class="fa fa-reply fa-2x" aria-hidden="true"></i>
+                    <span>Konferenzübersicht</span>
+                </div>
+            </a>
+        </div>
 
-      <div id='AppContent' ui-view autoscroll='false'></div>
-    
-    <footer>
-      <ul>
+        <div class="col s6">
+            <img class='logo' src="img/logo.png" alt="cono Logo"/>
+        </div>
+        <div id="userInfo" class="col s3">
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="#!">Passwort ändern</a></li>
+                <li class="divider"></li>
+                <li><a href="#!" ng-click='logout()'>Logout</a></li>
+            </ul>
+            <ul class="setting">
+                <li>
+                    <a class="dropdown-button" href="#!" data-activates="dropdown1" dropdown data-hover="true">
+                        <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+                            <span>Einstellungen</span>
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>
+
+<div>
+    <div ui-view autoscroll='false'></div>
+
+</div>
+
+<footer>
+    <ul>
         <li><a href="">Impressum</a></li>
         <li><a href="">Kontakt</a></li>
-      </ul>
-    </footer>
-    <!-- end of app -->
+    </ul>
+</footer>
+<!-- end of app -->
 
-    <script src='js/main.js'></script>
+<script src='js/main.js'></script>
 
-    <script src='js/routes.js'></script>
+<script src='js/routes.js'></script>
 
-    <script src='js/directives/passwordValidator.js'></script>
+<script src='js/directives/passwordValidator.js'></script>
 
-    <script src='js/controllers/registration.js'></script>
-    <script src='js/controllers/auth.js'></script>
-    <script src='js/controllers/user.js'></script>
-    <script src='js/controllers/settings.js'></script>
-    <script src='js/controllers/dashboard.js'></script>
-    <script src='js/controllers/edit.js'></script>
-    
-    
-    
-    <script>
+<script src='js/controllers/registration.js'></script>
+<script src='js/controllers/auth.js'></script>
+<script src='js/controllers/user.js'></script>
+<script src='js/controllers/settings.js'></script>
+<script src='js/controllers/dashboard.js'></script>
+<script src='js/controllers/edit.js'></script>
+
+
+<script>
 
     var highest_element = 0;
 
     // Prüfe, welches Element am höchsten ist
-    $('#conf').each(function() {
-      if ($(this).height() > highest_element) {
-        highest_element = $(this).height();
-      }
+    $('#conf').each(function () {
+        if ($(this).height() > highest_element) {
+            highest_element = $(this).height();
+        }
     });
 
     // Weise diese Höhe allen Elementen zu.
-    $('#conf').each(function() {
-      $(this).height(highest_element);
+    $('#conf').each(function () {
+        $(this).height(highest_element);
     });
 
-    </script>
-  </body>
+</script>
+</body>
 </html>

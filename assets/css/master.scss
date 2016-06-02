@@ -23,7 +23,7 @@ header {
 }
 
 header .logo {
-  margin: 20px 0 0 0;
+  margin: 0;
 }
 
 header .row {
@@ -34,19 +34,23 @@ header .row #userInfo {
   font-size: 16px;
 }
 
-header .row #userInfo p span.userName {
+header .row p span.userName {
   font-weight: bold;
 }
 
 header .row #userInfo ul.setting{
   border: 1px solid #077a7a;
   padding: 10px;
-  margin: 20px 0 0 0;
-  float: left;
+  float: right;
 }
 
 .dropdown-content li>a, .dropdown-content li>span{
   color: #077a7a !important;
+}
+
+ul#dropdown1 {
+  width: 13.5% !important;
+  margin: -7px 0 0 -5px !important;
 }
 
 header .row .col ul li i.fa, header .row .col ul li span{

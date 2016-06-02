@@ -30,8 +30,8 @@
         var newConference = function(){
             return {
                 description: "",
-                start: "",
-                end: "",
+                start: new Date(),
+                end: new Date(),
                 location: {
                     street: "",
                     housenumber: "",
@@ -136,6 +136,7 @@
                 // BIND UI TABS
 
                 $('.tabs').tabs()
+                $('.datepicker').datepicker()
 
             });
         }else{
@@ -152,12 +153,21 @@
 
         $scope.save = function () {
 
-          // if the conferenceRef is not false, update it!
+          // if the conferenceRef is defined , update it!
           if(conferenceRef) {
-            conferenceRef.update(formatDates($scope.conference));
+            var conferenceToUpdate = $scope.conference
+            conferenceToUpdate.start = new Date(conferenceToUpdate.start);
+            conferenceToUpdate.end = new Date(conferenceToUpdate.end);
+            conferenceRef.update(conferenceToUpdate);
           }
-          else
-            conferencesRef.push(formatDates($scope.conference));
+
+          // if it is, just save it 
+          else {
+            var conferenceToSave = $scope.conference
+            conferenceToSave.start = new Date(conferenceToSave.start);
+            conferenceToSave.end = new Date(conferenceToSave.end);
+            conferencesRef.push(conferenceToSave);
+          }
 
           $state.go('dashboard');
 

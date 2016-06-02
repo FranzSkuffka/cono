@@ -1,32 +1,62 @@
 <!-- EDIT CONFERENCE FORM-->
 <!-- GENERAL -->
 <form name="conferenceForm" ng-submit="save()">
+
+  <div class='FormInputField'>
     <label>Konferenzname:</label>
     <input type="text" name="conferenceName" ng-model="conference.name" required>
+  </div>
 
+
+  <div class='FormInputField'>
     <label>Beschreibung:</label>
     <input type="text" name="description" ng-model="conference.description">
+  </div>
 
-    <!-- TIME -->
+<!-- TIME -->
+
+  <div class='FormInputField'>
     <label>Zeitraum von</label>
-    <input type="date" name="start" ng-model="conference.start">
+    <input type="date" class='datepicker' name="start" ng-model="conference.start">
+  </div>
+
+  <div class='FormInputField'>
     <label>Zeitraum bis</label>
-    <input type="date" name="end" ng-model="conference.end">
+    <input type="date" class='datepicker' name="end" ng-model="conference.end">
+  </div>
+
+  <div class='FormInputField'>
     <label>Straße:</label>
     <input type="text" name="street" ng-model="conference.location.street">
+  </div>
+
+  <div class='FormInputField'>
     <label>Hausnummer:</label>
     <input type="text" name="housenumber" ng-model="conference.location.housenumber">
+  </div>
+
+  <div class='FormInputField'>
     <label>Postleitzahl:</label>
     <input type="text" name="zip" ng-model="conference.location.zip">
+  </div>
+
+  <div class='FormInputField'>
     <label>Stadt:</label>
     <input type="text" name="city" ng-model="conference.location.city">
+  </div>
+
+  <div class='FormInputField'>
     <label>Layoutfarbe:</label>
     <input type="color" name="color" ng-model="conference.corporateidentity.color">
+  </div>
+
+  <div class='FormInputField'>
     <label>Logo:</label>
     <input type="text" name="logo" ng-model="conference.corporateidentity.logo">
+  </div>
 
-    <!-- SUBMIT -->
-    <input class="waves-effect waves-light btn-large" ng-click="save()" type="submit" value="Speichern">
-    <a class='btn green white-text'>Veröffentlichen</a>
+<!-- SUBMIT -->
+<input class="waves-effect waves-light btn-large" ng-click="save()" type="submit" value="Speichern">
+<a class='btn green white-text'>Veröffentlichen</a>
 </form>
 </div>

@@ -60,13 +60,14 @@
         var newTalk = function(){
             return {
                 name: "New Talk",
-                description: "Mysteriöses Gerede",
+                description: "Mysteriöses Gerede über Lorem ipsum und son Zeug",
                 track: "-trackId",
                 start: new Date().getUnixTime(),
                 end: new Date().getUnixTime(),
                 location: 'someWhere',
                 speaker: 'Someone',
-                speakerPicture: 'Someone',
+                speakerDescription: 'Someone is really down with some serious issues.',
+                speakerPicture: 'http://www.radfaces.com/images/avatars/garth-algar.jpg',
                 conferenceId: $stateParams.id
             }
         };

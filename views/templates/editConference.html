@@ -43,8 +43,40 @@
 
                                 </div>
                                 <div class="collapsible-body">
-                                    <p>{{talk.description}}</p>
-                                    <p>{{talk}}</p>
+                                    <p>
+                                        <span class='black-text'>
+                                        {{talk.name}}
+                                        </span>
+                                      <br>
+                                      {{talk.description}}
+                                      <br>
+                                      <span class='black-text'>
+                                        {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
+                                      </span>
+                                    </p>
+
+                                        <!-- TALKS ACCORDION -->
+                                        <div class="col ">
+                                          <div class="card-panel grey lighten-5 z-depth-1">
+                                            <div class="row valign-wrapper">
+                                              <div class="col s2">
+                                                <img src="{{talk.speakerPicture}}" alt="image of {{talk.speakerName}}" class="circle responsive-img"> <!-- notice the "circle" class -->
+                                              </div>
+
+                                              <div class="col s10">
+                                                <span class="black-text">
+                                                  {{talk.speaker}}
+                                                </span>
+                                                <br>
+                                                <span ">
+                                                  {{talk.speakerDescription}}
+                                                </span>
+                                              </div>
+
+                                            </div>
+                                          </div>
+                                        </div>
+
                                     <p>
                                         <a class='btn' href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}'>Edit</a>
                                         <a class='btn-flat' ng-click='(talks.$remove(talk))'>Remove</a>

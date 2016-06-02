@@ -48,6 +48,7 @@
                     logo: ""
                 },
 
+                published: false,
                 // Insert creator ID
                 organizerId: fbRef.getAuth().uid
 
@@ -185,6 +186,16 @@
         $scope.removeConference = function() {
             conferenceRef.remove();
             $state.go("dashboard");
+        };
+
+        $scope.publish = function() {
+            $scope.conference.published = true;
+            conferenceRef.update({published: true});
+        };
+
+        $scope.unpublish = function() {
+            $scope.conference.published = false;
+            conferenceRef.update({published: false});
         };
 
         //////////////////////////////////////////

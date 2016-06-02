@@ -57,6 +57,7 @@
 
 <!-- SUBMIT -->
 <input class="waves-effect waves-light btn-large" ng-click="save()" type="submit" value="Speichern">
-<a class='btn green white-text'>Veröffentlichen</a>
+<a ng-click="publish()" ng-if="!conference.published" class='btn blue white-text'>Veröffentlichen</a>
+<a ng-click="unpublish()" ng-if="conference.published" class='btn blue darken-3 white-text'>Verstecken</a>
 </form>
 </div>

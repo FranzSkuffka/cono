@@ -45,7 +45,7 @@
                                     <p>{{talk.description}}</p>
                                     <p>{{talk}}</p>
                                     <p>
-                                        <a class='btn' href='#/edit/talk/{{talk.$id}}'>Edit</a>
+                                        <a class='btn' href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}'>Edit</a>
                                         <a class='btn-flat' ng-click='(talks.$remove(talk))'>Remove</a>
                                     </p>
                                 </div>
@@ -68,8 +68,9 @@
                                 <div class="collapsible-body">
                                     <p>{{track.description}}</p>
                                     <p>{{track}}</p>
+                                    <p>{{state}}</p>
                                     <p>
-                                        <a class='btn' href='#/edit/track/{{track.$id}}'>Edit</a>
+                                        <a class='btn' href='#/edit/track/{{track.$id}}/{{state.id}}'>Edit</a>
                                         <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
                                     </p>
                                 </div>

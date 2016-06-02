@@ -2,36 +2,50 @@
 <div class="headline">
     <h1>Talk</h1>
 </div>
-<div id="contentEdit" class="row" ng-controller="editTalkController">
+<div class="container" ng-controller="editTalkController">
     <div class="row">
-        <div class="col s9">
-            <div class="headerConf">
-                <span>Talk bearbeiten</span>
-                <a ng-click='removeConference(conference)' href="#/dashboard">
-                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                </a>
-            </div>
-            <form name="editTalkForm" ng-submit="addTalk()">
+        <div class="col s12">
+            <form name="editTalkForm" ng-submit="save()">
+
+
                 <label>Talkname:</label>
                 <input type="text" name="talkName" ng-model="talk.name" required>
+
+
                 <label>Beschreibung:</label>
                 <input type="text" name="description" ng-model="talk.description">
+
+
                 <label>Track</label>
                 <!-- BEI TRACKS VIELLEICHT EIN DROPDOWN ALLER ANGELEGTEN TRACKS?-->
-                <input type="text" name="description" ng-model="talk.tracks">
+                <input type="text" name="description" ng-model="talk.track">
+
+
                 <label>Datum</label>
-                <input type="date" name="talkStart" ng-model="talk.talkStart">
+                <input type="date" name="talkStart" ng-model="talk.end">
+
+
                 <label>Start-Uhrzeit</label>
-                <input type="date" name="talkStart" ng-model="talk.talkStart">
+                <input type="time" name="talkStart" ng-model="talk.start">
+
+
                 <label>End-Uhrzeit</label>
-                <input type="date" name="talkEnd" ng-model="talk.talkEnd">
+                <input type="time" name="talkEnd" ng-model="talk.end">
+
+
                 <label>Ort:</label>
                 <input type="text" name="talkLocation" ng-model="talk.location">
+
+
                 <label>Speaker:</label>
                 <input type="text" name="talkSpeaker" ng-model="talk.speaker">
+
+
                 <label>Speaker Foto:</label>
                 <input type="text" name="talkSpeakerPicture" ng-model="talk.speakerPicture">
+
                 <input class="waves-effect waves-light btn-large" type="submit" value="Speichern">
+                <a href='{{returnPath}}' class='btn orange white-text' > Abbrechen </a>
             </form>
         </div>
     </div>

@@ -64,8 +64,9 @@
 
         $scope.save = function () {
           // combine date and times
-          $scope.talk.start = mergeTimestamp($scope.talk.date, $scope.talk.start)
-          $scope.talk.end = mergeTimestamp($scope.talk.date, $scope.talk.end)
+          $scope.talk.start = mergeTimestamp($scope.talk.date, $scope.talk.start).getUnixTime()
+          $scope.talk.end = mergeTimestamp($scope.talk.date, $scope.talk.end).getUnixTime()
+          console.log($scope.talk.end)
           // delete date property
           delete $scope.talk.date
           // delete date property

@@ -62,8 +62,8 @@
                 name: "New Talk",
                 description: "Mysteriöses Gerede",
                 track: "-trackId",
-                start: new Date(),
-                end: new Date(),
+                start: new Date().getUnixTime(),
+                end: new Date().getUnixTime(),
                 location: 'someWhere',
                 speaker: 'Someone',
                 speakerPicture: 'Someone',
@@ -94,30 +94,32 @@
 
         /////////
         // BIND TALKS
-        $scope.talks = $firebaseArray(fbRef.child('talks'))
+        var bindTalksAndTracks = function () {
+          $scope.talks = $firebaseArray(fbRef.child('talks').orderByChild('conferenceId').equalTo($stateParams.id))
 
-        // bind material ui
-        $scope.$watch('talks', function (data) {
-          $('.TalkList').collapsible()
-        });
+          // bind material ui
+          $scope.$watch('talks', function (data) {
+            $('.TalkList').collapsible()
+          });
 
-        // create add talk method
-        $scope.addTalk = function () {
-          $scope.talks.$add(newTalk());
-        }
+          // create add talk method
+          $scope.addTalk = function () {
+            $scope.talks.$add(newTalk());
+          }
 
 
-        /////////
-        // BIND TRACKS
-        $scope.tracks = $firebaseArray(fbRef.child('tracks'))
+          /////////
+          // BIND TRACKS
+          $scope.tracks = $firebaseArray(fbRef.child('tracks'))
 
-        $scope.$watch('tracks', function (data) {
-          $('.TrackList').collapsible()
-        });
+          $scope.$watch('tracks', function (data) {
+            $('.TrackList').collapsible()
+          });
 
-        // create add track method
-        $scope.addTrack = function () {
-          $scope.tracks.$add(newTrack());
+          // create add track method
+          $scope.addTrack = function () {
+            $scope.tracks.$add(newTrack());
+          }
         }
 
         // LOAD CONFERENCE FROM DATABASE
@@ -133,6 +135,8 @@
                     conference.end = new Date(conference.end);
                     $scope.conference = conference;
                     $scope.conferenceRef = true;
+                    // BIND CHILDREN
+                    bindTalksAndTracks();
                     // save db entry id for saving
                     try{ // lil hack i'm lazy right now
                          // and this whole thing is a hack anyways
@@ -166,16 +170,16 @@
           // if the conferenceRef is defined , update it!
           if(conferenceRef) {
             var conferenceToUpdate = $scope.conference
-            conferenceToUpdate.start = new Date(conferenceToUpdate.start);
-            conferenceToUpdate.end = new Date(conferenceToUpdate.end);
+            conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
+            conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
             conferenceRef.update(conferenceToUpdate);
           }
 
           // if it is, just save it 
           else {
             var conferenceToSave = $scope.conference
-            conferenceToSave.start = new Date(conferenceToSave.start);
-            conferenceToSave.end = new Date(conferenceToSave.end);
+            conferenceToSave.start = new Date(conferenceToSave.start).getUnixTime();
+            conferenceToSave.end = new Date(conferenceToSave.end).getUnixTime();
             conferencesRef.push(conferenceToSave);
           }
 

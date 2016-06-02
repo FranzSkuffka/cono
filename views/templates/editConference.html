@@ -2,94 +2,89 @@
 
 <!-- HEADER -->
 <div class="headline">
-  <h1>Konferenz</h1>
+    <h1>Konferenz</h1>
 </div>
 
 <!-- WRAPPER-->
 <div class='section container'>
-  <div class="row">
+    <div class="row">
 
         <!-- TAB NAV -->
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#details">Details</a></li>
-              <li class="tab col s3"><a href="#talks">Talks</a></li>
-              <li class="tab col s3"><a href="#tracks">Tracks</a></li>
-              <li class="tab col s3"><a href="#danger">Danger Zone</a></li>
-            </ul>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a href="#details">Details</a></li>
+                        <li class="tab col s3"><a href="#talks">Talks</a></li>
+                        <li class="tab col s3"><a href="#tracks">Tracks</a></li>
+                        <li class="tab col s3"><a href="#danger">Danger Zone</a></li>
+                    </ul>
+                </div>
 
-          <div id="details" class="col s12">
-            <div ng-include='"forms/conference.html"'></div>
-          </div>
+                <div id="details" class="col s12">
+                    <div ng-include='"forms/conference.html"'></div>
+                </div>
 
-          <!-- TALKS ACCORDION -->
+                <!-- TALKS ACCORDION -->
 
-          <div id="talks" class="col s12">
-            <div  class="row">
-              <ul class="collapsible TalkList" data-collapsible="accordion">
-                <li >
-                  <div ng-click='addTalk()' class="collapsible-header green white-text"><i class="material-icons">add</i>Talk hinzufügen</div>
-                </li>
-                <li ng-repeat='talk in talks'>
-                  <div class="collapsible-header"><i class="material-icons">lightbulb_outline</i>{{talk.name}}</div>
-                  <div class="collapsible-body">
-                    <p>{{talk.description}}</p>
-                    <p>{{talk}}</p>
-                    <p>
-                    <a class='btn' href='#/edit/talk/{{talk.$id}}'> Edit</a>
-                    <a class='btn-flat' ng-click='(talks.$remove(talk))'> Remove </a>
-                    </p>
+                <div id="talks" class="col s12">
+                    <div class="row">
+                        <ul class="collapsible TalkList" data-collapsible="accordion">
+                            <li>
+                                <div ng-click='addTalk()' class="collapsible-header green white-text">
+                                    <i class="material-icons">add</i>Talk hinzufügen
+                                </div>
+                            </li>
+                            <li ng-repeat='talk in talks'>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">lightbulb_outline</i>{{talk.name}}
+                                </div>
+                                <div class="collapsible-body">
+                                    <p>{{talk.description}}</p>
+                                    <p>{{talk}}</p>
+                                    <p>
+                                        <a class='btn' href='#/edit/talk/{{talk.$id}}'> Edit</a>
+                                        <a class='btn-flat' ng-click='(talks.$remove(talk))'> Remove </a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="tracks" class="col s12">
+                    <div class="row">
+                        <ul class="collapsible TrackList" data-collapsible="accordion">
+                            <li>
+                                <div ng-click='addTrack()' class="blue white-text collapsible-header"><i
+                                        class="material-icons">add_location</i>Track hinzufügen
+                                </div>
+                            </li>
+                            <li ng-repeat='track in tracks'>
+                                <div class="collapsible-header"><i class="material-icons">place</i>{{track.name}}</div>
 
-                  </div
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div id="tracks" class="col s12">
-
-            <div  class="row">
-              <ul class="collapsible TrackList" data-collapsible="accordion">
-                <li >
-                  <div ng-click='addTrack()' class="blue white-text collapsible-header"><i class="material-icons">add_location</i>Track hinzufügen</div>
-                </li>
-                <li ng-repeat='track in tracks'>
-                  <div class="collapsible-header"><i class="material-icons">place</i>{{track.name}}</div>
-
-                  <div class="collapsible-body">
-                    <p>{{track.description}}</p>
-                    <p>{{track}}</p>
-                    <p>
-                    <a class='btn' href='#/edit/track/{{track.$id}}'>Edit</a>
-                    <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
-                    </p>
-
-                  </div
-
-                </li>
-              </ul>
-            </div>
-          </div>
-
-
-          <div  class="row">
-            <div id="danger" class="col s12">
-              <p class='section'>
-                <a class='btn red white-text' ng-if='conferenceRef' ng-click='removeConference(conference)' href="#/dashboard">
-                  KONFERENZ LÖSCHEN
-                </a>
-              </p>
+                                <div class="collapsible-body">
+                                    <p>{{track.description}}</p>
+                                    <p>{{track}}</p>
+                                    <p>
+                                        <a class='btn' href='#/edit/track/{{track.$id}}'>Edit</a>
+                                        <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="danger" class="col s12">
+                        <p class='section'>
+                            <a class='btn red white-text' ng-if='conferenceRef' ng-click='removeConference(conference)'
+                               href="#/dashboard">
+                                KONFERENZ LÖSCHEN
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        </div>
-      </div>
-  </div>
+    </div>
 </div>
-
-    </div>
-
-    </div>

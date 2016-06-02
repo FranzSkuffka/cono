@@ -10,7 +10,10 @@
                 <div ng-repeat="conference in conferences" id="conf" class="col s12 m6 l3 card">
                     <div class="card-content">
                         <!-- TO DO: ABFRAGE ICON STATUS -->
-                        <div class="status"><img src="img/published.png" alt="published"/></div>
+                        <div class="status">
+                            <img ng-if="conference.published" src="img/published.png" alt="published"/>
+                            <img ng-if="!conference.published" src="img/unpublished.png" alt="published"/>
+                        </div>
                         <div class="conf">
                             <span class="card-title">{{conference.name}}</span>
                             <p>{{conference.description}}</p>

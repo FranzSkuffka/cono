@@ -60,13 +60,14 @@
         var newTalk = function(){
             return {
                 name: "New Talk",
-                description: "Mysteriöses Gerede",
+                description: "Mysteriöses Gerede über Lorem ipsum und son Zeug",
                 track: "-trackId",
                 start: new Date().getUnixTime(),
                 end: new Date().getUnixTime(),
                 location: 'someWhere',
                 speaker: 'Someone',
-                speakerPicture: 'Someone',
+                speakerDescription: 'Someone is really down with some serious issues.',
+                speakerPicture: 'http://www.radfaces.com/images/avatars/garth-algar.jpg',
                 conferenceId: $stateParams.id
             }
         };
@@ -78,7 +79,7 @@
                 name: "New Track",
                 conferenceId: $stateParams.id,
                 description: "This appears to be a very mysterious place",
-                talks: ['-some-id']
+                talks: []
             }
         };
 
@@ -131,8 +132,8 @@
             conferenceRef.once('value', function(snapshot) {
                 if(snapshot.val() != null){
                     var conference = snapshot.val();
-                    conference.start = new Date(conference.start);
-                    conference.end = new Date(conference.end);
+                    conference.start = new Date(conference.start * 1000);
+                    conference.end = new Date(conference.end * 1000);
                     $scope.conference = conference;
                     $scope.conferenceRef = true;
                     // BIND CHILDREN

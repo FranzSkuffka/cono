@@ -39,11 +39,44 @@
                             <li ng-repeat='talk in talks'>
                                 <div class="collapsible-header">
                                     <i class="material-icons">lightbulb_outline</i>
-                                    <p>{{talk.name}}</p>
+                                    <p>{{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}} | <b>{{talk.name}}</b></p>
+
                                 </div>
                                 <div class="collapsible-body">
-                                    <p>{{talk.description}}</p>
-                                    <p>{{talk}}</p>
+                                    <p>
+                                        <span class='black-text'>
+                                        {{talk.name}}
+                                        </span>
+                                      <br>
+                                      {{talk.description}}
+                                      <br>
+                                      <span class='black-text'>
+                                        {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
+                                      </span>
+                                    </p>
+
+                                        <!-- TALKS ACCORDION -->
+                                        <div class="col ">
+                                          <div class="card-panel grey lighten-5 z-depth-1">
+                                            <div class="row valign-wrapper">
+                                              <div class="col s2">
+                                                <img src="{{talk.speakerPicture}}" alt="image of {{talk.speakerName}}" class="circle responsive-img"> <!-- notice the "circle" class -->
+                                              </div>
+
+                                              <div class="col s10">
+                                                <span class="black-text">
+                                                  {{talk.speaker}}
+                                                </span>
+                                                <br>
+                                                <span ">
+                                                  {{talk.speakerDescription}}
+                                                </span>
+                                              </div>
+
+                                            </div>
+                                          </div>
+                                        </div>
+
                                     <p>
                                         <a class='btn' href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}'>Edit</a>
                                         <a class='btn-flat' ng-click='(talks.$remove(talk))'>Remove</a>
@@ -53,6 +86,8 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- TRACKS ACCORDION -->
                 <div id="tracks" class="col s12">
                     <div class="row">
                         <ul class="collapsible TrackList" data-collapsible="accordion">
@@ -63,16 +98,23 @@
                                 </div>
                             </li>
                             <li ng-repeat='track in tracks'>
-                                <div class="collapsible-header"><i class="material-icons">place</i>{{track.name}}</div>
+
+                                <!-- TRACKS ACCORDION -->
+                                <div class="collapsible-header"><i class="material-icons">place</i><b>{{track.name}}</b> | {{track.description}}</div>
 
                                 <div class="collapsible-body">
-                                    <p>{{track.description}}</p>
-                                    <p>{{track}}</p>
-                                    <p>{{state}}</p>
-                                    <p>
-                                        <a class='btn' href='#/edit/track/{{track.$id}}/{{state.id}}'>Edit</a>
-                                        <a class='btn-flat' ng-click='(tracks.$remove(track))'>Remove</a>
-                                    </p>
+                                    <div class=' section container'>
+                                      <div>
+                                        <label>Name</label>
+                                        <input type='text' name='trackName' ng-model='track.name' required>
+                                      </div>
+                                      <div>
+                                        <label>Description</label>
+                                        <input type='text' description='trackDescription' ng-model='track.description' required>
+                                      </div>
+                                      <a class='btn-large red white-text' ng-click='(tracks.$remove(track))'>Remove</a>
+                                    </div>
+
                                 </div>
                             </li>
                         </ul>

@@ -17,8 +17,11 @@
 
 
                 <label>Track</label>
-                <!-- BEI TRACKS VIELLEICHT EIN DROPDOWN ALLER ANGELEGTEN TRACKS?-->
-                <input type="text" name="description" ng-model="talk.track">
+                <select 
+                    ng-model="talk.track"
+                    ng-options="id as track.name  for (id, track) in tracks">
+                </select>
+                <br>
 
 
                 <label>Datum</label>

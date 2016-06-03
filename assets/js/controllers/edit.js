@@ -61,7 +61,7 @@
             return {
                 name: "New Talk",
                 description: "Mysteriöses Gerede über Lorem ipsum und son Zeug",
-                track: "-trackId",
+                track: null,
                 start: new Date().getUnixTime(),
                 end: new Date().getUnixTime(),
                 location: 'someWhere',
@@ -78,8 +78,7 @@
             return {
                 name: "New Track",
                 conferenceId: $stateParams.id,
-                description: "This appears to be a very mysterious place",
-                talks: []
+                description: "This appears to be a very mysterious place"
             }
         };
 
@@ -111,10 +110,11 @@
 
           /////////
           // BIND TRACKS
-          $scope.tracks = $firebaseArray(fbRef.child('tracks'))
+          $scope.tracks = $firebaseArray(fbRef.child('tracks').orderByChild('conferenceId').equalTo($stateParams.id))
 
           $scope.$watch('tracks', function (data) {
             $('.TrackList').collapsible()
+            console.log($scope.tracks);
           });
 
           // create add track method

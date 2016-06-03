@@ -99,7 +99,6 @@
                             </li>
                             <li ng-repeat='track in tracks'>
 
-                                <!-- TRACKS ACCORDION -->
                                 <div class="collapsible-header"><i class="material-icons">place</i><b>{{track.name}}</b> | {{track.description}}</div>
 
                                 <div class="collapsible-body">
@@ -112,6 +111,7 @@
                                         <label>Description</label>
                                         <input type='text' description='trackDescription' ng-model='track.description' required>
                                       </div>
+                                      <a class='btn-large green white-text' ng-click='(tracks.$save(track))'>Save</a>
                                       <a class='btn-large red white-text' ng-click='(tracks.$remove(track))'>Remove</a>
                                     </div>
 

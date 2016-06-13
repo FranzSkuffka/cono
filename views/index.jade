@@ -17,7 +17,6 @@ html(ng-app='cono')
     script(src='https://cdn.firebase.com/js/client/2.2.4/firebase.js')
     script(src='https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js')
     // materialize
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     // styles
@@ -27,43 +26,53 @@ html(ng-app='cono')
     // font
     link(href='https://fonts.googleapis.com/css?family=Raleway:400,600', rel='stylesheet', type='text/css')
   body
-    header(ng-controller='userController')
-      .row
-        // TO DO: ABFRAGE ICON STATUS
-        .col.s3(ng-if='userData')
-          p
-            span
-              | Angemeldet als:
-              br
-              span.userName {{userData.name}}
-          a#conf-setting(ng-if='canGoHome', href='/#/')
-            .dashback
-              i.fa.fa-reply.fa-2x(aria-hidden='true')
-              span Dashboard
-        .col.s6
-          img.logo(src='img/logo.png', alt='cono Logo')
-        #userInfo.col.s3
-          // Dropdown Structure
-          ul#dropdown1.dropdown-content
-            li
-              a(href='#/settings') Passwort ändern
-            li.divider
-            li
-              a(href='#!', ng-click='logout()') Logout
-          ul.setting
-            li
-              a.dropdown-button(href='#!', data-activates='dropdown1', dropdown='', data-hover='true')
-                i.fa.fa-cog.fa-2x(aria-hidden='true')
+
+    .navbar-fixed(ng-controller='userController')
+      nav.white
+        .nav-wrapper: .container
+
+          img.Logo.brand-logo.center(src='img/logo.png', alt='cono Logo')
+
+          ul.left
+
+            li(ng-if='canGoHome')
+              a(href='/#/').blue-text 
+                i.material-icons.right view_module
+                span Dashboard
+
+            li(ng-if='userData')
+              a.grey-text Angemeldet als {{userData.name}}
+
+          ul.right(ng-if='userData')
+              script
+                :js
+                  $('.dropdown-button').dropdown({
+                    hover: false,
+                    belowOrigin: true,
+                  })
+
+              a.dropdown-button.blue-text(href='#!', data-activates='nav-dropdown', dropdown='')
                 span Einstellungen
-                i.material-icons.right arrow_drop_down
-    div
-      #AppContent(ui-view='', autoscroll='false')
-    footer
-      ul
-        li
-          a(href='') Impressum
-        li
-          a(href='') Kontakt
+                i.material-icons.right more_vert
+
+              ul#nav-dropdown.dropdown-content
+                li
+                  a(href='#/settings') Passwort ändern
+                li
+                  a(href='#!', ng-click='logout()') Logout
+
+    #AppContent(ui-view='', autoscroll='false')
+
+    footer.page-footer.grey
+      .container
+        .row
+          .col.16.s12
+            ul
+              li
+                a.white-text(href='') Impressum
+              li
+                a.white-text(href='') Kontakt
+      .footer-copyright
 
     // end of app
     script(src='js/main.js')

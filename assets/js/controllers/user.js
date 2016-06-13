@@ -18,7 +18,6 @@
         fbRef.child("organizers/").child(authData.uid).on('value', function(snapshot) {
           $rootScope.userData = snapshot.val();
           $rootScope.$digest();
-          setTimeout(function(){ $('.dropdown-button').dropdown()}, 100);
         });
       }
       else

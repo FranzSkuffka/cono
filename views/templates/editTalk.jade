@@ -1,0 +1,39 @@
+h4 Talk bearbeiten
+h3 {{talk.name}}
+.row
+  .col.s12
+    form(name='editTalkForm', ng-submit='save()')
+
+      label Talkname:
+      input(type='text', name='talkName', ng-model='talk.name', required='')
+
+      label Beschreibung:
+      input(type='text', name='description', ng-model='talk.description', required='')
+
+      label Track
+      select(ng-model='talk.track', ng-options='id as track.name  for (id, track) in tracks')
+      br
+
+      label Datum
+      input(type='text', datetime='yyyy-MM-dd', name='talkStart', ng-model='talk.date', required='')
+
+      label Start-Uhrzeit
+      input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.start', required='')
+
+      label End-Uhrzeit
+      input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.end', required='')
+
+      label Ort:
+      input(type='text', name='talkLocation', ng-model='talk.location', required='')
+
+      label Referent:
+      input(type='text', name='talkSpeaker', ng-model='talk.speaker', required='')
+
+      label Referent Bio:
+      input(type='text', name='talkSpeaker', ng-model='talk.speakerDescription')
+
+      label Referent Foto:
+      input(type='text', name='talkSpeakerPicture', ng-model='talk.speakerPicture')
+
+      input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
+      a.btn.orange.white-text(href='{{returnPath}}')  Abbrechen 

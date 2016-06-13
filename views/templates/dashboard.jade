@@ -1,0 +1,31 @@
+.headline
+  h1 Ihre Konferenzen
+#content.row
+  .col.s12
+    .section
+      .row
+        // single conference card
+        #conf.col.s12.m6.l3.card(ng-repeat='conference in conferences')
+          .card-content
+            // TO DO: ABFRAGE ICON STATUS
+            .status
+              img(ng-if='conference.published', src='img/published.png', alt='published')
+              img(ng-if='!conference.published', src='img/unpublished.png', alt='published')
+            .conf
+              span.card-title {{conference.name}}
+              p {{conference.description}}
+              p Wo: {{conference.location.city}}
+              p
+                | Von {{conference.start * 1000 | date : "dd/MM/yy"}} bis {{conference.end * 1000 | date :
+                | "dd/MM/yy"}}
+              .icons
+                span.icon(ng-click='changeView(conference)')
+                  i.fa.fa-eye.fa-2x(aria-hidden='true')
+        #newConf.col.s12.m6.l3.card
+          .conf
+            span.card-title Neue Konferenz anlegen
+            .icons
+              a.icon(href='#/edit/')
+                i.fa.fa-plus.fa-2x(aria-hidden='true')
+      // end of controller
+    // dashboard end

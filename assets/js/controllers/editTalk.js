@@ -85,7 +85,24 @@
           // go back to conference
           $location.path(returnPath);
         }
-            var talkRef = fbRef.child("talks/").child($stateParams.id)
+
+      var firebaseRef = fbRef
+
+      function handleFileSelect(evt) {
+        var f = evt.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+          return function(e) {
+            var filePayload = e.target.result;
+            // Generate a location that can't be guessed using the file's contents and a random number
+            $scope.talk.speakerPicture = filePayload;
+            $scope.$digest()
+          };
+        })(f);
+        reader.readAsDataURL(f);
+      }
+
+      $(".file-upload")[0].addEventListener('change', handleFileSelect, false);
 
     }]);
 }).call(this);

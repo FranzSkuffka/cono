@@ -32,8 +32,17 @@ h3 {{talk.name}}
       label Referent Bio:
       input(type='text', name='talkSpeaker', ng-model='talk.speakerDescription')
 
-      label Referent Foto:
-      input(type='text', name='talkSpeakerPicture', ng-model='talk.speakerPicture')
+      .section: .row
+        .col.s2
+          img.responsive-img.circle(ng-src='{{talk.speakerPicture}}')
+        .col.s8
+          label Referent Foto:
+          .file-field.input-field
+            .btn
+              span Datei wählen
+              input(type='file' name='talkSpeakerPicture').file-upload
+            .file-path-wrapper
+              input.file-path.validate(type='text')
 
       input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
       a.btn.orange.white-text(href='{{returnPath}}')  Abbrechen 

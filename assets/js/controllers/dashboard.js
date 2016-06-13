@@ -13,7 +13,7 @@ app.controller("dashboardController", function($scope, $firebaseArray, $location
   }
   
   $scope.createConference = function(conference){
-    var createConferencePath = '/edit';
+    var createConferencePath = '/edit/';
     $location.path(createConferencePath);
     //console.log(conference.$id);
   }

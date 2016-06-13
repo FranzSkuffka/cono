@@ -1,31 +1,24 @@
-.headline
-  h1 Ihre Konferenzen
-#content.row
-  .col.s12
-    .section
-      .row
-        // single conference card
-        #conf.col.s12.m6.l3.card(ng-repeat='conference in conferences')
-          .card-content
-            // TO DO: ABFRAGE ICON STATUS
-            .status
-              img(ng-if='conference.published', src='img/published.png', alt='published')
-              img(ng-if='!conference.published', src='img/unpublished.png', alt='published')
-            .conf
-              span.card-title {{conference.name}}
-              p {{conference.description}}
-              p Wo: {{conference.location.city}}
-              p
-                | Von {{conference.start * 1000 | date : "dd/MM/yy"}} bis {{conference.end * 1000 | date :
-                | "dd/MM/yy"}}
-              .icons
-                span.icon(ng-click='changeView(conference)')
-                  i.fa.fa-eye.fa-2x(aria-hidden='true')
-        #newConf.col.s12.m6.l3.card
-          .conf
-            span.card-title Neue Konferenz anlegen
-            .icons
-              a.icon(href='#/edit/')
-                i.fa.fa-plus.fa-2x(aria-hidden='true')
-      // end of controller
-    // dashboard end
+h3 Meine Konferenzen
+.Conferences
+  .Conference.card.col.s3(ng-repeat='conference in conferences' ng-click='changeView(conference)' ng-class="{'z-depth-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false")
+    .card-content
+      span.card-title
+        | {{conference.name}}
+        span.badge.greey-text(ng-if='!conference.published') privat
+        span.badge.green-text(ng-if='conference.published') veröffentlicht
+
+      p.section.grey-text(ng-if='conference.description == ""') Keine Beschreibung
+      p.section(ng-if='!conference.description == ""') {{conference.description}}
+      .divider
+      p.section
+        i.grey-text.material-icons.left room
+        | {{conference.location.city}}
+      p
+        i.grey-text.material-icons.left today
+        | Von {{conference.start * 1000 | date : "dd/MM/yy"}}
+        | bis {{conference.end * 1000 | date : "dd/MM/yy"}}
+
+  .Conference.Conference-add.green-text.card(ng-click='createConference()' ng-class="{'z-depth-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false")
+    .card-content
+      span.card-title
+        | Neue Konferenz anlegen

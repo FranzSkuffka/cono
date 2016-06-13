@@ -1,0 +1,89 @@
+h5 Konferenz Bearbeiten
+h4 {{conference.name}}
+
+.card.row: .section.container
+  .container
+    .col.s12
+      .section
+        ul.tabs
+          li.tab.col.s3
+            a(href='#details') Details
+          li.tab.col.s3
+            a(href='#talks') Talks
+          li.tab.col.s3
+            a(href='#tracks') Tracks
+          li.tab.col.s3
+            a(href='#danger') Danger Zone
+
+  #details.col.s12
+    div(ng-include='"forms/conference.html"')
+
+  // TALKS ACCORDION
+  #talks.col.s12
+    .row
+      ul.collapsible.TalkList(data-collapsible='accordion')
+        li
+          .collapsible-header.green.white-text(ng-click='addTalk()')
+            p Talk hinzufügen
+              i.material-icons.left add
+
+        li(ng-repeat='talk in talks')
+          .collapsible-header
+            p
+              | {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}} 
+              b {{talk.name}}
+              i.material-icons.left lightbulb_outline
+          .collapsible-body
+            p
+              span.black-text
+                | {{talk.name}}
+              br
+              |                                       {{talk.description}}
+              br
+              span.black-text
+                | {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
+            // TALKS ACCORDION
+            .col
+              .card-panel.grey.lighten-5.z-depth-1
+                .row.valign-wrapper
+                  .col.s2
+                    img.circle.responsive-img(src='{{talk.speakerPicture}}', alt='image of {{talk.speakerName}}')
+                    // notice the "circle" class
+                  .col.s10
+                    span.black-text
+                      | {{talk.speaker}}
+                    br
+                    span
+                      | {{talk.speakerDescription}}
+            p
+              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}') Edit
+              a.btn-flat(ng-click='(talks.$remove(talk))') Remove
+
+  // TRACKS ACCORDION
+  #tracks.col.s12
+    .row
+      ul.collapsible.TrackList(data-collapsible='accordion')
+        li
+          .blue.white-text.collapsible-header(ng-click='addTrack()')
+            p Track hinzufügen
+              i.material-icons.left add_location
+        li(ng-repeat='track in tracks')
+          .collapsible-header
+            b {{track.name}}
+            |  {{track.description}}
+            i.material-icons.left place
+          .collapsible-body
+            .section.container
+              div
+                label Name
+                input(type='text', name='trackName', ng-model='track.name', required='')
+              div
+                label Description
+                input(type='text', description='trackDescription', ng-model='track.description', required='')
+              a.btn-large.green.white-text(ng-click='(tracks.$save(track))') Save
+              a.btn-large.red.white-text(ng-click='(tracks.$remove(track))') Remove
+  .row
+    #danger.col.s12
+      p.section
+        a.btn.red.white-text(ng-if='conferenceRef', ng-click='removeConference(conference)', href='#/dashboard')
+          | KONFERENZ LÖSCHEN

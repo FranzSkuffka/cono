@@ -16,18 +16,13 @@
       // put user data in scope
       if(authData != null){
         fbRef.child("organizers/").child(authData.uid).on('value', function(snapshot) {
-          $rootScope.userData = snapshot.val();
+          $scope.userData = $rootScope.userData = snapshot.val();
           $rootScope.$digest();
+          $scope.$digest();
         });
       }
       else
         $scope.userData = false;
-
-      // supply logout function
-      $scope.logout = function() {
-        Auth.$unauth();
-        $state.go('login');
-      };
 
     });
   }]);

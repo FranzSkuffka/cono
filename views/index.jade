@@ -50,6 +50,7 @@ html(ng-app='cono')
                     hover: false,
                     belowOrigin: true,
                   })
+                  // $compile($('.dropdown-content'))
 
               a.dropdown-button.blue-text(href='#!', data-activates='nav-dropdown', dropdown='')
                 span Einstellungen
@@ -59,7 +60,7 @@ html(ng-app='cono')
                 li
                   a(href='#/settings') Passwort ändern
                 li
-                  a(href='#!', ng-click='logout()') Logout
+                  a(href='#/logout') Logout
 
     .container.section#AppContent(ui-view='', autoscroll='false')
 

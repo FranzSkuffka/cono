@@ -5,7 +5,11 @@
 
     var requireAuth = {
       "currentAuth": ["Auth", function(Auth) {
-        return Auth.$requireAuth();
+        var required = Auth.$requireAuth()
+        required.catch(function (auth, a, b) {
+          window.location = '/#/login'
+        })
+        return required;
       }]
     };
 
@@ -71,6 +75,12 @@
       // LOGIN
       .state('login', {
           url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'authController'
+      })
+      // LOGOUT
+      .state('logout', {
+          url: '/logout',
           templateUrl: 'templates/login.html',
           controller: 'authController'
       })

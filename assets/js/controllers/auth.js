@@ -1,6 +1,11 @@
 (function() {
 app.controller("authController", ['$scope', '$state', 'Auth', function($scope, $state, Auth) {
 
+  if($state.current.name == 'logout') {
+    Auth.$unauth();
+    $state.go('login');
+  }
+
   $scope.login = function () {
       if ($scope.user.email && $scope.user.pwd) {
           Auth.$authWithPassword({

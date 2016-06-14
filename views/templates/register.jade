@@ -1,0 +1,28 @@
+h3 Register
+
+.row
+  form.col.s8.section
+    .card-panel
+      | Pick a password with at least 8 characters and two different character types.
+
+    label
+      span.input-label E-Mail
+      input(type='text', ng-model='newUser.email')
+
+    label
+      span.input-label Name
+      input(type='text', ng-model='newUser.name')
+
+    label
+      span.input-label Password
+      input(type='password', complex-password='', ng-model='newUser.pwd')
+
+    label
+      span.input-label Repeat password
+      input(type='password', ng-model='newUser.pwdRepeat')
+
+    .card-panel.white-text.red.darken-1(ng-if='message')
+      p {{message}}
+
+    button.btn-large.waves-effect(ng-click='register()') Register
+      i.material-icons.left fingerprint

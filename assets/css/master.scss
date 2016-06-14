@@ -3,6 +3,10 @@
   min-height: 100vh;
 }
 
+[class*='btn'] + [class*='btn']  {
+  margin-left: 10px;
+}
+
 /*Start header*/
 
 .Logo.Logo{

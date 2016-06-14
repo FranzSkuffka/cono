@@ -1,0 +1,17 @@
+// login
+h3.center-align Login
+.row
+  form.col.s8.push-s2.section
+
+    label
+      span.input-label E-Mail
+      input(type='text', ng-model='user.email')
+
+    label
+      span.input-label Password
+      input(type='password', ng-model='user.pwd')
+
+    button.btn-large.waves-effect(ng-click='login()') Log in
+      i.material-icons.left done
+    a.btn-flat(href='#/register') Register
+    a.btn-flat(href='#/forgotPassword') Forgot Password

@@ -1,0 +1,28 @@
+// settings
+h3 Settings
+
+.row
+  form.col.s8.section
+
+    h4 Change Password
+    .card-panel
+      p Pick a password with at least 8 characters and two different character types.
+
+    form
+      label.item.item-input
+        span.input-label Old password
+        input(type='password', complex-password='', ng-model='user.oldPwd')
+
+      label.item.item-input
+        span.input-label New password
+        input(type='password', complex-password='', ng-model='user.pwd')
+
+      label.item.item-input
+        span.input-label Repeat new password
+        input(type='password', ng-model='user.pwdRepeat')
+
+      .card-panel.white-text.red.darken-1(ng-if='message')
+        p {{message}}
+
+      button.orange.btn-large.waves-effect(ng-click='changePwd()') Change password
+        i.material-icons.left done

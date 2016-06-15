@@ -149,9 +149,14 @@
                     conferenceRef = false;
                 }
                 /////////////////////////////////////////
-                // BIND UI TABS
+                // BIND UI WIDGETS
 
                 $('.tabs').tabs()
+                $('.materialize-colorpicker').colorpicker(
+                  {
+                    component: '.btn'
+                  }
+                )
 
             });
         }else{

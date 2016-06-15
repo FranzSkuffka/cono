@@ -1,0 +1,55 @@
+// EDIT CONFERENCE FORM
+// GENERAL
+form(name='conferenceForm', ng-submit='save()')
+
+  .row
+    .FormInputField.col.s6
+      label Konferenzname:
+      input(type='text', name='conferenceName', ng-model='conference.name', required='')
+
+  .row
+    .FormInputField.col.s6
+      label Beschreibung:
+      textarea(type='text', name='description', ng-model='conference.description').materialize-textarea
+
+  .row
+    .FormInputField.col.s6
+      label Zeitraum von
+      input.datepicker(type='date', name='start', ng-model='conference.start')
+
+    .FormInputField.col.s6
+      label Zeitraum bis
+      input.datepicker(type='date', name='end', ng-model='conference.end')
+
+  .row
+    .FormInputField.col.s5
+      label Straße:
+      input(type='text', name='street', ng-model='conference.location.street')
+
+    .FormInputField.col.s2
+      label Hausnummer:
+      input(type='text', name='housenumber', ng-model='conference.location.housenumber')
+
+    .FormInputField.col.s2
+      label Postleitzahl:
+      input(type='text', name='zip', ng-model='conference.location.zip')
+
+    .FormInputField.col.s3
+      label Stadt:
+      input(type='text', name='city', ng-model='conference.location.city')
+
+  .row
+    .FormInputField.col.s6
+      label Layoutfarbe:
+      .file-field.materialize-colorpicker
+        .btn
+        .file-path-wrapper
+          input(type='text', name='color', value="#5367ce" )
+
+    .FormInputField.col.s6
+      label Logo:
+      input(type='text', name='logo', ng-model='conference.corporateidentity.logo')
+  // SUBMIT
+  input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
+  a.btn.blue.white-text(ng-click='publish()', ng-if='!conference.published') Veröffentlichen
+  a.btn.blue.darken-3.white-text(ng-click='unpublish()', ng-if='conference.published') Verstecken

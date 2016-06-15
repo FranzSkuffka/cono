@@ -4,45 +4,64 @@ h3 {{talk.name}}
   .col.s12
     form(name='editTalkForm', ng-submit='save()')
 
-      label Talkname:
-      input(type='text', name='talkName', ng-model='talk.name', required='')
+      h5.grey-text Allgemein
+      .row
+        .FormInputField.col.s6
+          label Talkname:
+          input(type='text', name='talkName', ng-model='talk.name', required='')
 
-      label Beschreibung:
-      input(type='text', name='description', ng-model='talk.description', required='')
+      .row
+        .FormInputField.col.s6
+          label Beschreibung:
+          textarea(name='description', ng-model='talk.description', required='').materialize-textarea
 
-      label Track
-      select(ng-model='talk.track', ng-options='id as track.name  for (id, track) in tracks')
-      br
+      h5.grey-text Ort & Zeit
+      .row
+        .FormInputField.col.s6
+          label Track
+          select(ng-model='talk.track', ng-options='id as track.name  for (id, track) in tracks')
 
-      label Datum
-      input(type='text', datetime='yyyy-MM-dd', name='talkStart', ng-model='talk.date', required='')
+      .row
+        .FormInputField.col.s4
+          label Datum
+          input(type='text', datetime='yyyy-MM-dd', name='talkStart', ng-model='talk.date', required='')
 
-      label Start-Uhrzeit
-      input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.start', required='')
+        .FormInputField.col.s4
+          label Start-Uhrzeit
+          input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.start', required='')
 
-      label End-Uhrzeit
-      input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.end', required='')
+        .FormInputField.col.s4
+          label End-Uhrzeit
+          input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.end', required='')
 
-      label Ort:
-      input(type='text', name='talkLocation', ng-model='talk.location', required='')
+      .row
+        .FormInputField.col.s6
+          label Ort:
+          input(type='text', name='talkLocation', ng-model='talk.location', required='')
 
-      label Referent:
-      input(type='text', name='talkSpeaker', ng-model='talk.speaker', required='')
+      section
+        h5.grey-text Referent
+        .row
+          .FormInputField.col.s6
+            label Referent:
+            input(type='text', name='talkSpeaker', ng-model='talk.speaker', required='')
 
-      label Referent Bio:
-      input(type='text', name='talkSpeaker', ng-model='talk.speakerDescription')
+        .row
+          .FormInputField.col.s6
+            label Referent Bio:
+            textarea(type='text', name='talkSpeakerDescription', ng-model='talk.speakerDescription').materialize-textarea
 
-      .section: .row
-        .col.s2
-          img.responsive-img.circle(ng-src='{{talk.speakerPicture}}')
-        .col.s8
-          label Referent Foto:
-          .file-field.input-field
-            .btn
-              span Datei wählen
-              input(type='file' name='talkSpeakerPicture').file-upload
-            .file-path-wrapper
-              input.file-path.validate(type='text')
+        .section: .row
+          .col.s2
+            img.responsive-img.circle(ng-src='{{talk.speakerPicture}}')
+          .col.s8
+            label Referent Foto:
+            .file-field.input-field
+              .btn
+                span Datei wählen
+                input(type='file' name='talkSpeakerPicture').file-upload
+              .file-path-wrapper
+                input.file-path.validate(type='text')
 
       #CropModal.modal
         .modal-content

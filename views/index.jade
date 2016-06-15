@@ -35,32 +35,18 @@ html(ng-app='cono')
 
           ul.left
 
-            li(ng-if='canGoHome')
-              a(href='/#/').blue-text 
+            li(ng-class='{"active": !canGoHome}' ng-if='userData')
+              a(href='/#/' ng-class='{"blue-text": canGoHome, "black-text": !canGoHome}')
                 i.material-icons.right view_module
                 span Dashboard
 
-            li(ng-if='userData')
-              a.grey-text Angemeldet als {{userData.name}}
-
           ul.right(ng-if='userData')
-              script
-                :js
-                  $('.dropdown-button').dropdown({
-                    hover: false,
-                    belowOrigin: true,
-                  })
-                  // $compile($('.dropdown-content'))
 
-              a.dropdown-button.blue-text(href='#!', data-activates='nav-dropdown', dropdown='')
-                span Einstellungen
-                i.material-icons.right more_vert
+            li: a(href='#/settings').blue-text
+              span {{userData.name}}
+              i.material-icons.left person
+            li: a(href='#/logout').blue-text Logout
 
-              ul#nav-dropdown.dropdown-content
-                li
-                  a(href='#/settings') Passwort ändern
-                li
-                  a(href='#/logout') Logout
 
     .container.section#AppContent(ui-view='', autoscroll='false')
 

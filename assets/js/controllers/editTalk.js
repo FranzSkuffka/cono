@@ -94,13 +94,38 @@
         reader.onload = (function(theFile) {
           return function(e) {
             var filePayload = e.target.result;
+
             // Generate a location that can't be guessed using the file's contents and a random number
-            $scope.talk.speakerPicture = filePayload;
-            $scope.$digest()
+
+            $('#CropModal').openModal();
+
+            cropper.croppie('bind', {url: filePayload, points: [0,0,0,0]});
+
+            $('#SaveImage').on('click', function () {
+
+              cropper.croppie('result', {
+                type: 'canvas',
+                size: {width: 100, height: 100},
+                quality: .8
+              }).then( function (result) {
+                $scope.talk.speakerPicture = result;
+                $scope.$digest()
+                $('#CropModal').closeModal();
+              })
+            })
           };
         })(f);
         reader.readAsDataURL(f);
       }
+
+
+      cropper = $('#croppie').croppie({
+        viewport: {
+          width: 115,
+          height: 115
+        }
+      });
+
 
       $(".file-upload")[0].addEventListener('change', handleFileSelect, false);
 

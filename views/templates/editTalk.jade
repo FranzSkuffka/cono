@@ -44,5 +44,13 @@ h3 {{talk.name}}
             .file-path-wrapper
               input.file-path.validate(type='text')
 
+      #CropModal.modal
+        .modal-content
+          h4 Crop Image
+          #croppie
+        .modal-footer
+          a#SaveImage.btn.modal-action.waves-effect(ng-click='saveImage') Speichern
+          a.btn-flat.modal-close.modal-action.waves-effect Abbrechen
+
       input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
       a.btn.orange.white-text(href='{{returnPath}}')  Abbrechen 

@@ -1,3 +1,6 @@
+include _mixins
++cropModal()
+
 h5 Konferenz Bearbeiten
 h4 {{conference.name}}
 
@@ -16,7 +19,7 @@ h4 {{conference.name}}
             a(href='#danger') Danger Zone
 
   #details.col.s12
-    div(ng-include='"forms/conference.html"')
+    include ../forms/_conference
 
     // TALKS ACCORDION
   #talks.col.s12

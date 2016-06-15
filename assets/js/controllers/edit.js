@@ -33,6 +33,12 @@
               component: '.btn'
             }
           )
+
+          materializeCropper(function(imageData){
+            $scope.conference.corporateidentity.logo = imageData;
+            $scope.$digest();
+          })
+
         }
 
         /////////////////////////////////////////

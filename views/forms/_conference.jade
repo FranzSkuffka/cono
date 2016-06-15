@@ -50,9 +50,18 @@ form(name='conferenceForm', ng-submit='save()')
         .file-path-wrapper
           input(type='text', name='color', ng-model='conference.corporateidentity.color' )
 
-    .FormInputField.col.s6
-      label Logo:
-      input(type='text', name='logo', ng-model='conference.corporateidentity.logo')
+  .section: .row.valign-wrapper
+    .col.s2
+      img.responsive-img.circle(ng-src='{{conference.corporateidentity.logo}}')
+    .col.s9
+      label Referent Foto:
+      .file-field.input-field
+        .btn
+          span Datei wählen
+          input(type='file' name='conferenceLogo').file-upload
+        .file-path-wrapper
+          input.file-path.validate(type='text')
+
   // SUBMIT
   input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
   a.btn.blue.white-text(ng-click='publish()', ng-if='!conference.published') Veröffentlichen

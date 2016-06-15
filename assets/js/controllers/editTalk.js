@@ -42,9 +42,6 @@
           // BIND TRACKS
           fbRef.child('tracks').orderByChild('conferenceId').equalTo($stateParams.conferenceId).once('value', function(snapshot) {
             $scope.tracks = snapshot.val();
-            $scope.tracks['null'] = {
-              name: 'No track'
-            }
             setTimeout(function(){$('select').material_select()}, 100);
           });
 

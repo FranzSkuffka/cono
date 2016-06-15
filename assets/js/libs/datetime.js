@@ -819,6 +819,7 @@ angular.module("datetime").factory("datetime", ["$locale", function($locale){
 				return parser;
 			},
 			setDate: function(date){
+  			date = new Date(date);
 				parser.model = new Date(date.getTime());
 				if (parser.timezone) {
 					parser.date = offsetDate(date, parser.timezone);

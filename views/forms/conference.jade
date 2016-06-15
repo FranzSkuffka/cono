@@ -2,6 +2,7 @@
 // GENERAL
 form(name='conferenceForm', ng-submit='save()')
 
+  h5.grey-text Allgemein
   .row
     .FormInputField.col.s6
       label Konferenzname:
@@ -12,6 +13,7 @@ form(name='conferenceForm', ng-submit='save()')
       label Beschreibung:
       textarea(type='text', name='description', ng-model='conference.description').materialize-textarea
 
+  h5.grey-text Zeit
   .row
     .FormInputField.col.s6
       label Zeitraum von
@@ -21,6 +23,7 @@ form(name='conferenceForm', ng-submit='save()')
       label Zeitraum bis
       input.datepicker(type='date', name='end', ng-model='conference.end')
 
+  h5.grey-text Ort
   .row
     .FormInputField.col.s5
       label Straße:
@@ -38,13 +41,14 @@ form(name='conferenceForm', ng-submit='save()')
       label Stadt:
       input(type='text', name='city', ng-model='conference.location.city')
 
+  h5.grey-text Design
   .row
     .FormInputField.col.s6
       label Layoutfarbe:
       .file-field.materialize-colorpicker
         .btn
         .file-path-wrapper
-          input(type='text', name='color', value="#5367ce" )
+          input(type='text', name='color', ng-model='conference.corporateidentity.color' )
 
     .FormInputField.col.s6
       label Logo:

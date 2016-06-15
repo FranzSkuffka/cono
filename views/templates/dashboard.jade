@@ -1,6 +1,7 @@
 h3 Meine Konferenzen
 .Conferences
   .Conference.card.col.s3(ng-repeat='conference in conferences' ng-click='changeView(conference)' ng-class="{'z-depth-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false")
+
     .card-content
       span.card-title
         | {{conference.name}}
@@ -18,7 +19,6 @@ h3 Meine Konferenzen
         | Von {{conference.start * 1000 | date : "dd/MM/yy"}}
         | bis {{conference.end * 1000 | date : "dd/MM/yy"}}
 
-  .Conference.Conference-add.green-text.card(ng-click='createConference()' ng-class="{'z-depth-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false")
-    .card-content
-      span.card-title
-        | Neue Konferenz anlegen
+  .fixed-action-btn
+    a.btn-floating.btn-large.red(ng-click='createConference()')
+      i.large.material-icons add

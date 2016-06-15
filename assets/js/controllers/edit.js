@@ -171,11 +171,15 @@
         // SAVE CONFERENCE
         // decide if update or delete
 
+        var clone = function (object) {
+          return JSON.parse(JSON.stringify(object));
+        }
+
         $scope.save = function () {
 
           // if the conferenceRef is defined , update it!
           if(conferenceRef) {
-            var conferenceToUpdate = $scope.conference
+            var conferenceToUpdate = clone($scope.conference)
             conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
             conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
             conferenceRef.update(conferenceToUpdate);
@@ -183,7 +187,7 @@
 
           // if it is, just save it 
           else {
-            var conferenceToSave = $scope.conference
+            var conferenceToSave = clone(JSON.stringify($scope.conference))
             conferenceToSave.start = new Date(conferenceToSave.start).getUnixTime();
             conferenceToSave.end = new Date(conferenceToSave.end).getUnixTime();
             conferencesRef.push(conferenceToSave);

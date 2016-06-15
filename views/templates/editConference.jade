@@ -35,27 +35,23 @@ h4 {{conference.name}}
               i.material-icons.left lightbulb_outline
           .collapsible-body
             p
-              span.black-text
-                | {{talk.name}}
+              span.black-text {{talk.name}}
               br
               | {{talk.description}}
               br
-              span.black-text
-                | {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
+              span.black-text {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
 
-            // TALKS ACCORDION
-            .col
-              .card-panel.grey.lighten-5.z-depth-1
-                .row.valign-wrapper
-                  .col.s2
-                    img.circle.responsive-img(ng-src='{{talk.speakerPicture}}', alt='image of {{talk.speakerName}}')
-                    // notice the "circle" class
-                  .col.s10
-                    span.black-text
-                      | {{talk.speaker}}
-                    br
-                    span
-                      | {{talk.speakerDescription}}
+            .card-panel.grey.lighten-5.z-depth-1
+              .row.valign-wrapper(style='margin-bottom: 0')
+                .col.s2(style='padding: .75rem')
+                  img.circle.responsive-img(ng-src='{{talk.speakerPicture}}', alt='image of {{talk.speakerName}}')
+                  // notice the "circle" class
+                .col.s10
+                  span.black-text
+                    | {{talk.speaker}}
+                  br
+                  span
+                    | {{talk.speakerDescription}}
             p
               a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}') Edit
               a.btn-flat(ng-click='(talks.$remove(talk))') Remove

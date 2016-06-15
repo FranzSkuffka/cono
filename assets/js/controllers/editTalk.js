@@ -102,7 +102,7 @@
 
               cropper.croppie('result', {
                 type: 'canvas',
-                size: {width: 100, height: 100},
+                size: {width: 200, height: 200},
                 quality: .8
               }).then( function (result) {
                 $scope.talk.speakerPicture = result;

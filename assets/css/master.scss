@@ -3,8 +3,14 @@
   min-height: 100vh;
 }
 
+/* Button Base */
 [class*='btn'] + [class*='btn']  {
   margin-left: 10px;
+}
+
+/* Croppie*/
+.cr-slider-wrap .thumb {
+  display: none
 }
 
 /*Start header*/

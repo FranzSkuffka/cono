@@ -51,10 +51,10 @@ h3 {{talk.name}}
             label Referent Bio:
             textarea(type='text', name='talkSpeakerDescription', ng-model='talk.speakerDescription').materialize-textarea
 
-        .section: .row
+        .section: .row.valign-wrapper
           .col.s2
             img.responsive-img.circle(ng-src='{{talk.speakerPicture}}')
-          .col.s8
+          .col.s9
             label Referent Foto:
             .file-field.input-field
               .btn

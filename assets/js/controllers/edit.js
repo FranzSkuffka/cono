@@ -22,6 +22,19 @@
                   , Auth
                   , $state) {
 
+
+        /////////////////////////////////////////
+        // BIND UI WIDGETS
+        var bindUiWidgets = function () {
+
+          $('.tabs').tabs()
+          $('.materialize-colorpicker').colorpicker(
+            {
+              component: '.btn'
+            }
+          )
+        }
+
         /////////////////////////////////////////
         // Make params available in scope
         $scope.state = $stateParams
@@ -148,25 +161,15 @@
                     $scope.conference = newConference();
                     conferenceRef = false;
                 }
-                /////////////////////////////////////////
-                // BIND UI WIDGETS
-
-                $('.tabs').tabs()
-                $('.materialize-colorpicker').colorpicker(
-                  {
-                    component: '.btn'
-                  }
-                )
+                bindUiWidgets();
 
             });
         }else{
             $scope.conference = newConference();
             conferenceRef = false;
-            /////////////////////////////////////////
-            // BIND UI TABS
-
-            $('.tabs').tabs()
+            bindUiWidgets();
         }
+
 
         // SAVE CONFERENCE
         // decide if update or delete

@@ -1,23 +1,34 @@
 h3 Meine Konferenzen
 .Conferences
+  h5.grey-text(ng-if='conferences.length < 1') Erstelle deine erste Konferenz mit dem großen
+    span.red-text  roten Button
+    |  unten rechts.
+
   .Conference.card.col.s3(ng-repeat='conference in conferences' ng-click='changeView(conference)' ng-class="{'z-depth-2': hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false")
 
+    .Conference-colorSwatch(ng-style="{'background-color': conference.corporateidentity.color}")
     .card-content
       span.card-title
         | {{conference.name}}
+        i(ng-if='conference.name.length == 0').grey-text Neue Konferenz
         span.badge.greey-text(ng-if='!conference.published') privat
         span.badge.green-text(ng-if='conference.published') veröffentlicht
 
-      p.section.grey-text(ng-if='conference.description == ""') Keine Beschreibung
       p.section(ng-if='!conference.description == ""') {{conference.description}}
+        i.grey-text(ng-if='conference.description == ""') Keine Beschreibung
       .divider
+
       p.section
         i.grey-text.material-icons.left room
+        i(ng-if='conference.location.city.length == 0').grey-text Kein Veranstaltungsort
         | {{conference.location.city}}
-      p
+
+      p.section
         i.grey-text.material-icons.left today
-        | Von {{conference.start * 1000 | date : "dd/MM/yy"}}
-        | bis {{conference.end * 1000 | date : "dd/MM/yy"}}
+        span
+          | {{conference.start * 1000 | date : "dd/MM/yy"}}
+        span
+          |  bis {{conference.end * 1000 | date : "dd/MM/yy"}}
 
   .fixed-action-btn
     a.btn-floating.btn-large.red(ng-click='createConference()')

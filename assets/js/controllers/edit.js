@@ -48,32 +48,6 @@
         /////////////////////////////////////////
         // TEMPLATES FOR NEW ENTRIES
 
-        // new conference template
-        // used on load error
-        var newConference = function(){
-            return {
-                description: "",
-                start: new Date(),
-                end: new Date(),
-                location: {
-                    street: "",
-                    housenumber: "",
-                    zip: "",
-                    city: ""
-                },
-
-                corporateidentity: {
-                    color: "black",
-                    logo: ""
-                },
-
-                published: false,
-                // Insert creator ID
-                organizerId: fbRef.getAuth().uid
-
-            }
-        };
-
         // new talk template
         // used in addTalk()
         var newTalk = function(){
@@ -163,17 +137,14 @@
                       $scope.$digest()
                     }
                     catch (e) {};
+                    bindUiWidgets();
                 }else{
-                    $scope.conference = newConference();
-                    conferenceRef = false;
+                    $state.go('dashboard');
                 }
-                bindUiWidgets();
 
             });
         }else{
-            $scope.conference = newConference();
-            conferenceRef = false;
-            bindUiWidgets();
+          $state.go('dashboard');
         }
 
 
@@ -185,25 +156,12 @@
         }
 
         $scope.save = function () {
-
-          // if the conferenceRef is defined , update it!
-          if(conferenceRef) {
-            var conferenceToUpdate = clone($scope.conference)
-            conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
-            conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
-            conferenceRef.update(conferenceToUpdate);
-          }
-
-          // if it is, just save it 
-          else {
-            var conferenceToSave = clone(JSON.stringify($scope.conference))
-            conferenceToSave.start = new Date(conferenceToSave.start).getUnixTime();
-            conferenceToSave.end = new Date(conferenceToSave.end).getUnixTime();
-            conferencesRef.push(conferenceToSave);
-          }
-
-          $state.go('dashboard');
-
+          var conferenceToUpdate = clone($scope.conference)
+          Materialize.toast('Konferenz gespeichert.')
+          conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
+          conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
+          conferenceRef.update(conferenceToUpdate);
+          console.log(conferenceToUpdate)
         };
 
         // DELETE

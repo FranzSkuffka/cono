@@ -1,44 +1,28 @@
 (function() {
 app.controller("authController", ['$scope', '$state', 'Auth', function($scope, $state, Auth) {
 
+
   if($state.current.name == 'logout') {
     Auth.$unauth();
+    Materialize.toast('Abgemeldet', 5000, 'grey white-text')
     $state.go('login');
   }
 
+  $scope.user = {}
   $scope.login = function () {
       if ($scope.user.email && $scope.user.pwd) {
+          Materialize.toast('Anmelden...', 2000)
           Auth.$authWithPassword({
               email: $scope.user.email,
               password: $scope.user.pwd
           }).then(function (authData) { // SUCCESS
-              console.log("Logged in as:" + authData.uid);
+              Materialize.toast('Angemeldet', 2000, 'green white-text')
               $state.go('dashboard');
           }).catch(function (error) {
-              alert("Authentication failed:" + error.message);
+              Materialize.toast('Anmeldung fehlgeschlagen', 5000, 'red white-text')
           });
       } else
-          alert("Please enter email and password both");
-  };
-
-  $scope.register = function () {
-      console.log("Create User Function called");
-      if ($scope.user.email && $scope.user.pwd) {
-
-          Auth.$createUser({
-              email: $scope.user.email,
-              password: $scope.user.pwd
-          }).then(function (userData) {
-              alert("User created successfully!");
-
-              fbRef.child("/hosts").child(userData.uid).set({
-                  email: $scope.user.email
-              });
-          }).catch(function (error) {
-              alert("Error: " + error);
-          });
-      } else
-          alert("Please fill all details");
+          Materialize.toast('Bitte gib Email und Passwort ein', 2000, 'orange white-text')
   };
 
 }]);

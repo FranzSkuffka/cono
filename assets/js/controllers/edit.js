@@ -52,15 +52,15 @@
         // used in addTalk()
         var newTalk = function(){
             return {
-                name: "New Talk",
-                description: "Mysteriöses Gerede über Lorem ipsum und son Zeug",
+                name: "",
+                description: "",
                 track: null,
                 start: new Date().getUnixTime(),
                 end: new Date().getUnixTime(),
                 location: 'someWhere',
-                speaker: 'Someone',
-                speakerDescription: 'Someone is really down with some serious issues.',
-                speakerPicture: 'http://www.radfaces.com/images/avatars/garth-algar.jpg',
+                speaker: '',
+                speakerDescription: '',
+                speakerPicture: '',
                 conferenceId: $stateParams.id
             }
         };
@@ -160,6 +160,7 @@
           Materialize.toast('Konferenz gespeichert.')
           conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
           conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
+          conferenceToUpdate.corporateidentity.color = $('input[name="color"]')[0].value;
           conferenceRef.update(conferenceToUpdate);
           console.log(conferenceToUpdate)
         };

@@ -66,7 +66,6 @@
                       $scope.$digest()
                     });
                 }else{
-                    $scope.talk = newConference();
                     talkRef = false;
                     materializeCropper(function(imageData){
                       $scope.talk.speakerPicture = imageData;

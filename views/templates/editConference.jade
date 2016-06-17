@@ -16,7 +16,7 @@ h4 {{conference.name}}
           li.tab.col.s3
             a(href='#tracks') Tracks
           li.tab.col.s3
-            a(href='#danger') Danger Zone
+            a(href='#danger') Gefahrenzone
 
   #details.col.s12
     include ../forms/_conference
@@ -35,12 +35,14 @@ h4 {{conference.name}}
             p
               | {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}} 
               b {{talk.name}}
+                span(ng-if='talk.name.length == 0').grey-text Neuer Talk
               i.material-icons.left lightbulb_outline
           .collapsible-body
             p
               span.black-text {{talk.name}}
               br
               | {{talk.description}}
+              i(ng-if='talk.description.length == 0').grey-text Keine Beschreibung
               br
               span.black-text {{talk.start * 1000 | date: dd.MM}} um {{talk.start | date: "HH:mm"}}
 
@@ -48,7 +50,6 @@ h4 {{conference.name}}
               .row.valign-wrapper(style='margin-bottom: 0')
                 .col.s2(style='padding: .75rem')
                   img.circle.responsive-img(ng-src='{{talk.speakerPicture}}', alt='image of {{talk.speakerName}}')
-                  // notice the "circle" class
                 .col.s10
                   span.black-text
                     | {{talk.speaker}}
@@ -56,7 +57,7 @@ h4 {{conference.name}}
                   span
                     | {{talk.speakerDescription}}
             p
-              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}') Edit
+              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}' target='_blank') Edit
               a.btn-flat(ng-click='(talks.$remove(talk))') Remove
 
   // TRACKS ACCORDION
@@ -70,7 +71,9 @@ h4 {{conference.name}}
         li(ng-repeat='track in tracks')
           .collapsible-header
             b {{track.name}}
-            |  {{track.description}}
+            b(ng-if='track.name.length == 0').grey-text: i Keine Beschreibung
+            | {{track.description}}
+            i(ng-if='track.description.length == 0').grey-text Keine Beschreibung
             i.material-icons.left place
           .collapsible-body
             .section.container

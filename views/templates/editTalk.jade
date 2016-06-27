@@ -27,7 +27,7 @@ h3 {{talk.name}}
       .row
         .FormInputField.col.s4
           label Datum
-          input(type='text', datetime='yyyy-MM-dd', name='talkStart', ng-model='talk.date', required='')
+          input(type='date' name='talkStart' ng-model='talk.date' required)
 
         .FormInputField.col.s4
           label Start-Uhrzeit

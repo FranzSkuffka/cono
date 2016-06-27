@@ -5,14 +5,6 @@
 
        // DEPENDENCY INJECTION CALLS
        // Our controller needs the following things to work...
-       , ['$scope'
-       , '$rootScope'
-       , '$firebaseArray'
-       , '$stateParams'
-       , 'Auth'
-       , 'cloudinary'
-       , '$state'
-
        , function(
        // DEPENDENCY INJECTION RECEPTION
        // And keeps their names as they are.
@@ -59,8 +51,8 @@
                 name: "",
                 description: "",
                 track: null,
-                start: new Date().getUnixTime(),
-                end: new Date().getUnixTime(),
+                start: $scope.conference.start.getUnixTime(),
+                end: $scope.conference.start.getUnixTime(),
                 location: 'someWhere',
                 speaker: '',
                 speakerDescription: '',
@@ -187,8 +179,9 @@
             conferenceRef.update({published: false});
         };
 
+        $scope.toast = Materialize.toast;
         //////////////////////////////////////////
 
         return $scope;
-    }]);
+    });
 }).call(this);

@@ -56,7 +56,7 @@ h3 {{talk.name}}
 
         .section: .row.valign-wrapper
           .col.s2
-            img.responsive-img.circle(ng-src='{{talk.speakerPicture}}')
+            img.responsive-img.circle(cl-src="{{talk.speakerPicture}}"   width="128"   height="128"   crop="thumb" gravity="face")
           .col.s9
             label Referent Foto:
             .file-field.input-field

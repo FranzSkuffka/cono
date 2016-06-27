@@ -10,6 +10,7 @@
        , '$firebaseArray'
        , '$stateParams'
        , 'Auth'
+       , 'cloudinary'
        , '$state'
 
        , function(
@@ -20,6 +21,7 @@
                   , $firebaseArray
                   , $stateParams
                   , Auth
+                  , cloudinary
                   , $state) {
 
 
@@ -34,11 +36,13 @@
             }
           )
 
-          materializeCropper(function(imageData){
-            $scope.conference.corporateidentity.logo = imageData;
-            $scope.$digest();
-          })
 
+          imageUpload( cloudinary, function(imageData){
+              $scope.conference.corporateidentity.logo = imageData;
+              try{$scope.$digest();}
+              catch (e) {}
+            }
+          );
         }
 
         /////////////////////////////////////////
@@ -107,7 +111,6 @@
 
           $scope.$watch('tracks', function (data) {
             $('.TrackList').collapsible()
-            console.log($scope.tracks);
           });
 
           // create add track method
@@ -162,7 +165,6 @@
           conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
           conferenceToUpdate.corporateidentity.color = $('input[name="color"]')[0].value;
           conferenceRef.update(conferenceToUpdate);
-          console.log(conferenceToUpdate)
         };
 
         // DELETE

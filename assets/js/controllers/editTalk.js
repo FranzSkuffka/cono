@@ -12,6 +12,7 @@
        , '$stateParams'
        , '$location'
        , 'Auth'
+       , 'cloudinary'
        , '$state'
 
        , function(
@@ -23,6 +24,7 @@
                   , $stateParams
                   , $location
                   , Auth
+                  , cloudinary
                   , $state) {
 
         // UTILITY: MERGE DATE AND TIME
@@ -61,15 +63,17 @@
                       $scope.$digest()
                     }
                     catch (e) {};
-                    materializeCropper(function(imageData){
+                    imageUpload(cloudinary, function(imageData){
                       $scope.talk.speakerPicture = imageData;
-                      $scope.$digest()
+                      try {$scope.$digest()}
+                      catch (e) {}
                     });
                 }else{
                     talkRef = false;
-                    materializeCropper(function(imageData){
+                    imageUpload(cloudinary, function(imageData){
                       $scope.talk.speakerPicture = imageData;
-                      $scope.$digest()
+                      try {$scope.$digest()}
+                      catch (e) {}
                     });
                 }
             });

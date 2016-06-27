@@ -1,6 +1,6 @@
 // EDIT CONFERENCE FORM
 // GENERAL
-form(name='conferenceForm', ng-submit='save()')
+form(name='conferenceForm')
 
   h5.grey-text Allgemein
   .row
@@ -52,17 +52,17 @@ form(name='conferenceForm', ng-submit='save()')
 
   .section: .row.valign-wrapper
     .col.s2
-      img.responsive-img.circle(ng-src='{{conference.corporateidentity.logo}}')
+      img.responsive-img(cl-src="{{conference.corporateidentity.logo}}" height="128"   crop="fill")
     .col.s9
-      label Referent Foto:
+      label Logo der Konferenz:
       .file-field.input-field
-        .btn
+        .btn.waves-effect
           span Datei wählen
-          input(type='file' name='conferenceLogo').file-upload
+          input(type='file' name='conferenceLogo' accept="image/*" maxsize="100000").file-upload
         .file-path-wrapper
           input.file-path.validate(type='text')
 
   // SUBMIT
-  input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
-  a.btn.blue.white-text(ng-click='publish()', ng-if='!conference.published') Veröffentlichen
-  a.btn.blue.darken-3.white-text(ng-click='unpublish()', ng-if='conference.published') Verstecken
+  a.btn-large.waves-effect.waves-black(ng-click='save()') Speichern
+  a.btn.blue.white-text.waves-effect(ng-click='publish()', ng-if='!conference.published') Veröffentlichen
+  a.btn.blue.darken-3.white-text.waves-effect(ng-click='unpublish()', ng-if='conference.published') Verstecken

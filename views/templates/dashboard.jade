@@ -29,6 +29,7 @@ h3 Meine Konferenzen
           | {{conference.start * 1000 | date : "dd/MM/yy"}}
         span
           |  bis {{conference.end * 1000 | date : "dd/MM/yy"}}
+    img.Conference-cardLogo(cl-src="{{conference.corporateidentity.logo}}" height="50"   crop="fill" ng-if='conference.corporateidentity.logo')
 
   .fixed-action-btn
     a.btn-floating.btn-large.red(ng-click='createConference()')

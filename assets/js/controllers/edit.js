@@ -157,7 +157,7 @@
 
         $scope.save = function () {
           var conferenceToUpdate = clone($scope.conference)
-          Materialize.toast('Konferenz gespeichert.')
+          Materialize.toast('Konferenz gespeichert.', 1000)
           conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime();
           conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime();
           conferenceToUpdate.corporateidentity.color = $('input[name="color"]')[0].value;
@@ -174,12 +174,14 @@
         // PUBLISH
         $scope.publish = function() {
             $scope.conference.published = true;
+            Materialize.toast('Konferenz veröffentlicht.', 1000, 'blue')
             conferenceRef.update({published: true});
         };
 
         // UNPUBLISH
         $scope.unpublish = function() {
             $scope.conference.published = false;
+            Materialize.toast('Konferenz versteckt.', 1000, 'grey')
             conferenceRef.update({published: false});
         };
 

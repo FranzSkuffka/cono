@@ -1,8 +1,7 @@
 include _mixins
 +cropModal()
 
-h5 Konferenz Bearbeiten
-h4 {{conference.name}}
+h5 {{conference.name}}
 
 .card.row: .section.container
   .container
@@ -10,13 +9,13 @@ h4 {{conference.name}}
       .section
         ul.tabs
           li.tab.col.s3
-            a(href='#details') Details
+            a(href='#details').teal-text Konferenz
           li.tab.col.s3
-            a(href='#talks') Talks
+            a(href='#talks').teal-text Talks
           li.tab.col.s3
-            a(href='#tracks') Tracks
+            a(href='#tracks').teal-text Tracks
           li.tab.col.s3
-            a(href='#danger') Gefahrenzone
+            a(href='#danger').teal-text Gefahrenzone
 
   #details.col.s12
     include ../forms/_conference

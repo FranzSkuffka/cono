@@ -17,7 +17,7 @@ form(name='conferenceForm')
   .row
     .FormInputField.col.s6
       label Zeitraum von
-      input.datepicker(type='date', name='start', ng-model='conference.start')
+      input(type='date', name='start', ng-model='conference.start')
 
     .FormInputField.col.s6
       label Zeitraum bis
@@ -25,6 +25,15 @@ form(name='conferenceForm')
 
   h5.grey-text Ort
   .row
+
+    .FormInputField.col.s2
+      label Postleitzahl:
+      input(type='text', name='zip', ng-model='conference.location.zip')
+
+    .FormInputField.col.s3
+      label Ort:
+      input(type='text', name='city', ng-model='conference.location.city')
+
     .FormInputField.col.s5
       label Straße:
       input(type='text', name='street', ng-model='conference.location.street')
@@ -33,18 +42,10 @@ form(name='conferenceForm')
       label Hausnummer:
       input(type='text', name='housenumber', ng-model='conference.location.housenumber')
 
-    .FormInputField.col.s2
-      label Postleitzahl:
-      input(type='text', name='zip', ng-model='conference.location.zip')
-
-    .FormInputField.col.s3
-      label Stadt:
-      input(type='text', name='city', ng-model='conference.location.city')
-
   h5.grey-text Design
   .row
     .FormInputField.col.s6
-      label Layoutfarbe:
+      label Layoutfarbe (HEX oder RGB):
       .file-field.materialize-colorpicker
         .btn
         .file-path-wrapper

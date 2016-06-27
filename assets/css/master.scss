@@ -1,3 +1,9 @@
+@import "_materialize";
+
+.tabs .indicator {
+  background-color: color("teal", "lighten-1")
+}
+
 #AppContent {
   /* background-color: #eeeeee; */
   min-height: 100vh;

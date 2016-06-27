@@ -56,8 +56,8 @@ h5 {{conference.name}}
                   span
                     | {{talk.speakerDescription}}
             p
-              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}' target='_blank') Edit
-              a.btn-flat(ng-click='(talks.$remove(talk))') Remove
+              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}' target='_blank') Bearbeiten
+              a.btn-flat(ng-click='(talks.$remove(talk))') Löschen
 
   // TRACKS ACCORDION
   #tracks.col.s12
@@ -79,11 +79,8 @@ h5 {{conference.name}}
               div
                 label Name
                 input(type='text', name='trackName', ng-model='track.name', required='')
-              div
-                label Description
-                input(type='text', description='trackDescription', ng-model='track.description', required='')
-              a.btn-large.green.white-text(ng-click='(tracks.$save(track))') Save
-              a.btn-large.red.white-text(ng-click='(tracks.$remove(track))') Remove
+              a.btn-large.green.white-text(ng-click='(tracks.$save(track))') Speichern
+              a.btn-large.red.white-text(ng-click='(tracks.$remove(track))') Löschen
   .row
     #danger.col.s12
       p.section

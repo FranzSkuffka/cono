@@ -3,18 +3,16 @@
 
       "editConferenceController"
 
-       // DEPENDENCY INJECTION CALLS
-       // Our controller needs the following things to work...
        , function(
-       // DEPENDENCY INJECTION RECEPTION
-       // And keeps their names as they are.
-                    $scope
-                  , $rootScope
-                  , $firebaseArray
-                  , $stateParams
-                  , Auth
-                  , cloudinary
-                  , $state) {
+       // DEPENDENCY INJECTION
+          $scope
+        , $rootScope
+        , $firebaseArray
+        , $stateParams
+        , $location
+        , Auth
+        , cloudinary
+        , $state) {
 
 
         /////////////////////////////////////////
@@ -38,40 +36,13 @@
         }
 
         /////////////////////////////////////////
-        // Make params available in scope
-        $scope.state = $stateParams
+        // UTILITIES TO SCOPE
 
-        /////////////////////////////////////////
-        // TEMPLATES FOR NEW ENTRIES
-
-        // new talk template
-        // used in addTalk()
-        var newTalk = function(){
-            return {
-                name: "",
-                description: "",
-                track: null,
-                start: $scope.conference.start.getUnixTime(),
-                end: $scope.conference.start.getUnixTime(),
-                location: 'someWhere',
-                speaker: '',
-                speakerDescription: '',
-                speakerPicture: '',
-                conferenceId: $stateParams.id
-            }
-        };
-
-        // new track template
-        // used in addTrack()
-        var newTrack = function(){
-            return {
-                name: "New Track",
-                conferenceId: $stateParams.id,
-                description: "This appears to be a very mysterious place"
-            }
-        };
+        $scope.state = $stateParams;
+        $scope.toast = Materialize.toast;
 
         ///////////////////////////////////////////
+
 
         ///////////////////////////////////////////
         // DATABASE BINDINGS
@@ -93,7 +64,10 @@
 
           // create add talk method
           $scope.addTalk = function () {
-            $scope.talks.$add(newTalk());
+            $scope.talks.$add(entryTemplates.newTalk($stateParams.id, $scope.conference)).then(function (talk) {
+              var path = '/edit/talk/' + talk.key() + '/' + $stateParams.slug + '/' + $stateParams.id
+              $location.path(path)
+            })
           }
 
 
@@ -107,7 +81,7 @@
 
           // create add track method
           $scope.addTrack = function () {
-            $scope.tracks.$add(newTrack());
+            $scope.tracks.$add(entryTemplates.newTrack($stateParams, $scope));
           }
         }
 
@@ -178,8 +152,6 @@
             Materialize.toast('Konferenz versteckt.', 1000, 'grey')
             conferenceRef.update({published: false});
         };
-
-        $scope.toast = Materialize.toast;
         //////////////////////////////////////////
 
         return $scope;

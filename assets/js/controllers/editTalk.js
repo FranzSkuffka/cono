@@ -4,28 +4,16 @@
 
       "editTalkController"
 
-       // DEPENDENCY INJECTION CALLS
-       // Our controller needs the following things to work...
-       , ['$scope'
-       , '$rootScope'
-       , '$firebaseArray'
-       , '$stateParams'
-       , '$location'
-       , 'Auth'
-       , 'cloudinary'
-       , '$state'
-
        , function(
-       // DEPENDENCY INJECTION RECEPTION
-       // And keeps their names as they are.
-                    $scope
-                  , $rootScope
-                  , $firebaseArray
-                  , $stateParams
-                  , $location
-                  , Auth
-                  , cloudinary
-                  , $state) {
+       // DEPENDENCY INJECTION
+          $scope
+        , $rootScope
+        , $firebaseArray
+        , $stateParams
+        , $location
+        , Auth
+        , cloudinary
+        , $state) {
 
         // UTILITY: MERGE DATE AND TIME
         //
@@ -48,7 +36,10 @@
           });
 
 
-            var talkRef = fbRef.child("talks/").child($stateParams.id)
+            var talksRef = fbRef.child("talks/")
+            var conferenceRef = fbRef.child("conferences/").child($stateParams.conferenceId)
+            var talkRef = talksRef.child($stateParams.id)
+
             talkRef.once('value', function(snapshot) {
                 if(snapshot.val() != null){
                     var talk = snapshot.val();
@@ -90,10 +81,27 @@
           delete $scope.talk.date
           // delete date property
           talkRef.update($scope.talk)
+          Materialize.toast('Talk gespeichert', 1000, 'green')
+        }
+
+        $scope.return = function () {
           // go back to conference
           $location.path(returnPath);
         }
 
+        $scope.new = function () {
+          // go back to conference
+          Materialize.toast('Neuer Talk wird erstellt', 1000, 'grey')
+          conferenceRef.once('value', function(snapshot) {
+            var conference = snapshot.val()
+            var newTalk = talksRef.push()
+            newTalk.set(entryTemplates.newTalk($stateParams.conferenceId, conference))
+            var newPath = '/edit/talk/' + newTalk.key() + '/' + $stateParams.conferenceName + '/' + $stateParams.conferenceId;
+            $location.path(newPath);
+
+          })
+        }
+
       var firebaseRef = fbRef
-    }]);
+    });
 }).call(this);

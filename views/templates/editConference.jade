@@ -56,7 +56,7 @@ h5 {{conference.name}}
                   span
                     | {{talk.speakerDescription}}
             p
-              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}' target='_blank') Bearbeiten
+              a.btn(href='#/edit/talk/{{talk.$id}}/{{state.slug}}/{{state.id}}') Bearbeiten
               a.btn-flat(ng-click='(talks.$remove(talk))') Löschen
 
   // TRACKS ACCORDION

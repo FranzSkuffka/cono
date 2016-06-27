@@ -67,5 +67,6 @@ h3 {{talk.name}}
                 input.file-path.validate(type='text')
 
 
-      input.waves-effect.waves-light.btn-large(type='submit', value='Speichern')
-      a.btn.orange.white-text(href='{{returnPath}}')  Abbrechen 
+      input.btn-large(type='submit' value='Speichern')
+      a.btn-flat.waves-effect.btn-large.green-text(ng-click='new()') Neuen Talk hinzufügen
+      a.btn-flat(href='{{returnPath}}') Zurück

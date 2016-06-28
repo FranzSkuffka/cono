@@ -70,10 +70,10 @@ h5 {{conference.name}}
         li(ng-repeat='track in tracks')
           .collapsible-header
             b {{track.name}}
-            b(ng-if='track.name.length == 0').grey-text: i Keine Beschreibung
-            | {{track.description}}
-            i(ng-if='track.description.length == 0').grey-text Keine Beschreibung
-            i.material-icons.left place
+            // b(ng-if='track.name.length == 0').grey-text: i Keine Beschreibung
+            // | {{track.description}}
+            // i(ng-if='track.description.length == 0').grey-text Keine Beschreibung
+            // i.material-icons.left place
           .collapsible-body
             .section.container
               div

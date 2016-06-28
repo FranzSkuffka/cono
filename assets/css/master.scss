@@ -70,6 +70,7 @@
 }
 /*End talk-edit*/
 
+
 /*Start track-edit*/
 .collapsible-header {
   overflow: hidden;
@@ -77,3 +78,20 @@
   text-overflow: ellipsis;
 }
 /*End track-edit*/
+
+.collapsible-header p {
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left: 3rem;
+  b {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .material-icons {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+  }
+}

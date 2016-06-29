@@ -1,17 +1,12 @@
 app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, $stateParams, $location, Auth, cloudinary, $state) ->
+
+  window.cloudinary = cloudinary
   #///////////////////////////////////////
   # BIND UI WIDGETS
 
   bindUiWidgets = ->
     $('.tabs').tabs()
     $('.materialize-colorpicker').colorpicker component: '.btn'
-    imageUpload cloudinary, (imageData) ->
-      $scope.conference.corporateidentity.logo = imageData
-      try
-        $scope.$digest()
-      catch e
-      return
-    return
 
   #///////////////////////////////////////
   # UTILITIES TO SCOPE
@@ -85,8 +80,6 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
   # SAVE CONFERENCE
   # decide if update or delete
 
-  clone = (object) ->
-    JSON.parse JSON.stringify(object)
 
   $scope.save = ->
     conferenceToUpdate = clone($scope.conference)
@@ -120,6 +113,8 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
     conferenceRef.update published: false
     return
 
-  #////////////////////////////////////////
-  $scope
+  window.onbeforeunload = -> $scope.save()
+
+  $scope.$on "$locationChangeStart", window.onbeforeunload
+
 return

@@ -31,42 +31,13 @@
 //    /#/edit/
 //
 
-      // CREATE CONFERENCE
-        .state('new', {
-            url: '/edit/',
-            templateUrl: 'templates/editConference.html',
-            controller: 'editConferenceController',
-            resolve: requireAuth
-        })
-
       // UPDATE OR DELETE CONFERENCE
       .state('edit', {
           url: '/edit/:slug/:id',
-          templateUrl: 'templates/editConference.html',
+          templateUrl: 'templates/conference/index.html',
           controller: 'editConferenceController',
           resolve: requireAuth
       })
-
-
-      .state('editTalk', {
-          url: '/edit/talk/:id/:conferenceName/:conferenceId',
-          templateUrl: 'templates/editTalk.html',
-          controller: 'editTalkController',
-          resolve: requireAuth
-      })
-
-
-
-      // TRACK
-      .state('editTrack', {
-          url: '/edit/track/:trackId',
-          templateUrl: 'templates/editTrack.html',
-          controller: 'editTrackController',
-          resolve: requireAuth
-      })
-
-
-
 
 // 
 // AUTHENTICATION

@@ -1,0 +1,50 @@
+h5 {{conference.name}}
+
+.section
+  .container
+    .col.s12
+      .section
+        ul.tabs
+          li.tab.col.s3
+            a(href='#details').teal-text Konferenz
+          li.tab.col.s3
+            a(href='#talks').teal-text Talks
+          li.tab.col.s3
+            a(href='#tracks').teal-text Tracks
+          li.tab.col.s3
+            a(href='#danger').teal-text Löschen
+
+  #details.col.s12
+    include _conferenceForm
+
+    // TALKS ACCORDION
+  #talks.col.s12
+    include _talks
+
+  // TRACKS ACCORDION
+  #tracks.col.s12
+    .row
+      ul.collapsible.TrackList(data-collapsible='accordion')
+        li
+          .blue.white-text.collapsible-header(ng-click='addTrack()')
+            p Track hinzufügen
+              i.material-icons.left add_location
+        li(ng-repeat='track in tracks')
+          .collapsible-header
+            b {{track.name}}
+            // b(ng-if='track.name.length == 0').grey-text: i Keine Beschreibung
+            // | {{track.description}}
+            // i(ng-if='track.description.length == 0').grey-text Keine Beschreibung
+            // i.material-icons.left place
+          .collapsible-body
+            .section.container
+              div
+                label Name
+                input(type='text', name='trackName', ng-model='track.name', required='')
+              a.btn-large.waves-effect(ng-click='tracks.$save(track); toast("Track gespeichert", 1000)') Speichern
+              a.btn-large.red.white-text(ng-click='(tracks.$remove(track))') Löschen
+  .row
+    #danger.col.s12
+      p.section
+        a.btn.red.white-text(ng-if='conferenceRef', ng-click='removeConference(conference)', href='#/dashboard')
+          | Konferenz löschen

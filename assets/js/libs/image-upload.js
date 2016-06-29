@@ -1,7 +1,7 @@
 (function() {
   window.imageUpload = function (cloudinary, callback) {
       $(".file-upload")[0].addEventListener('change', function (event) {
-          Materialize.toast('Bild lädt hoch...', 3000);
+          Materialize.toast('Bild lädt hoch...', 2000);
           cloudinary.upload(event.target.files[0], { /* cloudinary options here */ })
 
           // This returns a promise that can be used for result handling

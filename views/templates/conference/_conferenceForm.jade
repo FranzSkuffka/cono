@@ -59,7 +59,7 @@ form(name='conferenceForm')
       .file-field.input-field
         .btn.waves-effect
           span Datei wählen
-          input(type='file' name='conferenceLogo' accept="image/*" maxsize="100000").file-upload
+          input(type='file' ng-model='temporaryImage' target='conference.corporateidentity.logo' name='conferenceLogo' accept="image/*" maxsize="100000")
         .file-path-wrapper
           input.file-path.validate(type='text')
 

@@ -1,0 +1,62 @@
+form(name='editTalkForm' ng-controller='editTalkController')
+
+  h5.grey-text Allgemein
+  .row
+    .FormInputField.col.s6
+      label Talkname:
+      input(type='text', name='talkName', ng-model='talk.name', required='')
+
+  .row
+    .FormInputField.col.s6
+      label Beschreibung:
+      textarea(name='description', ng-model='talk.description', required='').materialize-textarea
+
+  h5.grey-text Raum & Zeit
+  .row
+    .FormInputField.col.s6
+      label Track
+      select(ng-model='talk.track', ng-options='id as track.name  for (id, track) in tracks')
+
+  .row
+    .FormInputField.col.s4
+      label Datum
+      input(type='date' name='talkStart' ng-model='talk.date' required)
+
+    .FormInputField.col.s4
+      label Start-Uhrzeit
+      input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.start', required='')
+
+    .FormInputField.col.s4
+      label End-Uhrzeit
+      input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.end', required='')
+
+  .row
+    .FormInputField.col.s6
+      label Raum:
+      input(type='text', name='talkroom', ng-model='talk.room', required='')
+
+  section
+    h5.grey-text Referent
+    .row
+      .FormInputField.col.s6
+        label Referent:
+        input(type='text', name='talkSpeaker', ng-model='talk.speaker', required='')
+
+    .row
+      .FormInputField.col.s6
+        label Referent Bio:
+        textarea(type='text', name='talkSpeakerDescription', ng-model='talk.speakerDescription').materialize-textarea
+
+    .section: .row.valign-wrapper
+      .col.s2
+        img.responsive-img.circle(cl-src="{{talk.speakerPicture}}"   width="128"   height="128"   crop="thumb" gravity="face")
+      .col.s9
+        label Referent Foto:
+        .file-field.input-field
+          .btn
+            span Datei wählen
+            input(type='file' ng-model='temporaryImage' target='talk.speakerPicture' accept="image/*" maxsize="100000")
+          .file-path-wrapper
+            input.file-path.validate(type='text')
+  a.btn-large.waves-effect(ng-click='save()') Speichern
+  a.btn-large.red.waves-effect(ng-click='talks.$remove(talk); toast("Talk gelöscht", "3000") ' ) Löschen

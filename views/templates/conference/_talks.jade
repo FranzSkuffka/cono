@@ -1,0 +1,16 @@
+.row
+  ul.collapsible.TalkList(data-collapsible='accordion')
+    li
+      .collapsible-header.green.white-text(ng-click='addTalk()')
+        p Talk hinzufügen
+          i.material-icons.left add
+
+    li(ng-repeat='talk in talks')
+      .collapsible-header
+        p
+          | {{talk.start * 1000 | date: dd.MM}} um {{talk.start * 1000 | date: "HH:mm"}} 
+          b {{talk.name}}
+            span(ng-if='talk.name.length == 0').grey-text Neuer Talk
+          i.material-icons.left lightbulb_outline
+      .collapsible-body: .section.container
+        include _talkForm

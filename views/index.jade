@@ -19,7 +19,6 @@ html(ng-app='cono')
     // third-party lib
     script(src='js/libs/datetime.js')
     script(src='js/libs/materialize-colorpicker.js')
-    script(src='js/libs/image-upload.js')
     script(src='/bower_components/ng-file-upload/ng-file-upload-shim.js')
     script(src='/bower_components/ng-file-upload/ng-file-upload.js')
     script(src='/bower_components/angular-cloudinary/angular-cloudinary.js')
@@ -74,11 +73,19 @@ html(ng-app='cono')
       .footer-copyright
 
     // end of app
+
+    // HELPERS
+    script(src='js/utils.js')
     script(src='js/entryTemplates.js')
+
+    // APP LOGIC
     script(src='js/main.js')
     script(src='js/cloudinary.js')
     script(src='js/routes.js')
     script(src='js/directives/passwordValidator.js')
+    script(src='js/directives/image-upload.js')
+
+    // CONTROLLERS
     script(src='js/controllers/registration.js')
     script(src='js/controllers/auth.js')
     script(src='js/controllers/user.js')

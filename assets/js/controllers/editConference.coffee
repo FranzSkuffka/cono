@@ -6,7 +6,7 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
 
   bindUiWidgets = ->
     $('.tabs').tabs()
-    $('.materialize-colorpicker').colorpicker component: '.btn'
+    delay(1000)(-> $('.materialize-colorpicker').colorpicker(component: '.btn'))
 
   #///////////////////////////////////////
   # UTILITIES TO SCOPE
@@ -86,7 +86,7 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
     Materialize.toast 'Konferenz gespeichert.', 1000
     conferenceToUpdate.start = new Date(conferenceToUpdate.start).getUnixTime()
     conferenceToUpdate.end = new Date(conferenceToUpdate.end).getUnixTime()
-    conferenceToUpdate.corporateidentity.color = $('input[name="color"]')[0].value
+    conferenceToUpdate.corporateidentity.color = hexify $('input[name="color"]')[0].value
     conferenceRef.update conferenceToUpdate
     return
 

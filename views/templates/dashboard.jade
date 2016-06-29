@@ -8,11 +8,11 @@ h3 Meine Konferenzen
 
     .Conference-colorSwatch(ng-style="{'background-color': conference.corporateidentity.color}")
     .card-content
-      span.card-title
+      .card-title
         | {{conference.name}}
         i(ng-if='conference.name.length == 0').grey-text Neue Konferenz
-        span.badge.greey-text(ng-if='!conference.published') privat
-        span.badge.green-text(ng-if='conference.published') veröffentlicht
+      span.grey-text(ng-if='!conference.published') privat
+      span.green-text(ng-if='conference.published') veröffentlicht
 
       p.section(ng-if='!conference.description == ""') {{conference.description}}
         i.grey-text(ng-if='conference.description == ""') Keine Beschreibung

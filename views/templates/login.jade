@@ -5,11 +5,11 @@ h3.center-align Login
 
     label
       span.input-label E-Mail
-      input(type='text', ng-model='user.email')
+      input(name='email' type='text', ng-model='user.email')
 
     label
       span.input-label Passwort
-      input(type='password', ng-model='user.pwd')
+      input(name='password' type='password', ng-model='user.pwd')
 
     button.btn-large.waves-effect(ng-click='login()') Anmelden
       i.material-icons.left done

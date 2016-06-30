@@ -5,6 +5,7 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
   bindUiWidgets = ->
     $('.tabs').tabs()
     delay(1000)(-> $('.materialize-colorpicker').colorpicker(component: '.btn'))
+    preloader.classList.remove "active"
 
   $scope.state = $stateParams
   $scope.toast = Materialize.toast

@@ -95,3 +95,19 @@
     left: 0rem;
   }
 }
+
+#preloader {
+  display: none;
+}
+#preloader.active {
+  margin: 10rem auto;
+  display: block;
+  + * {
+    opacity: 0;
+    transform: translateX(2rem) scale(.95);
+  }
+}
+#preloader + * {
+  transition: .3s cubic-bezier(.55,0,.1,1);
+  transform: translateX(0);
+}

@@ -58,5 +58,5 @@ form(name='editTalkForm' ng-controller='editTalkController')
             input(type='file' ng-model='temporaryImage' target='talk.speakerPicture' accept="image/*" maxsize="100000")
           .file-path-wrapper
             input.file-path.validate(type='text')
-  a.btn-large.waves-effect(ng-click='save()') Speichern
+  a.btn-large.waves-effect(ng-click='save($event)') Speichern
   a.btn-large.red.waves-effect(ng-click='talks.$remove(talk); toast("Talk gelöscht", "3000") ' ) Löschen

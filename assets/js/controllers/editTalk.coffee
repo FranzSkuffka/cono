@@ -5,9 +5,9 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
     $scope.talk.start = $scope.talk.end = $scope.talk.date = new Date(val.start * 1000)
     transformForView()
 
-  $scope.save = (opts) ->
-
-    opts = {} if !opts?
+  $scope.save = ($event) ->
+    $event.toElement.parentElement.parentElement.parentElement.parentElement.children[0].click()
+    $("html, body").animate({ scrollTop: 0 }, "slow")
 
     # combine date and times
     talkToSave = clone($scope.talk)
@@ -23,7 +23,7 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
 
     fbRef.child('talks').child($scope.talk.$id).set(talkToSave)
 
-    Materialize.toast 'Talk gespeichert', 1000, 'green' if !opts.silent
+    Materialize.toast 'Talk gespeichert', 1000, 'green' if !$event.silent
 
   window.onbeforeunload = (e) ->
     $scope.save({silent: true})

@@ -24,10 +24,6 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
     Materialize.toast 'Talk gespeichert', 1000, 'green' if $event?
     $("html, body").animate({ scrollTop: 0 }, "slow")
 
-
-  window.onbeforeunload = (e) ->
-    $scope.save()
-
-  $scope.$on "$locationChangeStart", window.onbeforeunload
+  $scope.$on "$locationChangeStart", $scope.save
 
 return

@@ -86,5 +86,4 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
 
   # save entry when changing path
   # WARNING: Does not work when user closes the tab / window
-  window.onbeforeunload = -> $scope.save()
-  $scope.$on "$locationChangeStart", window.onbeforeunload
+  $scope.$on "$locationChangeStart", $scope.save

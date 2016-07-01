@@ -16,7 +16,12 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
     $scope.talks = $firebaseArray(fbRef.child('talks').orderByChild('conferenceId').equalTo($stateParams.id))
     $scope.tracks = $firebaseArray(fbRef.child('tracks').orderByChild('conferenceId').equalTo($stateParams.id))
 
-    $scope.$watch 'talks', (data) -> $('.TalkList').collapsible()
+    $scope.$watch 'talks', (data) ->
+        $('.TalkList').collapsible()
+        $('select').material_select()
+        for talk in data
+          talk.tempStart = talk.tempEnd = talk.tempDate = new Date(talk.start * 1000) if !talk.tempStart?
+      , true
     $scope.$watch 'tracks', (data) -> $('.TrackList').collapsible()
 
     $scope.addTalk = -> $scope.talks.$add(entryTemplates.newTalk($stateParams.id, $scope.conference))

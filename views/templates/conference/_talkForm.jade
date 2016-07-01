@@ -20,15 +20,15 @@ form(name='editTalkForm' ng-controller='editTalkController')
   .row
     .FormInputField.col.s4
       label Datum
-      input(type='date' name='talkStart' ng-model='talk.date' required)
+      input(type='date' name='talkStart' ng-model='talk.tempDate' required)
 
     .FormInputField.col.s4
       label Start-Uhrzeit
-      input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.start', required='')
+      input(type='text', datetime='HH:mm', name='talkStart', ng-model='talk.tempStart', required='')
 
     .FormInputField.col.s4
       label End-Uhrzeit
-      input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.end', required='')
+      input(type='text', datetime='HH:mm', name='talkEnd', ng-model='talk.tempEnd', required='')
 
   .row
     .FormInputField.col.s6

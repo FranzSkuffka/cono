@@ -8,8 +8,8 @@
     li(ng-repeat='talk in talks')
       .collapsible-header
         p
-          | {{talk.start | date: dd.MM}} um {{talk.start | date: "HH:mm"}} 
-          b {{talk.name}}
+          | {{talk.tempStart | date: dd.MM}} um {{talk.tempStart | date: "HH:mm"}} |
+          b  {{talk.name}}
             span(ng-if='talk.name.length == 0').grey-text Neuer Talk
           i.material-icons.left lightbulb_outline
       .collapsible-body: .section.container

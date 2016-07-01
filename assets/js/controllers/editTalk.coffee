@@ -1,18 +1,12 @@
 app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $stateParams, $location, Auth, cloudinary, $state) ->
 
-  # LOAD TALK FROM DATABASE
-  transformForView = $scope.$watch 'talk', (val) ->
-    $scope.talk.start = $scope.talk.end = $scope.talk.date = new Date(val.start * 1000)
-    transformForView()
-
   $scope.save = ($event) ->
-    $event.toElement.parentElement.parentElement.parentElement.parentElement.children[0].click()
-    $("html, body").animate({ scrollTop: 0 }, "slow")
+
 
     # combine date and times
     talkToSave = clone($scope.talk)
-    talkToSave.start = mergeTimestamp(talkToSave.date, talkToSave.start).getUnixTime()
-    talkToSave.end = mergeTimestamp(talkToSave.date, talkToSave.end).getUnixTime()
+    talkToSave.start = mergeTimestamp(talkToSave.tempDate, talkToSave.tempStart) / 1000
+    talkToSave.end = mergeTimestamp(talkToSave.tempDate, talkToSave.tempEnd) / 1000
 
     # clean object to be saved
     for key of talkToSave
@@ -20,13 +14,19 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
         delete talkToSave[key]
       if key[0] == '$'
         delete talkToSave[key]
+      if key[0 .. 3] == 'temp'
+        delete talkToSave[key]
 
     fbRef.child('talks').child($scope.talk.$id).set(talkToSave)
 
-    Materialize.toast 'Talk gespeichert', 1000, 'green' if !$event.silent
+    # user feedback
+    $event.toElement.parentElement.parentElement.parentElement.parentElement.children[0].click() if $event?
+    Materialize.toast 'Talk gespeichert', 1000, 'green' if $event?
+    $("html, body").animate({ scrollTop: 0 }, "slow")
+
 
   window.onbeforeunload = (e) ->
-    $scope.save({silent: true})
+    $scope.save()
 
   $scope.$on "$locationChangeStart", window.onbeforeunload
 

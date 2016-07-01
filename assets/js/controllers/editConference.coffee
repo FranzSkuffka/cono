@@ -22,8 +22,9 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
 
         sorted = false
         for talk in data
-          if !talk.tempStart?
-            talk.tempStart = talk.tempEnd = talk.tempDate = new Date(talk.start * 1000)
+          if !talk.tempStart? && !talk.tempEnd?
+            talk.tempStart = talk.tempDate = new Date(talk.start * 1000)
+            talk.tempEnd = new Date(talk.end * 1000)
           else
             sorted = true
 
@@ -97,3 +98,33 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
   # save entry when changing path
   # WARNING: Does not work when user closes the tab / window
   $scope.$on "$locationChangeStart", $scope.save
+
+
+  $scope.initializeTimetable = (talks, tracks) ->
+    locations = []
+    locations.push ''
+    timetable = new Timetable()
+
+    getTrackName = (tracks, talk) ->
+      if talk.track?
+        return tracks[Number(talk.track)].name
+      else
+        return ''
+
+    for track in tracks
+      locations.push track.name
+
+    timetable.addLocations locations
+
+    for talk in talks
+      timetable.addEvent talk.name, getTrackName(tracks, talk), new Date(talk.start * 1000), new Date(talk.end * 1000)
+
+    talks = clone(talks)
+    tracks = clone(tracks)
+    tracks.push ''
+
+    # timetable.setScope(9, 17)
+
+    renderer = new Timetable.Renderer(timetable)
+
+    renderer.draw('.timetable')

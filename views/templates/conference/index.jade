@@ -20,6 +20,8 @@ h3 {{conference.name}}
           li.tab.col.s3
             a(href='#tracks').teal-text Tracks
           li.tab.col.s3
+            a(href='#overview' ng-click='initializeTimetable(talks, tracks)').teal-text Übersicht
+          li.tab.col.s3
             a(href='#danger').teal-text Löschen
 
   #details.col.s12
@@ -28,6 +30,10 @@ h3 {{conference.name}}
     // TALKS ACCORDION
   #talks.col.s12
     include _talks
+
+  #overview.col.s12
+    .section
+      .timetable
 
   // TRACKS ACCORDION
   #tracks.col.s12

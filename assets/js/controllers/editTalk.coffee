@@ -5,13 +5,6 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
     $scope.talk.start = $scope.talk.end = $scope.talk.date = new Date(val.start * 1000)
     transformForView()
 
-    #    imageUpload cloudinary, (imageData) ->
-    #      $scope.talk.speakerPicture = imageData
-    #      try
-    #        $scope.$digest()
-    #      catch e
-    #        'noop'
-
   $scope.save = (opts) ->
     # combine date and times
     talkToSave = clone($scope.talk)
@@ -28,7 +21,10 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
     fbRef.child('talks').child($scope.talk.$id).set(talkToSave)
 
     # feedback for the user
-    Materialize.toast 'Talk gespeichert', 1000, 'green' if !opts.silent
+    if opts?
+      Materialize.toast 'Talk gespeichert', 1000, 'green' if !opts.silent
+    else
+      Materialize.toast 'Talk gespeichert', 1000, 'green'
 
   window.onbeforeunload = (e) ->
     $scope.save({silent: true})

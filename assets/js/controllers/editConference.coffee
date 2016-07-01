@@ -19,8 +19,18 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
     $scope.$watch 'talks', (data) ->
         $('.TalkList').collapsible()
         $('select').material_select()
+
+        sorted = false
         for talk in data
-          talk.tempStart = talk.tempEnd = talk.tempDate = new Date(talk.start * 1000) if !talk.tempStart?
+          if !talk.tempStart?
+            talk.tempStart = talk.tempEnd = talk.tempDate = new Date(talk.start * 1000)
+          else
+            sorted = true
+
+        if !sorted
+          $scope.talks = data.sort (a, b) -> a.start > b.start
+
+
       , true
     $scope.$watch 'tracks', (data) -> $('.TrackList').collapsible()
 

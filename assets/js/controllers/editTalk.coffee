@@ -6,6 +6,9 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
     transformForView()
 
   $scope.save = (opts) ->
+
+    opts = {} if !opts?
+
     # combine date and times
     talkToSave = clone($scope.talk)
     talkToSave.start = mergeTimestamp(talkToSave.date, talkToSave.start).getUnixTime()
@@ -20,11 +23,7 @@ app.controller 'editTalkController', ($scope, $rootScope, $firebaseArray, $state
 
     fbRef.child('talks').child($scope.talk.$id).set(talkToSave)
 
-    # feedback for the user
-    if opts?
-      Materialize.toast 'Talk gespeichert', 1000, 'green' if !opts.silent
-    else
-      Materialize.toast 'Talk gespeichert', 1000, 'green'
+    Materialize.toast 'Talk gespeichert', 1000, 'green' if !opts.silent
 
   window.onbeforeunload = (e) ->
     $scope.save({silent: true})

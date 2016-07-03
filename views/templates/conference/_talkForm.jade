@@ -15,7 +15,7 @@ form(name='editTalkForm' ng-controller='editTalkController')
   .row
     .FormInputField.col.s6
       label Track
-      select(ng-model='talk.track', ng-options='id as track.name  for (id, track) in tracks')
+      select(ng-model='talk.track', ng-options='track.$id as track.name  for (id, track) in tracks')
 
   .row
     .FormInputField.col.s4

@@ -107,7 +107,8 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
 
     getTrackName = (tracks, talk) ->
       if talk.track?
-        return tracks[Number(talk.track)].name
+        for track in tracks
+          return track.name if track.$id == talk.track
       else
         return ''
 
@@ -117,7 +118,11 @@ app.controller 'editConferenceController', ($scope, $rootScope, $firebaseArray, 
     timetable.addLocations locations
 
     for talk in talks
-      timetable.addEvent talk.name, getTrackName(tracks, talk), new Date(talk.start * 1000), new Date(talk.end * 1000)
+      start = talk.start
+      end = talk.end
+      if start > end
+        end = start.setHours(start.getHours() + 1)
+      timetable.addEvent talk.name, getTrackName(tracks, talk), new Date(start * 1000), new Date(end * 1000)
 
     talks = clone(talks)
     tracks = clone(tracks)
